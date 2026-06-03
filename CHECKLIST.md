@@ -7,7 +7,7 @@
 - [ ] Research Apple swift-* package patterns
 - [ ] Research Vapor/Apollo package organization
 - [ ] Document findings in `Children/1.1/RESEARCH.md`
-- [ ] Cross-host review (Claude)
+- [ ] Independent review by a different available reviewer
 - [ ] **APPROVED**
 
 ### Child 1.2: Extract A11yIdentifiers from Turnip iOS
@@ -19,7 +19,7 @@
 - [ ] Write tests
 - [ ] Write documentation
 - [ ] Verify build + tests pass
-- [ ] Cross-host review (Claude)
+- [ ] Independent review by a different available reviewer
 - [ ] **APPROVED**
 
 ### Child 1.3: Extract BenchmarkKit from Turnip iOS
@@ -31,7 +31,7 @@
 - [ ] Write tests
 - [ ] Write documentation
 - [ ] Verify build + tests pass
-- [ ] Cross-host review (Claude)
+- [ ] Independent review by a different available reviewer
 - [ ] **APPROVED**
 
 ### Child 1.4: Design AppStrings Package
@@ -43,7 +43,7 @@
 - [ ] Write tests
 - [ ] Write documentation
 - [ ] Verify build + tests pass
-- [ ] Cross-host review (Claude)
+- [ ] Independent review by a different available reviewer
 - [ ] **APPROVED**
 
 ### Child 1.5: Set Up GitHub Organization
@@ -56,7 +56,7 @@
 - [ ] Create issue templates
 - [ ] Create PR template
 - [ ] Document org structure
-- [ ] Cross-host review (Claude)
+- [ ] Independent review by a different available reviewer
 - [ ] **APPROVED**
 
 ## Phase Gate: Phase 1 → Phase 2

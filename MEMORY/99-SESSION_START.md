@@ -17,6 +17,7 @@ Read `meta.registry`, then resolve and read these document IDs in order:
 - [ ] `policy.platform`
 - [ ] `workflow.orchestration`
 - [ ] `improvement.framework`
+- [ ] `agents.compatibility`
 - [ ] `packages.registry`
 - [ ] `naming.registry`
 

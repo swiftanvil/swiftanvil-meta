@@ -31,6 +31,12 @@ documents:
     audience: [agent]
     aliases: []
 
+  agents.compatibility:
+    title: Agent Compatibility Policy
+    path: AGENT_COMPATIBILITY.md
+    audience: [human, agent]
+    aliases: []
+
   meta.session-start:
     title: Session Start Checklist
     path: MEMORY/99-SESSION_START.md

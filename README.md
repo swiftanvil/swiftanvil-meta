@@ -18,14 +18,15 @@ All canonical document paths live in `meta.registry`. Other docs should refer to
 | `workflow.orchestration` | Plan, review, execute, verify, document workflow |
 | `naming.registry` | Naming decisions and cleanup tracking |
 | `modernization.api` | Deprecated API cleanup tracking |
+| `agents.compatibility` | LLM-agent compatibility and inclusivity policy |
 
 ## Standard Workspace Layout
 
 The local workspace should keep personal repositories and organization repositories separate:
 
 ```text
-~/Documents/v-i-s-h-a-l/
-├── github/       # personal repositories for now
+<workspace>/
+├── personal/     # personal repositories
 └── swiftanvil/   # SwiftAnvil organization repositories
     ├── swiftanvil-meta/
     ├── swiftanvil-cli/
@@ -33,7 +34,7 @@ The local workspace should keep personal repositories and organization repositor
     └── ...
 ```
 
-The `github` folder name is historical and may be renamed later. Do not rely on it as the organization boundary.
+The folder names are examples. Do not rely on one contributor's local workspace layout as an organization boundary.
 
 ## Agent Startup
 
@@ -43,4 +44,4 @@ That checklist points to the memory files that define current policy and priorit
 
 ## Sharing Model
 
-This repo should be hosted under the `swiftanvil` GitHub organization so organization members can use the same workflows with their own LLM agents. Private org visibility is appropriate while the project is still being shaped; public visibility can be revisited once the process is stable.
+This repo is intended to be public under the `swiftanvil` GitHub organization so organization members, outside contributors, and their preferred LLM agents can use the same workflows.

@@ -27,6 +27,7 @@ MEMORY/
 ├── policy.platform   ← OS support, API modernization (policy.platform)
 ├── workflow.orchestration     ← How we work (workflow.orchestration)
 ├── improvement.framework       ← How we improve (improvement.framework)
+├── agents.compatibility        ← How any capable agent can participate
 ├── quality.standards           ← Code quality standards
 ├── modernization.api ← What to modernize (modernization.api)
 ├── packages.registry          ← Package registry with current scores
@@ -42,8 +43,9 @@ At session start, the AI **must** read files in this order:
 3. `policy.platform` — know what OS/APIs to target
 4. `workflow.orchestration` — know the workflow
 5. `improvement.framework` — know how to improve
-6. `packages.registry` — know current package health
-7. `meta.session-start` — execute the startup checklist
+6. `agents.compatibility` — know agent-agnostic contribution rules
+7. `packages.registry` — know current package health
+8. `meta.session-start` — execute the startup checklist
 
 **Total read time:** ~2 minutes. **Total context used:** ~500 lines.
 

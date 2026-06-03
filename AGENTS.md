@@ -11,7 +11,8 @@ Start every session by reading `meta.registry`, then resolve and read these docu
 1. `meta.session-start`
 2. The document IDs referenced by that checklist
 3. `roadmap.org`
-4. `upgrade.platform` when platform violations are present
+4. `agents.compatibility`
+5. `upgrade.platform` when platform violations are present
 
 ## Priority Rules
 
@@ -27,8 +28,8 @@ Do not place product package code in this repo. Product work belongs in the pack
 Expected local layout:
 
 ```text
-~/Documents/v-i-s-h-a-l/
-├── github/
+<workspace>/
+├── personal/
 └── swiftanvil/
     ├── swiftanvil-meta/
     ├── swiftanvil-cli/
@@ -41,6 +42,7 @@ Expected local layout:
 
 - Keep memory files small and directly actionable.
 - Use `meta.registry` document IDs in instructions, checklists, and code blocks.
+- Keep instructions compatible with any capable LLM agent; do not require one named provider or CLI.
 - Update `packages.registry` after package status, version, PMS, or platform changes.
 - Update `modernization.api` when deprecated APIs are discovered or removed.
 - Update `naming.registry` when package, module, product, or command names change.

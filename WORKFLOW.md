@@ -101,13 +101,13 @@ After every PR is merged, the merger MUST record the sibling host review status 
 
 | Phase | Reviewer | Model | Verdict | Rounds | Key Findings |
 |-------|----------|-------|---------|--------|--------------|
-| **Plan** | Codex CLI | GPT-5.5 | APPROVED_WITH_NOTES | 3 | TestTarget layout, atomic writes, destination semantics |
-| **Impl** | Codex CLI | GPT-5.5 | NEEDS_REVISION → APPROVED_WITH_NOTES | 2 | Product/type mismatch, test-target deps, identifier sanitization |
+| **Plan** | Independent reviewer | Model/version if available | APPROVED_WITH_NOTES | 3 | TestTarget layout, atomic writes, destination semantics |
+| **Impl** | Independent reviewer | Model/version if available | NEEDS_REVISION → APPROVED_WITH_NOTES | 2 | Product/type mismatch, test-target deps, identifier sanitization |
 
 ### Rules
 
-1. **Who reviewed:** The actual CLI tool used (`claude review`, `codex review`, etc.)
-2. **What model:** The model version (GPT-5.5, Claude 4, etc.)
+1. **Who reviewed:** The independent tool, model, or person that performed the review
+2. **What model:** The model or version when available
 3. **Verdict:** APPROVED / APPROVED_WITH_NOTES / NEEDS_REVISION / SELF-REVIEWED
 4. **Rounds:** How many review cycles (1 = first pass approved, 2+ = revisions needed)
 5. **Key findings:** Bullet list of what the reviewer found (even for APPROVED)
@@ -283,9 +283,9 @@ git tag -d 1.2.0
 
 | Document | Updated When | Owned By |
 |----------|-------------|----------|
-| `roadmap.org` | After each phase/child completes | Kimi |
-| `checklist.legacy` | After each task completes | Kimi |
-| `Children/{id}/RESULT.md` | After child execution | Kimi |
+| `roadmap.org` | After each phase/child completes | Builder |
+| `checklist.legacy` | After each task completes | Builder |
+| `Children/{id}/RESULT.md` | After child execution | Builder |
 | `Children/{id}/REVIEW-PLAN.md` | After cross-host plan review | Reviewer model |
 | `Children/{id}/REVIEW-IMPL.md` | After cross-host impl review | Reviewer model |
 | `Children/{id}/REVIEW-PROVENANCE.md` | After PR merge | Merger |

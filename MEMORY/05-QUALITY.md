@@ -32,6 +32,6 @@ last_updated: 2026-06-04
 
 ## Review Quality
 
-- Every deliverable reviewed by a DIFFERENT model
+- Every deliverable reviewed by an independent reviewer
 - Review must address: correctness, completeness, consistency
 - Review feedback must be actionable

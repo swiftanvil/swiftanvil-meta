@@ -6,7 +6,7 @@
 
 ## 🎯 Core Principle
 
-**No agent is special.** The framework works identically whether the primary builder is Kimi, Claude, GPT-4, or any future model. The reviewer is always a *different* model from the builder.
+**No agent is special.** The framework works identically for any capable LLM agent, IDE assistant, hosted model, local model, or human reviewer. The reviewer is always independent from the builder.
 
 ---
 
@@ -16,7 +16,7 @@
 ┌─────────────────────────────────────────────────────────────┐
 │              Primary Builder (Any Model)                     │
 │  - Plans, implements, tests, documents                       │
-│  - Can be Kimi, Claude, GPT-4, Gemini, etc.                │
+│  - Can be any capable agent or human contributor            │
 ├─────────────────────────────────────────────────────────────┤
 │  Phase N: [Active Phase]                                     │
 │  ├── Child N.1: [Task]                                       │
@@ -35,16 +35,16 @@
 └─────────────────────────────────────────────────────────────┘
 ```
 
-### Model Rotation Rule
+### Reviewer Independence Rule
 
-| Session | Primary Builder | Cross-Host Reviewer | How Decided |
-|---------|----------------|---------------------|-------------|
-| 1 | Kimi | Claude | User picks, or random |
-| 2 | Claude | GPT-4 | Must differ from builder |
-| 3 | GPT-4 | Kimi | Must differ from builder |
-| 4 | Kimi | GPT-4 | Rotate to avoid bias |
+| Session | Primary Builder | Independent Reviewer | How Decided |
+|---------|----------------|----------------------|-------------|
+| 1 | Agent A | Agent B | User picks from available tools |
+| 2 | Agent B | Agent C or human reviewer | Must differ from builder |
+| 3 | Agent C | Agent A or human reviewer | Must differ from builder |
+| 4 | Agent A | Any independent reviewer | Rotate to avoid bias |
 
-**Hard rule:** The reviewer model MUST be different from the builder model. No self-review.
+**Hard rule:** The reviewer MUST be independent from the builder. No self-review unless all independent review paths have failed and the fallback is documented.
 
 ---
 
@@ -98,7 +98,7 @@ Every child follows this exact sequence. **No skipping steps. No faking reviews.
 
 ---
 
-### Step 2: REVIEW — Plan Review (Cross-Host Reviewer, DIFFERENT model)
+### Step 2: REVIEW — Plan Review (Independent Reviewer)
 
 **Goal:** Validate the plan before execution begins.
 
@@ -142,12 +142,12 @@ Every child follows this exact sequence. **No skipping steps. No faking reviews.
 
 ---
 
-### Step 4: VERIFY — Implementation Review (Cross-Host Reviewer, DIFFERENT model)
+### Step 4: VERIFY — Implementation Review (Independent Reviewer)
 
 **Goal:** Validate the implementation against the approved plan.
 
 **Actions:**
-1. **Invoke cross-host reviewer** — Run the CLI command, capture FULL output
+1. **Invoke independent reviewer** — Run the review command or request, capture FULL output
 2. Read implementation (all source files)
 3. Read tests
 4. Check: correctness, Swift 6 compliance, API design, test coverage
@@ -159,39 +159,37 @@ Every child follows this exact sequence. **No skipping steps. No faking reviews.
 The builder MUST capture the reviewer's FULL output. Truncated output is useless — the verdict may be lost.
 
 ```bash
-# ALWAYS redirect to a file. Never rely on terminal buffer.
-# The '>' captures stdout+stderr; '2>&1' ensures nothing is lost.
+# Always capture reviewer output to a file. Never rely on terminal scrollback.
+# Substitute <reviewer-command> with any available independent reviewer tool.
 
-codex review - < /tmp/review_prompt.md > /tmp/reviewer_output.txt 2>&1 &
-# Wait for completion, then read the file:
+<reviewer-command> < /tmp/review_prompt.md > /tmp/reviewer_output.txt 2>&1
 cat /tmp/reviewer_output.txt
 
-# If the file is huge, tail the end where the verdict lives:
+# If the file is large, inspect the verdict section explicitly.
 tail -100 /tmp/reviewer_output.txt
 ```
 
 **Why file capture is mandatory:**
-- Terminal buffers truncate long output (observed with Codex CLI on macOS)
-- Background execution (`&`) prevents the builder session from hanging
+- Terminal buffers can truncate long output
 - The file can be read back in chunks if it exceeds context limits
 - The file serves as the permanent artifact for `REVIEW-IMPL.md`
 
 **If the reviewer's output is truncated even in the file:**
 1. Try a shorter prompt (summarize source instead of full code)
 2. Try requesting the verdict in the first paragraph of the prompt
-3. Try a different reviewer model
+3. Try a different independent reviewer
 4. Document the truncation in `STATUS.md` and proceed with available output
 
 **MANDATORY — Before writing REVIEW-IMPL.md, the builder must:**
 
 ```bash
-# 1. Try Claude
-claude -p "Review <package>..." > /tmp/reviewer_output.txt 2>&1
+# 1. Try the preferred independent reviewer available on this machine.
+<reviewer-command-1> < /tmp/review_prompt.md > /tmp/reviewer_output.txt 2>&1
 
-# 2. If Claude fails or truncates, try Codex
-codex review - < /tmp/review_prompt.md > /tmp/reviewer_output.txt 2>&1
+# 2. If that fails or truncates, try another independent reviewer.
+<reviewer-command-2> < /tmp/review_prompt.md > /tmp/reviewer_output.txt 2>&1
 
-# 3. If both fail, document all attempts in STATUS.md, then self-review
+# 3. If all independent reviewers fail, document all attempts in STATUS.md, then self-review.
 ```
 
 **REVIEW-IMPL.md must contain:**
@@ -219,11 +217,11 @@ After the implementation review completes (regardless of verdict), record:
 ```markdown
 | Aspect | Value |
 |--------|-------|
-| Reviewer CLI | codex review / claude review / etc. |
-| Model | GPT-5.5 / Claude 4 / etc. |
+| Reviewer Tool | Independent reviewer command, hosted review, IDE assistant, or human |
+| Reviewer Identity | Tool/model/person name and version if available |
 | Verdict | APPROVED / APPROVED_WITH_NOTES / NEEDS_REVISION |
 | Rounds | N (1 = first pass, 2+ = revisions needed) |
-| Builder | Kimi / Claude / etc. |
+| Builder | Tool/model/person name and version if available |
 ```
 
 This record is copied into `REVIEW-PROVENANCE.md` at merge time.
@@ -268,16 +266,17 @@ rm -rf Packages/                  # Local package clones (re-clone fresh next se
 ```bash
 # Reviewer temp files
 rm -f /tmp/reviewer_output.txt /tmp/review_*.txt /tmp/review-*.txt
-rm -f /tmp/*.bundle /tmp/codex-review*.txt /tmp/claude-review*.txt
-rm -rf /tmp/tmp.* /tmp/codex-objects-*
+rm -f /tmp/*.bundle /tmp/review-*.txt /tmp/reviewer-*.txt
+rm -rf /tmp/tmp.*
 
 # Xcode DerivedData (stale project builds >2 days old)
 find ~/Library/Developer/Xcode/DerivedData -maxdepth 1 -type d -mtime +2 \
   \( -name "Turnip-*" -o -name "UserIdentity-*" -o -name "Rooms-*" \
      -o -name "Unsaved_*" -o -name "swiftanvil-*" \) -exec rm -rf {} +
 
-# iStudio worktree .build directories (if not actively developing)
-find ~/Documents/v-i-s-h-a-l/github/iStudio-worktrees -maxdepth 2 -type d -name ".build" -exec rm -rf {} +
+# Optional: remove stale SwiftPM build directories in inactive local worktrees.
+# Use a workspace-specific path supplied by the contributor.
+find <workspace-root> -maxdepth 3 -type d -name ".build" -mtime +2 -exec rm -rf {} +
 ```
 
 **What NOT to delete:**
@@ -301,7 +300,7 @@ find ~/Documents/v-i-s-h-a-l/github/iStudio-worktrees -maxdepth 2 -type d -name 
 - [ ] `REVIEW-PROVENANCE.md` exists with plan + impl review lineage
 - [ ] If self-reviewed: `STATUS.md` documents ALL failed reviewer attempts
 - [ ] roadmap.org review line is honest about who reviewed what
-- [ ] Never claim "Claude reviewed" if Claude was down and you self-reviewed
+- [ ] Never claim independent review occurred if all independent reviewers failed and you self-reviewed
 
 **REVIEW-PROVENANCE.md Template:**
 
@@ -312,8 +311,8 @@ find ~/Documents/v-i-s-h-a-l/github/iStudio-worktrees -maxdepth 2 -type d -name 
 
 | Field | Value |
 |-------|-------|
-| Reviewer | Codex CLI / Claude CLI / etc. |
-| Model | GPT-5.5 / Claude 4 / etc. |
+| Reviewer | Independent tool/model/person |
+| Model | Model or version if available |
 | Verdict | APPROVED / APPROVED_WITH_NOTES / NEEDS_REVISION |
 | Rounds | N |
 | Key Findings | Bullet list |
@@ -322,15 +321,15 @@ find ~/Documents/v-i-s-h-a-l/github/iStudio-worktrees -maxdepth 2 -type d -name 
 
 | Field | Value |
 |-------|-------|
-| Reviewer | Codex CLI / Claude CLI / etc. |
-| Model | GPT-5.5 / Claude 4 / etc. |
+| Reviewer | Independent tool/model/person |
+| Model | Model or version if available |
 | Verdict | APPROVED / APPROVED_WITH_NOTES / NEEDS_REVISION |
 | Rounds | N |
 | Key Findings | Bullet list |
 
 ## Builder
 
-- Primary: Kimi / Claude / etc.
+- Primary: Builder tool/model/person
 - Session: {session-id}
 ```
 
@@ -444,7 +443,7 @@ The reviewer evaluates against these criteria regardless of which model they are
 - Writes tests
 - Writes documentation
 - Updates roadmap.org (Step 5)
-- **Can be any model:** Kimi, Claude, GPT-4, Gemini, etc.
+- **Can be any capable agent or human contributor**
 
 ### Cross-Host Reviewer
 - Reviews plans (Step 2)
@@ -452,8 +451,8 @@ The reviewer evaluates against these criteria regardless of which model they are
 - Reviews phase summaries
 - Writes REVIEW-*.md files
 - Approves phase gates
-- **MUST be a different model from the builder**
-- **Can be any model:** Kimi, Claude, GPT-4, Gemini, etc.
+- **MUST be independent from the builder**
+- **Can be any capable agent or human contributor**
 
 ### User
 - Vision and direction
@@ -477,7 +476,7 @@ The reviewer evaluates against these criteria regardless of which model they are
 3. Resume work
 
 ### If Reviewer is Unavailable
-1. Try ALL available cross-host reviewers in order: Claude CLI → Codex CLI → OpenAI CLI → any other authenticated CLI
+1. Try ALL available independent reviewers, including local CLIs, IDE assistants, hosted review tools, or human reviewers
 2. Document each attempt with error output in `Children/{id}/STATUS.md`
 3. Only after ALL reviewers fail, proceed with self-review
 4. Self-review MUST use the same checklist as cross-host review (see Review Criteria below)
@@ -528,7 +527,7 @@ Do NOT update for:
 
 | Version | Date | Changes |
 |---------|------|---------|
-| 1.0 | 2026-06-02 | Initial framework (Kimi-specific) |
+| 1.0 | 2026-06-02 | Initial framework with a specific local-agent setup |
 | 2.0 | 2026-06-02 | Agent-agnostic rewrite, model rotation rules |
 | 3.0 | 2026-06-03 | Formalized 5-step per-child workflow, phase gates, file structure |
 | 3.1 | 2026-06-03 | Hardened reviewer-unavailable procedure, banned false-positive approvals, enforced honest review provenance |
@@ -539,7 +538,7 @@ Do NOT update for:
 
 ---
 
-*Framework is model-agnostic. Any capable LLM can be builder or reviewer. The only rule: they must be different.*
+*Framework is agent-agnostic. Any capable LLM agent or human can be builder or reviewer. The only rule: independent review must be honest and documented.*
 
 **Stale branch cleanup:**
 
