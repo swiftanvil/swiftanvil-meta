@@ -2,7 +2,7 @@
 
 ## Status
 
-Independent sibling-host review is requested but not completed yet.
+Independent sibling-host review is completed.
 
 The review request artifact is ready:
 
@@ -14,7 +14,7 @@ The review request asks for a plan and architecture review of the current SwiftA
 
 ## Reviewer Attempts
 
-### Attempt 1: Claude CLI
+### Attempt 1: Claude CLI With Sandboxed Home
 
 Command:
 
@@ -31,6 +31,25 @@ Failed to authenticate. API Error: 401 Invalid authentication credentials
 Output artifact:
 
 - `Reviews/2026-06-04-meta-enforcement-plan-review-claude.md`
+
+### Attempt 1B: Claude CLI With Corrected Login Home
+
+Command:
+
+```sh
+../swiftanvil-enforcement/scripts/run-agent-review.sh \
+  --agent claude \
+  --request Reviews/2026-06-04-meta-enforcement-plan-review-request.md \
+  --output Reviews/2026-06-04-meta-enforcement-plan-review-claude.md
+```
+
+Result:
+
+```text
+APPROVED_WITH_NOTES
+```
+
+The review completed successfully after running the reviewer with the user's login home rather than the sandboxed agent home.
 
 ### Attempt 2: Gemini CLI
 
@@ -53,17 +72,12 @@ Output artifact:
 
 ## Next Step
 
-After an independent reviewer CLI is authenticated, rerun the review request and save the successful output as a new artifact, for example:
+Review follow-up should address or explicitly defer the reviewer's notes:
 
-```sh
-<reviewer-command> < Reviews/2026-06-04-meta-enforcement-plan-review-request.md \
-  > Reviews/2026-06-04-meta-enforcement-plan-review-<reviewer>.md 2>&1
-```
-
-The successful review should include:
-
-1. Verdict: `APPROVED`, `APPROVED_WITH_NOTES`, or `NEEDS_REVISION`.
-2. Top risks or flaws in the plan.
-3. Recommended improvements.
-4. Missing enforcement mechanisms.
-5. Concerns about public visibility or agent inclusivity.
+1. Add schema versioning for `REGISTRY.yml`.
+2. Tag and pin enforcement workflow releases instead of using `@main`.
+3. Add ergonomics for registry lookup and registration.
+4. Add visibility and justification around ignored paths.
+5. Configure org-level required checks/rulesets.
+6. Add full-history secret scanning for public repositories.
+7. Define a minimal review artifact contract.

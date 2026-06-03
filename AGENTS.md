@@ -12,7 +12,8 @@ Start every session by reading `meta.registry`, then resolve and read these docu
 2. The document IDs referenced by that checklist
 3. `roadmap.org`
 4. `agents.compatibility`
-5. `upgrade.platform` when platform violations are present
+5. `agents.diagnostics` when reviewer or agent commands fail
+6. `upgrade.platform` when platform violations are present
 
 ## Priority Rules
 

@@ -37,6 +37,12 @@ documents:
     audience: [human, agent]
     aliases: []
 
+  agents.diagnostics:
+    title: Agent Diagnostics
+    path: AGENT_DIAGNOSTICS.md
+    audience: [human, agent]
+    aliases: []
+
   meta.session-start:
     title: Session Start Checklist
     path: MEMORY/99-SESSION_START.md
