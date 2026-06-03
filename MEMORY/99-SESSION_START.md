@@ -11,7 +11,7 @@ Every session begins here. Do not skip steps.
 
 ## Step 1: Load Memory (2 min)
 
-Read `REGISTRY.yml`, then resolve and read these document IDs in order:
+Read `meta.registry`, then resolve and read these document IDs in order:
 - [ ] `memory.meta`
 - [ ] `memory.identity`
 - [ ] `policy.platform`

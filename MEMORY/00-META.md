@@ -9,7 +9,7 @@ last_updated: 2026-06-04
 
 ## For AI Builders
 
-1. At session start, resolve `meta.session-start` from `REGISTRY.yml`
+1. At session start, resolve `meta.session-start` from `meta.registry`
 2. Before writing code, read `policy.platform`
 3. Before reviewing, read `workflow.orchestration`
 4. After completing work, update `packages.registry`

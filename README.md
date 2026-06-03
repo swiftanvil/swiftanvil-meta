@@ -6,7 +6,7 @@ This repository is not a product package. It exists so maintainers and LLM agent
 
 ## What Lives Here
 
-All canonical document paths live in `REGISTRY.yml`. Other docs should refer to stable document IDs.
+All canonical document paths live in `meta.registry`. Other docs should refer to stable document IDs.
 
 | Document ID | Purpose |
 |-------------|---------|
@@ -37,7 +37,7 @@ The `github` folder name is historical and may be renamed later. Do not rely on 
 
 ## Agent Startup
 
-Every agent session should resolve `meta.session-start` from `REGISTRY.yml` and begin there.
+Every agent session should resolve `meta.session-start` from `meta.registry` and begin there.
 
 That checklist points to the memory files that define current policy and priority. If a platform policy violation exists, the upgrade sprint takes priority over new feature work.
 

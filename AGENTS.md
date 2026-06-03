@@ -6,7 +6,7 @@ This repository is the shared operating memory for SwiftAnvil. Treat it as the s
 
 ## Startup
 
-Start every session by reading `REGISTRY.yml`, then resolve and read these document IDs:
+Start every session by reading `meta.registry`, then resolve and read these document IDs:
 
 1. `meta.session-start`
 2. The document IDs referenced by that checklist
@@ -40,7 +40,7 @@ Expected local layout:
 ## Editing Rules
 
 - Keep memory files small and directly actionable.
-- Use `REGISTRY.yml` document IDs in instructions, checklists, and code blocks.
+- Use `meta.registry` document IDs in instructions, checklists, and code blocks.
 - Update `packages.registry` after package status, version, PMS, or platform changes.
 - Update `modernization.api` when deprecated APIs are discovered or removed.
 - Update `naming.registry` when package, module, product, or command names change.

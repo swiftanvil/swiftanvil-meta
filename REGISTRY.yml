@@ -13,6 +13,12 @@ rules:
   - Agent instructions, code blocks, and checklists should refer to document IDs.
 
 documents:
+  meta.registry:
+    title: Document Registry
+    path: REGISTRY.yml
+    audience: [human, agent]
+    aliases: []
+
   meta.readme:
     title: SwiftAnvil Meta README
     path: README.md
@@ -123,5 +129,75 @@ documents:
   checklist.legacy:
     title: Legacy Checklist
     path: CHECKLIST.md
+    audience: [human, agent]
+    aliases: []
+
+  package.roadmap:
+    title: Package Roadmap
+    path: ROADMAP.md
+    scope: package-repository
+    audience: [human, agent]
+    aliases: []
+
+  package.readme:
+    title: Package README
+    path: README.md
+    scope: package-repository
+    audience: [human, agent]
+    aliases: []
+
+  package.improvement-score:
+    title: Package Improvement Score
+    path: .improvement/score.json
+    scope: package-repository
+    audience: [human, agent]
+    aliases: []
+
+  package.improvement-directory:
+    title: Package Improvement Directory
+    path: .improvement/
+    scope: package-repository
+    audience: [human, agent]
+    aliases: []
+
+  package.improvement-backlog:
+    title: Package Improvement Backlog
+    path: .improvement/backlog.md
+    scope: package-repository
+    audience: [human, agent]
+    aliases: []
+
+  package.improvement-completed:
+    title: Package Completed Improvements
+    path: .improvement/completed.md
+    scope: package-repository
+    audience: [human, agent]
+    aliases: []
+
+  org.profile-readme:
+    title: SwiftAnvil GitHub Profile README
+    path: .github/profile/README.md
+    scope: organization-profile
+    audience: [human, agent]
+    aliases: []
+
+  org.contributing:
+    title: Organization Contributing Guide
+    path: CONTRIBUTING.md
+    scope: organization-profile
+    audience: [human, agent]
+    aliases: []
+
+  org.code-of-conduct:
+    title: Organization Code of Conduct
+    path: CODE_OF_CONDUCT.md
+    scope: organization-profile
+    audience: [human, agent]
+    aliases: []
+
+  org.pull-request-template:
+    title: Organization Pull Request Template
+    path: .github/PULL_REQUEST_TEMPLATE.md
+    scope: organization-profile
     audience: [human, agent]
     aliases: []

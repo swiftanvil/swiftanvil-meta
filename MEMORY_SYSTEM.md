@@ -22,28 +22,28 @@ The memory is a **hierarchy** — each level overrides the one above for its sco
 
 ```
 MEMORY/
-├── 00-META.md              ← How to use this memory system
-├── 01-IDENTITY.md          ← Who we are, what we build
-├── 02-PLATFORM_POLICY.md   ← OS support, API modernization (PLATFORM_POLICY.md)
-├── 03-ORCHESTRATION.md     ← How we work (ORCHESTRATION_FRAMEWORK.md)
-├── 04-IMPROVEMENT.md       ← How we improve (IMPROVEMENT_FRAMEWORK.md)
-├── 05-QUALITY.md           ← Code quality standards
-├── 06-API_MODERNIZATION.md ← What to modernize (API_MODERNIZATION.md)
-├── 07-PACKAGES.md          ← Package registry with current scores
-└── 99-SESSION_START.md     ← Checklist for every new session
+├── memory.meta              ← How to use this memory system
+├── memory.identity          ← Who we are, what we build
+├── policy.platform   ← OS support, API modernization (policy.platform)
+├── workflow.orchestration     ← How we work (workflow.orchestration)
+├── improvement.framework       ← How we improve (improvement.framework)
+├── quality.standards           ← Code quality standards
+├── modernization.api ← What to modernize (modernization.api)
+├── packages.registry          ← Package registry with current scores
+└── meta.session-start     ← Checklist for every new session
 ```
 
 ### Loading Order
 
 At session start, the AI **must** read files in this order:
 
-1. `00-META.md` — understand the system
-2. `01-IDENTITY.md` — understand the project
-3. `02-PLATFORM_POLICY.md` — know what OS/APIs to target
-4. `03-ORCHESTRATION.md` — know the workflow
-5. `04-IMPROVEMENT.md` — know how to improve
-6. `07-PACKAGES.md` — know current package health
-7. `99-SESSION_START.md` — execute the startup checklist
+1. `memory.meta` — understand the system
+2. `memory.identity` — understand the project
+3. `policy.platform` — know what OS/APIs to target
+4. `workflow.orchestration` — know the workflow
+5. `improvement.framework` — know how to improve
+6. `packages.registry` — know current package health
+7. `meta.session-start` — execute the startup checklist
 
 **Total read time:** ~2 minutes. **Total context used:** ~500 lines.
 
@@ -97,7 +97,7 @@ let legacy = oldAPI() // ❌ Deprecated in iOS 18
 ### 4. Checklists for Actions
 
 ```markdown
-- [ ] Read PLATFORM_POLICY.md
+- [ ] Read policy.platform
 - [ ] Verify Package.swift platforms
 ```
 
@@ -110,7 +110,7 @@ let legacy = oldAPI() // ❌ Deprecated in iOS 18
 
 ---
 
-## 00-META.md
+## memory.meta
 
 ```markdown
 ---
@@ -125,15 +125,15 @@ last_updated: 2026-06-04
 ## For AI Builders
 
 1. At session start, read files 00-07 in order
-2. Before writing code, read 02-PLATFORM_POLICY.md
-3. Before reviewing, read 03-ORCHESTRATION.md
-4. After completing work, update 07-PACKAGES.md
+2. Before writing code, read policy.platform
+3. Before reviewing, read workflow.orchestration
+4. After completing work, update packages.registry
 
 ## For AI Reviewers
 
-1. Read 02-PLATFORM_POLICY.md — check for violations
-2. Read 05-QUALITY.md — check standards
-3. Read 06-API_MODERNIZATION.md — check for old APIs
+1. Read policy.platform — check for violations
+2. Read quality.standards — check standards
+3. Read modernization.api — check for old APIs
 
 ## For Humans
 
@@ -150,7 +150,7 @@ last_updated: 2026-06-04
 
 ---
 
-## 01-IDENTITY.md
+## memory.identity
 
 ```markdown
 ---
@@ -174,8 +174,8 @@ SwiftAnvil is a suite of Swift packages for building modern Apple platform apps.
 
 ## What We Don't Do
 
-- Support old OS versions (see PLATFORM_POLICY.md)
-- Use deprecated APIs (see API_MODERNIZATION.md)
+- Support old OS versions (see policy.platform)
+- Use deprecated APIs (see modernization.api)
 - Add dependencies for trivial functionality
 - Skip cross-host review
 - Merge without tests passing
@@ -189,7 +189,7 @@ SwiftAnvil is a suite of Swift packages for building modern Apple platform apps.
 
 ---
 
-## 99-SESSION_START.md
+## meta.session-start
 
 ```markdown
 ---
@@ -205,12 +205,12 @@ Every session begins here. Do not skip steps.
 
 ## Step 1: Load Memory (2 min)
 
-- [ ] Read MEMORY/00-META.md
-- [ ] Read MEMORY/01-IDENTITY.md
-- [ ] Read MEMORY/02-PLATFORM_POLICY.md
-- [ ] Read MEMORY/03-ORCHESTRATION.md
-- [ ] Read MEMORY/04-IMPROVEMENT.md
-- [ ] Read MEMORY/07-PACKAGES.md
+- [ ] Read memory.meta
+- [ ] Read memory.identity
+- [ ] Read policy.platform
+- [ ] Read workflow.orchestration
+- [ ] Read improvement.framework
+- [ ] Read packages.registry
 
 ## Step 2: Check Health (1 min)
 
@@ -220,18 +220,18 @@ Every session begins here. Do not skip steps.
 
 ## Step 3: Plan Work (2 min)
 
-- [ ] Read ROADMAP.md for planned child
+- [ ] Read roadmap.org for planned child
 - [ ] Check if dependencies need updating
 - [ ] Verify platform requirements match policy
 
 ## Step 4: Execute
 
-Proceed with planned work, following ORCHESTRATION_FRAMEWORK.md.
+Proceed with planned work, following workflow.orchestration.
 
 ## Step 5: Update Memory (1 min)
 
-- [ ] Update 07-PACKAGES.md if scores changed
-- [ ] Update API_MODERNIZATION.md if old APIs found
+- [ ] Update packages.registry if scores changed
+- [ ] Update modernization.api if old APIs found
 - [ ] Commit all memory changes
 ```
 
@@ -244,15 +244,15 @@ In the repo, the memory lives at:
 ```
 iFoundation/
 ├── MEMORY/
-│   ├── 00-META.md
-│   ├── 01-IDENTITY.md
-│   ├── 02-PLATFORM_POLICY.md      ← symlink to ../PLATFORM_POLICY.md
-│   ├── 03-ORCHESTRATION.md        ← symlink to ../ORCHESTRATION_FRAMEWORK.md
-│   ├── 04-IMPROVEMENT.md          ← symlink to ../IMPROVEMENT_FRAMEWORK.md
-│   ├── 05-QUALITY.md              ← TBD
-│   ├── 06-API_MODERNIZATION.md    ← symlink to ../API_MODERNIZATION.md
-│   ├── 07-PACKAGES.md             ← generated from .improvement/score.json
-│   └── 99-SESSION_START.md
+│   ├── memory.meta
+│   ├── memory.identity
+│   ├── policy.platform      ← symlink to ../policy.platform
+│   ├── workflow.orchestration        ← symlink to ../workflow.orchestration
+│   ├── improvement.framework          ← symlink to ../improvement.framework
+│   ├── quality.standards              ← TBD
+│   ├── modernization.api    ← symlink to ../modernization.api
+│   ├── packages.registry             ← generated from package.improvement-score
+│   └── meta.session-start
 ```
 
 Symlinks ensure single source of truth. The MEMORY directory is the **loadable interface**.
@@ -263,10 +263,10 @@ Symlinks ensure single source of truth. The MEMORY directory is the **loadable i
 
 | Without Memory System | With Memory System |
 |----------------------|-------------------|
-| AI forgets OS policy | AI reads PLATFORM_POLICY.md every session |
-| AI uses deprecated APIs | AI checks API_MODERNIZATION.md before coding |
-| AI skips review | AI follows ORCHESTRATION.md checklist |
-| AI builds wrong thing | AI reads IDENTITY.md and PACKAGE scores first |
+| AI forgets OS policy | AI reads policy.platform every session |
+| AI uses deprecated APIs | AI checks modernization.api before coding |
+| AI skips review | AI follows `workflow.orchestration` checklist |
+| AI builds wrong thing | AI reads `memory.identity` and `packages.registry` first |
 | Different AIs behave differently | All AIs load the same memory |
 
 ---
