@@ -6,12 +6,12 @@ This repository is the shared operating memory for SwiftAnvil. Treat it as the s
 
 ## Startup
 
-Start every session by reading:
+Start every session by reading `REGISTRY.yml`, then resolve and read these document IDs:
 
-1. `MEMORY/99-SESSION_START.md`
-2. The files referenced by that checklist
-3. `ROADMAP.md`
-4. `PLATFORM_UPGRADE_PLAN.md` when platform violations are present
+1. `meta.session-start`
+2. The document IDs referenced by that checklist
+3. `roadmap.org`
+4. `upgrade.platform` when platform violations are present
 
 ## Priority Rules
 
@@ -40,7 +40,8 @@ Expected local layout:
 ## Editing Rules
 
 - Keep memory files small and directly actionable.
-- Update `MEMORY/07-PACKAGES.md` after package status, version, PMS, or platform changes.
-- Update `API_MODERNIZATION.md` when deprecated APIs are discovered or removed.
-- Update `NAMING_REGISTRY.md` when package, module, product, or command names change.
+- Use `REGISTRY.yml` document IDs in instructions, checklists, and code blocks.
+- Update `packages.registry` after package status, version, PMS, or platform changes.
+- Update `modernization.api` when deprecated APIs are discovered or removed.
+- Update `naming.registry` when package, module, product, or command names change.
 - Keep roadmap status consistent; do not leave duplicate conflicting progress blocks.

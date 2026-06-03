@@ -1,0 +1,127 @@
+# SwiftAnvil Document Registry
+#
+# This is the canonical routing table for documents in this repository.
+# Other documents should refer to these stable IDs instead of hardcoding paths.
+
+version: 1
+
+rules:
+  - Only this registry owns document paths.
+  - Stable document IDs must not be renamed casually.
+  - If a file moves, update its path here and keep the ID stable.
+  - If a document is renamed, add the old name under aliases during migration.
+  - Agent instructions, code blocks, and checklists should refer to document IDs.
+
+documents:
+  meta.readme:
+    title: SwiftAnvil Meta README
+    path: README.md
+    audience: [human, agent]
+    aliases: []
+
+  meta.agents:
+    title: Agent Instructions
+    path: AGENTS.md
+    audience: [agent]
+    aliases: []
+
+  meta.session-start:
+    title: Session Start Checklist
+    path: MEMORY/99-SESSION_START.md
+    audience: [agent]
+    aliases: [MEMORY/99-SESSION_START.md]
+
+  meta.memory-system:
+    title: Memory System
+    path: MEMORY_SYSTEM.md
+    audience: [human, agent]
+    aliases: []
+
+  memory.meta:
+    title: Memory System Usage
+    path: MEMORY/00-META.md
+    audience: [human, agent]
+    aliases: [00-META.md]
+
+  memory.identity:
+    title: SwiftAnvil Identity
+    path: MEMORY/01-IDENTITY.md
+    audience: [human, agent]
+    aliases: [01-IDENTITY.md]
+
+  policy.platform:
+    title: Platform Policy
+    path: PLATFORM_POLICY.md
+    mirror: MEMORY/02-PLATFORM_POLICY.md
+    audience: [human, agent]
+    aliases: [02-PLATFORM_POLICY.md]
+
+  workflow.orchestration:
+    title: Orchestration Framework
+    path: ORCHESTRATION_FRAMEWORK.md
+    mirror: MEMORY/03-ORCHESTRATION.md
+    audience: [human, agent]
+    aliases: [03-ORCHESTRATION.md]
+
+  improvement.framework:
+    title: Improvement Framework
+    path: IMPROVEMENT_FRAMEWORK.md
+    mirror: MEMORY/04-IMPROVEMENT.md
+    audience: [human, agent]
+    aliases: [04-IMPROVEMENT.md]
+
+  quality.standards:
+    title: Quality Standards
+    path: MEMORY/05-QUALITY.md
+    audience: [human, agent]
+    aliases: [05-QUALITY.md]
+
+  modernization.api:
+    title: API Modernization
+    path: API_MODERNIZATION.md
+    mirror: MEMORY/06-API_MODERNIZATION.md
+    audience: [human, agent]
+    aliases: [06-API_MODERNIZATION.md]
+
+  packages.registry:
+    title: Package Registry
+    path: MEMORY/07-PACKAGES.md
+    audience: [human, agent]
+    aliases: [07-PACKAGES.md]
+
+  naming.registry:
+    title: Naming Registry
+    path: NAMING_REGISTRY.md
+    mirror: MEMORY/08-NAMING.md
+    audience: [human, agent]
+    aliases: [08-NAMING.md]
+
+  roadmap.org:
+    title: SwiftAnvil Roadmap
+    path: ROADMAP.md
+    audience: [human, agent]
+    aliases: []
+
+  upgrade.platform:
+    title: Platform Upgrade Plan
+    path: PLATFORM_UPGRADE_PLAN.md
+    audience: [human, agent]
+    aliases: []
+
+  improvement.dashboard:
+    title: Improvement Dashboard
+    path: IMPROVEMENT_DASHBOARD.md
+    audience: [human, agent]
+    aliases: []
+
+  workflow.general:
+    title: General Workflow
+    path: WORKFLOW.md
+    audience: [human, agent]
+    aliases: []
+
+  checklist.legacy:
+    title: Legacy Checklist
+    path: CHECKLIST.md
+    audience: [human, agent]
+    aliases: []

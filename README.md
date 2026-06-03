@@ -6,16 +6,18 @@ This repository is not a product package. It exists so maintainers and LLM agent
 
 ## What Lives Here
 
-| Path | Purpose |
-|------|---------|
-| `MEMORY/99-SESSION_START.md` | Required startup checklist for every agent session |
-| `ROADMAP.md` | Current project phases and child work |
-| `PLATFORM_POLICY.md` | Minimum platform and modernization policy |
-| `PLATFORM_UPGRADE_PLAN.md` | Required upgrade sprint plan |
-| `IMPROVEMENT_FRAMEWORK.md` | Package scoring and improvement workflow |
-| `ORCHESTRATION_FRAMEWORK.md` | Plan, review, execute, verify, document workflow |
-| `NAMING_REGISTRY.md` | Naming decisions and cleanup tracking |
-| `API_MODERNIZATION.md` | Deprecated API cleanup tracking |
+All canonical document paths live in `REGISTRY.yml`. Other docs should refer to stable document IDs.
+
+| Document ID | Purpose |
+|-------------|---------|
+| `meta.session-start` | Required startup checklist for every agent session |
+| `roadmap.org` | Current project phases and child work |
+| `policy.platform` | Minimum platform and modernization policy |
+| `upgrade.platform` | Required upgrade sprint plan |
+| `improvement.framework` | Package scoring and improvement workflow |
+| `workflow.orchestration` | Plan, review, execute, verify, document workflow |
+| `naming.registry` | Naming decisions and cleanup tracking |
+| `modernization.api` | Deprecated API cleanup tracking |
 
 ## Standard Workspace Layout
 
@@ -35,11 +37,7 @@ The `github` folder name is historical and may be renamed later. Do not rely on 
 
 ## Agent Startup
 
-Every agent session should begin with:
-
-```text
-MEMORY/99-SESSION_START.md
-```
+Every agent session should resolve `meta.session-start` from `REGISTRY.yml` and begin there.
 
 That checklist points to the memory files that define current policy and priority. If a platform policy violation exists, the upgrade sprint takes priority over new feature work.
 
