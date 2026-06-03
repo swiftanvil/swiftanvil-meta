@@ -146,6 +146,13 @@ documents:
     audience: [human, agent]
     aliases: []
 
+  package.agent-instructions:
+    title: Package Agent Instructions
+    path: AGENTS.md
+    scope: package-repository
+    audience: [agent]
+    aliases: []
+
   package.improvement-score:
     title: Package Improvement Score
     path: .improvement/score.json
