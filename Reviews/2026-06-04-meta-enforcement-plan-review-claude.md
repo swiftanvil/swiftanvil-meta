@@ -1,116 +1,180 @@
-# Plan Review: SwiftAnvil Meta + Enforcement Split
+# Independent Review: SwiftAnvil Meta + Enforcement Split
+
+**Reviewer:** Independent sibling-host (Claude, Opus 4.7)
+**Date:** 2026-06-04
+**Scope:** Plan architecture and intention; not implementation minutiae.
+
+---
 
 ## 1. Verdict
 
 **APPROVED_WITH_NOTES**
 
-The architectural separation is sound and matches how successful multi-repo orgs (e.g. SwiftLang, Apple's swift-* org, Vapor) draw the line. The boundary chosen — *policy + routing in meta, executable enforcement in a separate reusable repo* — is the right one. What keeps this from a clean `APPROVED` is that several load-bearing pieces (versioning contract between the two repos, machine-checkable agent neutrality, org-level enforcement guarantees, history hygiene before flipping public) are present as intentions but not yet as concrete mechanisms.
+The split is the right architectural move, the intentions are coherent, and the agent-inclusivity stance is well calibrated for a public Swift organization. There are no fatal flaws. There are, however, several non-trivial gaps in enforcement, governance, and the contract between `swiftanvil-meta` and `swiftanvil-enforcement` that should be closed before this structure is locked in and inherited by every new repo.
+
+The notes below are the conditions I'd attach to that approval.
 
 ---
 
-## 2. Top Risks / Flaws
+## 2. Top Risks and Flaws
 
-1. **Implicit schema contract between `swiftanvil-meta` and `swiftanvil-enforcement`.**
-   The validator hard-depends on the shape of `REGISTRY.yml`, but neither side declares a schema version. The two repos can release independently and silently drift. A `schema_version` field in `REGISTRY.yml` and a supported-range check in the validator is the cheap fix.
+### 2.1 The meta ↔ enforcement contract is implicit
+`swiftanvil-meta` owns the policy artifact (`REGISTRY.yml`, ignore rules, document IDs) and `swiftanvil-enforcement` owns the validator that interprets it. That is a cross-repo API. Nothing in the plan describes:
 
-2. **`@main` pinning of the reusable workflow.**
-   Product repos pointing at `swiftanvil-enforcement/.github/workflows/document-registry-policy.yml@main` means any push to enforcement immediately changes every product repo's CI semantics. A bad merge to enforcement turns every PR red across the org. Pin product repos to a tag (`@v1`) and release enforcement with semver.
+- a schema/version for `REGISTRY.yml`,
+- a compatibility guarantee between validator versions and registry versions,
+- a deprecation policy for retired document IDs,
+- the failure mode when the validator and registry drift.
 
-3. **Stable-IDs as a hard rule without tooling to make compliance easy.**
-   Requiring `meta.session-start` instead of a path is a clean principle but will create real PR-level friction unless contributors (and their agents) have a way to:
-   - look up the right ID without reading the registry by hand,
-   - auto-register a new doc when adding one,
-   - get an actionable error message ("Did you mean `policy.platform`?").
-   Without that, the registry becomes a tax that humans dodge via the ignore file.
+This is the single biggest structural risk. Once product repos depend on the shape of `REGISTRY.yml`, breaking changes become organization-wide events.
 
-4. **`.swiftanvil-registry-ignore` is a quiet escape hatch.**
-   Today it's a relief valve; tomorrow it's where every "I'll fix it later" file lands. Two mitigations: require an inline comment justifying each entry, and emit a CI warning (not failure) listing ignored counts so drift is visible.
+### 2.2 `@main` pinning of the reusable workflow
+Wrappers reference `swiftanvil-enforcement/.github/workflows/document-registry-policy.yml@main`. That is a floating reference. A bad commit in enforcement breaks every product repo at once, including unrelated PRs. It also means CI behavior is not reproducible from a product repo's commit SHA alone — the same product SHA can pass today and fail tomorrow.
 
-5. **Branch protection is the only thing making the green-check meaningful.**
-   The plan acknowledges this but it's currently the single biggest enforcement gap — the workflow exists but isn't *required*. Until a ruleset enforces it, "all repos green" is honor-system green.
+### 2.3 No org-level guarantee that new repos inherit enforcement
+The plan acknowledges this ("Ensure new repositories are bootstrapped from templates") but treats it as a manual hardening step. In practice, the moment a maintainer creates a repo via the GitHub UI without the template, the enforcement model has a hole and nobody will notice until a non-compliant PR merges.
 
-6. **Public flip is irreversible per commit, not per repo.**
-   The plan's pre-publish secret scan covers current tree, but `swiftanvil-meta` was extracted from a "misleading legacy `iFoundation` repo" that mixed planning memory, roadmap, and orchestration docs. The git *history* of meta may still contain pre-split content that wasn't intended for the public. Audit `git log -p` for the full history, not just `HEAD`, before flipping public — and consider a clean-history rewrite if anything sensitive surfaces.
+### 2.4 Stable document IDs without ergonomics will create friction
+The rule "refer to stable IDs, not paths" is sound, but humans and most LLMs will reach for paths by default. Without:
 
-7. **"Any capable LLM" without a defined review-artifact contract.**
-   Agent neutrality as a *principle* is right, but if every agent returns review output in a different shape, downstream tooling (CI gates, dashboards) can't consume it uniformly. Either define a minimal schema for review artifacts (verdict vocabulary, required sections) or accept that "agent neutrality" applies only to authoring, not to machine-consumed outputs.
+- an easy lookup ("which ID points where?"),
+- an easy registration flow ("I'm adding a new doc, give me an ID"),
+- a clear renderer/resolver that turns `meta.session-start` into a clickable link in GitHub,
+
+the policy will be evaded by people copying paths into PR descriptions, issues, and inline references. The validator can enforce IDs in tracked docs, but the social convention will erode unless using IDs is cheaper than using paths.
+
+### 2.5 Public-repo surface area is larger than "scan for secrets"
+Making `swiftanvil-meta` public exposes more than tokens. It exposes:
+
+- the shape of internal planning (roadmap, improvement framework, orchestration workflow),
+- historical review artifacts (these reviews themselves),
+- naming and routing conventions that hint at private infrastructure.
+
+None of those are necessarily problems. But "scan for secrets" is not the same as "decide what we are comfortable being permanently indexed and quoted by third-party LLM crawlers." That decision should be made explicitly per-document class, not as a one-time pre-publish sweep.
+
+### 2.6 The escape hatch is a single ignore file
+`.swiftanvil-registry-ignore` is fine as a mechanism but invites two failure modes:
+
+- Bulk-ignoring entire trees (`reviews/**`) to silence the validator instead of fixing real drift.
+- Unexplained entries that accumulate over years with no record of *why* a path is excluded.
+
+Without per-entry justification and periodic review, the ignore list becomes the registry's shadow truth.
 
 ---
 
 ## 3. Recommended Improvements
 
-**Versioning & coupling**
-- Add `schema_version` to `REGISTRY.yml` and `AGENT_COMPATIBILITY.md`.
-- Tag enforcement releases (`v1.0.0`, …) and require product repos to pin by tag.
-- Add a `compat` test in enforcement CI that runs the validator against the current `swiftanvil-meta` `main` to catch drift early.
+### 3.1 Treat `REGISTRY.yml` as a versioned schema
+- Add a top-level `schema_version:` field.
+- Document supported schema versions in `swiftanvil-enforcement`.
+- Validator should reject unknown versions with a clear error and a link to the migration note.
+- Mark document IDs with `status: active | deprecated | removed` rather than deleting entries — deprecated IDs should still resolve, with a warning, for one release cycle.
 
-**Ergonomics around stable IDs**
-- Ship a `validate --suggest` mode that, on unknown path, prints the nearest registered IDs.
-- Add a `register <path>` subcommand that appends a stub entry to `REGISTRY.yml` with a sensible default ID.
-- Document a naming convention for IDs (`<domain>.<slug>`) so contributors and agents converge without coordination.
+### 3.2 Pin and tag the reusable workflow
+- Tag `swiftanvil-enforcement` releases (`v1`, `v1.2.0`, etc.).
+- Product repo wrappers should reference a major tag (`@v1`) or a SHA, not `@main`.
+- Use a Dependabot/Renovate config in product repos to surface enforcement bumps as PRs, so updates are observable and revertible.
+- Keep `@main` available for `swiftanvil-enforcement`'s own self-test, not for downstream consumers.
 
-**Agent inclusivity made enforceable**
-- Add a doc-lint rule that flags vendor-specific imperatives ("run `claude ...`", "use Cursor's …") in any doc registered as policy or agent-facing. Allow them only in clearly marked "Examples" sections.
-- Provide a *no-LLM* contributor path explicitly in `AGENT_COMPATIBILITY.md`: someone with just an editor and a terminal must be able to do everything. If they can't, that's a bug in the docs.
-- Distinguish *required capability* (read files, edit text) from *preferred capability* (tool use, web access). Avoid implying any minimum tier of agent.
+### 3.3 Move enforcement inheritance to the org layer
+- Define a GitHub **organization ruleset** that requires the "Document Registry Policy" check on the default branch of every repo matching `swiftanvil-*`.
+- Rulesets attach by repo name pattern, so a freshly created repo is governed before its first commit lands — no template required.
+- Keep repo templates as the *convenient* path, but do not rely on them as the *enforcing* path.
+- Disable admin bypass; require an explicit, logged emergency override (e.g. a dedicated bypass role enabled only for incident response).
 
-**Public-readiness hardening**
-- Pre-publish checklist: secret scan over full history (`gitleaks --log-opts="--all"` or equivalent), license declaration, `CODE_OF_CONDUCT.md`, `SECURITY.md`, and a CODEOWNERS file.
-- A `swiftanvil/.github` org-profile repo with shared community health files reduces drift across product repos.
-- Roadmap phrasing audit — anything in `ROADMAP.md` becomes a public commitment. Frame as "directions" or "in exploration" unless you mean it.
+### 3.4 Add ergonomics around document IDs
+- Provide a small CLI or `make` target in `swiftanvil-enforcement` to:
+  - resolve an ID to a path/URL,
+  - list all IDs grouped by domain,
+  - register a new document (writes the registry entry).
+- Render `REGISTRY.yml` to a human-readable index in `swiftanvil-meta` (e.g. `REGISTRY.md` generated from the YAML) so people can browse IDs on github.com.
+- Document the canonical "how to link a doc from a PR" pattern (`meta.session-start` rendered as a link via the index).
 
-**Bootstrap & drift prevention**
-- A template repository (`swiftanvil-template`) that already contains the workflow wrapper, a registry-aware `AGENTS.md`, MIT/Apache license, and CODEOWNERS. New repos created from it inherit enforcement on day one.
-- Optional: a small `swiftanvil-cli bootstrap` command that instantiates the template and registers the new repo's docs. Worth it once you're creating > ~3 new repos.
+### 3.5 Strengthen the ignore-list contract
+- Each entry in `.swiftanvil-registry-ignore` should require an inline reason comment.
+- Validator should warn (not fail) if any ignored path no longer exists — ignores should not outlive what they ignore.
+- Add a periodic review checklist item ("audit the ignore list quarterly") to the meta improvement framework.
+
+### 3.6 Define a "what is safe public" matrix
+Before flipping visibility, classify each top-level doc class:
+
+| Class | Public? | Why |
+|---|---|---|
+| Policy, AGENTS.md, REGISTRY.yml, ROADMAP.md | Yes | These are the artifacts contributors need. |
+| Review artifacts | Yes-by-default, but explicit | These will be quoted by LLMs; decide if that is desired. |
+| Session memory, orchestration logs | Case-by-case | These can leak intent and internal cadence. |
+| Improvement framework drafts | Case-by-case | Often contains opinions about people/process. |
+
+A short `PUBLIC_VISIBILITY.md` (registered as e.g. `meta.public-visibility`) makes this decision durable and reviewable.
+
+### 3.7 Add a minimal review-artifact contract
+Reviews are already an active artifact class (this file is one). The plan should specify:
+
+- where they live,
+- whether they are registry-tracked or ignored,
+- what frontmatter or sections are required,
+- retention/archival behavior.
+
+Otherwise every reviewer (human or agent) will improvise, and the registry will either fight them or be silenced.
 
 ---
 
 ## 4. Missing Enforcement Mechanisms
 
-| Gap | Why it matters | Suggested mechanism |
-|---|---|---|
-| Required status check at org level | "Green everywhere" today is voluntary | GitHub **org ruleset** matching `swiftanvil-*`, requiring the Document Registry Policy check |
-| Required workflows | New repos can be created without the wrapper | GitHub's **required workflows** feature, or a `repo-created` automation that opens a bootstrap PR |
-| Workflow-wrapper drift detection | Product repos can edit their wrapper to bypass the call | Validator should fail if a repo's wrapper diverges from `templates/document-registry-policy.yml` beyond the pinned-version line |
-| Workflow YAML linting | Wrappers silently rot | `actionlint` + `yamllint` in enforcement CI |
-| Schema validation of `REGISTRY.yml` | Hand-edited registry can break the validator | JSON Schema + a `validate-schema` job in `swiftanvil-meta` CI |
-| Secret scan in CI | Public-repo posture must be ongoing, not one-time | `gitleaks` (or similar) as part of the reusable workflow |
-| Admin-bypass audit | Emergency override needs a paper trail | Restrict bypass to a named group; require post-hoc issue/PR documenting the override |
+In rough priority order:
+
+1. **Org ruleset requiring the policy check** (see 3.3). Without this, enforcement is opt-in by convention.
+2. **Schema-versioned registry + tagged enforcement releases** (3.1, 3.2). Without these, the cross-repo contract is unstable.
+3. **Secret scanning and push protection at the org level**, not just a pre-publish sweep. GitHub's native secret scanning, push protection, and Dependabot alerts should be enabled org-wide for public repos.
+4. **CODEOWNERS for `REGISTRY.yml`, `AGENTS.md`, `AGENT_COMPATIBILITY.md`, and platform policy.** Changes to these are organization-level changes; they should require review by a defined owner set, not whoever happens to be on the PR.
+5. **A "registry must change with the doc" rule.** If a PR adds, moves, or renames a registered document, the validator should require a corresponding `REGISTRY.yml` change. This is the rule that actually keeps the registry truthful.
+6. **A CI job that validates the validator** — a self-test in `swiftanvil-enforcement` that runs against a known-good and known-bad fixture set. Otherwise a silently broken validator passes every PR.
+7. **Signed commits / signed tags on `swiftanvil-enforcement`** if product repos pin tags. Tag mutability is a supply-chain risk for reusable workflows.
+8. **Branch protection on `swiftanvil-meta` itself.** The repo that owns policy must enforce its own policy — no direct pushes, required review, required status checks.
 
 ---
 
-## 5. Public-Visibility & Agent-Inclusivity Concerns
+## 5. Public Visibility and Agent Inclusivity Concerns
 
-**Public-visibility**
-- Verify the *full git history* of `swiftanvil-meta` (and any repo extracted from `iFoundation`) for personal paths, vendor credentials, prompt strategies, internal cost references, or third-party names that shouldn't be public.
-- `ROADMAP.md` going public turns it into a commitment artifact. Choose phrasing accordingly.
-- Anything that reveals internal review patterns or proprietary prompt structures may not be sensitive but is *strategic*. Decide deliberately whether that's an asset (transparency) or a leak.
-- Reusable workflows can receive secrets from callers — audit that the workflow file doesn't expose `${{ secrets.* }}` to logs or third-party actions, since it now runs publicly across consumers.
+### 5.1 Visibility
+- Decide intentionally per-doc-class, as in 3.6. The biggest risk is not a leaked secret; it is permanently publishing internal *narrative* (planning sessions, review back-and-forth, opinions about tools) that the organization later wishes were private. Public repos are effectively append-only from a discoverability standpoint.
+- Run secret scanning across **full git history**, not just the working tree, before flipping visibility. A token in a deleted file three commits back is still public after the flip.
+- Add a `SECURITY.md` (registered, e.g. `meta.security`) describing how to report issues. Public repos that lack this attract low-quality drive-by reports through issues.
 
-**Agent-inclusivity**
-- The current principles cover provider neutrality well but don't yet address *capability* asymmetry: agents with tool use, web access, and large context will produce richer reviews than smaller local models. State explicitly which capabilities a contributor's chosen setup must have to complete required workflows, and which are nice-to-have.
-- The no-LLM contributor path is the canary: if a human with `vi` and `bash` cannot complete a required workflow, the workflow is implicitly agent-coupled.
-- "Independent review by any capable second LLM" is a good principle, but consider whether *self-review by the same model under different framing* is allowed — public contributors using a single hosted account will run into this.
+### 5.2 Agent inclusivity
+The `AGENT_COMPATIBILITY.md` stance — capability-and-artifact based, no mandated vendor — is correct and aligns with the public-org intent. A few refinements:
 
----
+- **State the negative case explicitly.** "No PR may require a specific provider's CLI to validate, reproduce, or merge." This is the rule; the rest is examples.
+- **Pin the interface, not the agent.** Document the *artifacts* an agent must produce (a review file with sections X, Y, Z; a verdict from an enumerated set; a registered location) rather than the commands it runs. Any agent that can produce the artifact is compliant.
+- **Be explicit that humans-without-LLMs are first-class.** "Independent review may be performed by any capable second LLM … or human reviewer" is good, but the doc should also state that no workflow step requires an LLM at all.
+- **Avoid optional examples that quietly become required.** "For example, run `claude -p …`" tends to become "everyone uses `claude -p …`." Either keep examples in an appendix clearly marked non-normative, or rotate examples across multiple providers so none becomes the default.
+- **Document a non-LLM fallback** for each automated step (e.g. "validation also runs as a plain shell command without any agent"). This is the proof that the workflow is genuinely provider-neutral.
 
-## 6. Better Alternatives to Consider
-
-- **Composite action** vs. **reusable workflow**: keep the reusable workflow (you want a distinct check-run name on PRs) but extract the validation step into a composite action so it can also be invoked from arbitrary jobs.
-- **Org rulesets** > branch protection: rulesets apply by name pattern across the org and survive repo creation. They're the right primitive here.
-- **Required workflows** (GitHub feature): can guarantee the policy workflow runs on every repo without each repo needing to commit a wrapper. Worth piloting — it removes an entire class of drift.
-- **Bootstrap CLI**: only worth building if you'll create new repos frequently. Until then, a `swiftanvil-template` repo plus org ruleset gets you ~90% of the benefit.
+The current attempt log in `Reviews/2026-06-04-meta-enforcement-plan-review-status.md` — where the Claude CLI needed a specific home directory and the Gemini CLI hit auth/trust issues — is itself evidence that the *review tooling* is currently provider-coupled even though the *policy* says it shouldn't be. The compatibility doc should acknowledge that gap and describe the path to closing it (e.g. a thin `run-agent-review.sh` that accepts any compliant agent and a documented artifact contract).
 
 ---
 
-## Answers to Specific Questions (condensed)
+## 6. Answers to Specific Questions
 
-1. **Meta vs enforcement boundary** — yes, correct boundary. Add a schema-version contract.
-2. **Registry location** — `swiftanvil-meta`. Don't mirror. Don't generate. Single source of truth.
-3. **Stable IDs** — right rule, *underpowered tooling*. Won't survive contact with contributors unless you ship a `register`/`suggest` ergonomic.
-4. **`.swiftanvil-registry-ignore`** — acceptable as an escape hatch; add justification comments and a CI visibility report.
-5. **Agent compatibility** — principles are inclusive; enforcement is not yet machine-checkable. Add a doc-lint and a no-LLM contributor path.
-6. **Next enforcement priorities** — (1) org ruleset requiring the check, (2) tag-pin enforcement releases, (3) full-history secret scan before public, (4) schema validation of `REGISTRY.yml`.
-7. **Org-level requirements** — org ruleset on `swiftanvil-*`, required workflows, `swiftanvil/.github` profile repo, template repository.
-8. **Public risks remaining** — git history of meta, roadmap phrasing, reusable-workflow secret surface, license/CoC/CODEOWNERS scaffolding.
-9. **Better alternatives** — org rulesets + required workflows + template repo is a stronger stack than per-repo wrappers alone. Defer a bootstrap CLI until the repo count justifies it.
+1. **Split between `swiftanvil-meta` and `swiftanvil-enforcement`** — right boundary. Policy/memory vs. mechanism is a clean cut and matches how each side evolves.
+2. **Where should the registry live** — in `swiftanvil-meta`. It is policy. Enforcement consumes it. Do not mirror; mirroring creates two sources of truth. Generate human-readable views from it instead.
+3. **Stable IDs vs. paths** — good rule, but it will only stick if ID lookup/registration is as cheap as typing a path. Invest in ergonomics (3.4) or the rule will be quietly bypassed.
+4. **`.swiftanvil-registry-ignore` as escape hatch** — acceptable, but require per-entry justification and periodic audit (3.5). Otherwise it becomes the shadow registry.
+5. **Agent compatibility sufficiently inclusive** — directionally yes, with the refinements in 5.2. The current reviewer-tooling reality lags the stated policy; close that gap.
+6. **Next enforcement priorities** — in order: org ruleset (3.3), registry schema version + tagged enforcement releases (3.1, 3.2), CODEOWNERS on policy files, "registry changes with doc" rule, validator self-test.
+7. **Org-level requirements for new repos** — organization rulesets matching `swiftanvil-*`, org-wide secret scanning + push protection, default branch protection profile, repo creation restricted to maintainers, template repos as convenience not as enforcement.
+8. **Public-repo risks needing mitigation** — full-history secret scan, explicit visibility classification per doc class (3.6), `SECURITY.md`, decision about whether review artifacts and session memory should be public-by-default.
+9. **Better alternatives** — yes, in combination, not as replacements:
+   - **Org rulesets** for inheritance (replaces template-as-enforcement).
+   - **Composite action** wrapping the validator, so the wrapper workflow in product repos shrinks to ~5 lines.
+   - **Reusable workflow** remains useful for richer orchestration; keep it tagged.
+   - **Repo template** stays, but as ergonomics not enforcement.
+   - **Bootstrap CLI** is worth it only if it does more than `git clone template` — e.g. installs hooks, registers the repo in `REGISTRY.yml`'s `repos:` section, and opens the initial PR.
+
+---
+
+## 7. Summary
+
+The plan is sound. The split is correct, the public stance is correct, and the agent-neutral framing is correct. The work that remains is not architectural — it is hardening: versioning the contract between meta and enforcement, making inheritance automatic at the org layer rather than manual at repo creation, making the document-ID convention cheaper than the path convention, and being explicit about what "public" means for each class of artifact.
+
+Address the items in §4 (especially 1–4) before depending on this structure across many repos, and the approval becomes unconditional.

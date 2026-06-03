@@ -1,0 +1,11 @@
+schema_version: 1
+status: success
+agent: claude
+builder: codex
+request: 'Reviews/2026-06-04-meta-enforcement-plan-review-request.md'
+output: 'Reviews/2026-06-04-meta-enforcement-plan-review-claude.md'
+verdict: APPROVED_WITH_NOTES
+started_at: '2026-06-03T23:51:31Z'
+finished_at: '2026-06-03T23:53:31Z'
+exit_code: 0
+home_strategy: login_home

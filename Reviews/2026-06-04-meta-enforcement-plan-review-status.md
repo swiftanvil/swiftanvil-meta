@@ -51,6 +51,10 @@ APPROVED_WITH_NOTES
 
 The review completed successfully after running the reviewer with the user's login home rather than the sandboxed agent home.
 
+Metadata artifact:
+
+- `Reviews/2026-06-04-meta-enforcement-plan-review-claude.md.review.yml`
+
 ### Attempt 2: Gemini CLI
 
 Command:
