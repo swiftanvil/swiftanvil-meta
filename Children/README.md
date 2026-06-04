@@ -49,8 +49,8 @@ and eventual host provisioning.
 |-------|------|--------|--------------|
 | 4.1 | Governance and Enforcement Baseline | Complete | swiftanvil-meta, swiftanvil-enforcement, .github |
 | 4.2 | AnvilRunner 0.1 Release | Complete | swiftanvil-anvil-runner |
-| 4.3 | AnvilReport Organization Health Report | Planned Next | swiftanvil-meta |
-| 4.4 | Managed Worker Capability Discovery and Doctor | Planned | swiftanvil-anvil-runner |
+| 4.3 | AnvilReport Organization Health Report | Complete | swiftanvil-meta |
+| 4.4 | Managed Worker Capability Discovery and Doctor | Complete | swiftanvil-anvil-runner |
 | 4.5 | Worker Provisioning and Fleet Profiles | Complete | swiftanvil-anvil-runner |
 
 ## Phase 5 — Ecosystem & Distribution
@@ -60,6 +60,14 @@ and eventual host provisioning.
 | 5.1 | Community Templates | Complete | swiftanvil-anvil-template |
 | 5.2 | Plugin System | Complete | swiftanvil-cli |
 | 5.3 | Release & Distribution | Complete | swiftanvil-meta, swiftanvil-cli |
+
+## Phase 6 — Integration & Validation
+
+| Child | Name | Status | Primary Repo |
+|-------|------|--------|--------------|
+| 6.1 | CLI Integration — Templates & Plugins | Planned | swiftanvil-cli |
+| 6.2 | Documentation Generator CLI Integration | Planned | swiftanvil-cli, swiftanvil-anvil-docs |
+| 6.3 | Example Projects & Ecosystem Validation | Planned | New example repos |
 
 ## Review Artifact Conventions by Phase
 

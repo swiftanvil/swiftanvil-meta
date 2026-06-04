@@ -13,10 +13,11 @@
 | [Phase 3](#phase-3-cli--integration) | CLI & Integration | 🟢 Complete | 5/5 |
 | [Phase 4](#phase-4-org-intelligence--managed-workers) | Org Intelligence & Managed Workers | 🟢 Complete | 5/5 |
 | [Phase 5](#phase-5-ecosystem--distribution) | Ecosystem & Distribution | 🟢 Complete | 3/3 |
+| [Phase 6](#phase-6-integration--validation) | Integration & Validation | 🟡 Planned | 0/3 |
 
-**Current Active Child:** None — Phase 5 complete.
+**Current Active Child:** None — Phase 6 planned, awaiting approval.
 
-**Phase Gate Note:** Phase 5 is complete. All 3 children done. Next phase to be planned.
+**Phase Gate Note:** Phase 5 is complete. All 3 children done. Phase 6 plans written (Children 6.1–6.3).
 
 **Legend:** 🟢 Complete | 🟡 In Progress | 🔴 Blocked | ⚪ Planned
 
@@ -522,6 +523,66 @@ registered as `planning.children-index`.
 - [x] All code committed and tagged
 - [x] All `RESULT.md` files written
 - [x] `roadmap.org` and `planning.children-index` updated
+
+---
+
+## Phase Gate: 5 → 6
+
+- [x] All Phase 5 children complete
+- [x] All Phase 5 children reviewed (cross-host or self-reviewed where unavailable)
+- [x] All review blockers fixed
+- [x] Phase 5 summary reviewed
+- [ ] **User approval to proceed** — Phase 6 planned (Children 6.1–6.3)
+
+---
+
+## Phase 6: Integration & Validation 🟡
+
+> Make the Phase 5 infrastructure usable end-to-end. Wire templates, plugins, and docs into the CLI.
+> Validate with real example projects.
+
+### 6.1 CLI Integration — Templates & Plugins ⏳
+
+| Aspect | Detail |
+|--------|--------|
+| Plan | `planning.child-6-1` |
+| Status | Planned |
+| Primary Repo | swiftanvil-cli |
+
+**What it will deliver:**
+- `swiftanvil template list` — fetch registry, print table, respect cache/offline
+- `swiftanvil template install <name>` — download, validate, substitute variables, install atomically
+- `swiftanvil plugin list` — list registered plugins
+- `swiftanvil plugin info <identifier>` — show plugin metadata, commands, generators, hooks
+- Integration with `AnvilWizard` for interactive prompts and `AnvilTemplate` for substitution
+
+### 6.2 Documentation Generator CLI Integration ⏳
+
+| Aspect | Detail |
+|--------|--------|
+| Plan | `planning.child-6-2` |
+| Status | Planned |
+| Primary Repo | swiftanvil-cli, swiftanvil-anvil-docs |
+
+**What it will deliver:**
+- `swiftanvil docs generate` — discover DocC catalogs, build static HTML
+- `swiftanvil docs preview` — local server with watch/rebuild
+- `swiftanvil-anvil-docs` tagged `0.1.0`
+- Docs CI workflow validation
+
+### 6.3 Example Projects & Ecosystem Validation ⏳
+
+| Aspect | Detail |
+|--------|--------|
+| Plan | `planning.child-6-3` |
+| Status | Planned |
+| Primary Repo | New example repos |
+
+**What it will deliver:**
+- 3 example projects (SwiftUI app, CLI tool, SPM library) generated from templates
+- Each example builds, tests, and generates docs end-to-end
+- `swiftanvil verify --example` validation
+- `EXAMPLES.md` contributor guide
 
 ---
 

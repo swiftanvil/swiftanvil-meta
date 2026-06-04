@@ -10,9 +10,10 @@
 
 | Package | Version | PMS | Grade | Status | Next Review | Next Action |
 |---------|---------|-----|-------|--------|-------------|-------------|
-| AnvilTemplate | 1.0.0 | 78 | B | 🟡 Improve | 2026-06-18 | Add `.dictionary` to `TemplateValue` |
+| AnvilTemplate | 1.3.0 | 82 | A | 🟢 Healthy | 2026-06-18 | Minor doc improvements |
 | AnvilProject | 1.0.0 | 82 | A | 🟢 Healthy | 2026-06-18 | Minor doc improvements |
 | AnvilDocs | unreleased | — | — | 🟢 Initial package | After 0.1.0 tag | Integrate with `swiftanvil-cli` |
+| swiftanvil-cli | 0.3.0 | 85 | A | 🟢 Healthy | 2026-06-18 | Add plugin CLI commands |
 
 **Legend:** 🟢 Healthy (A) | 🟡 Improve (B) | 🔴 Sprint (C/F) | ⚪ Unknown
 
@@ -25,8 +26,7 @@
 | AnvilDocs | DOC-002: CLI integration for docs compose | 5 | medium | 0.1.0 |
 | AnvilDocs | DOC-004: Tag first package release | 3 | small | 0.1.0 |
 
-**Blocked:**
-- DOC-001 (AnvilDocs) → blocked by TPL-002 (AnvilTemplate `.dictionary`)
+**Blocked:** None. TPL-002 (AnvilTemplate `.dictionary`) resolved in 1.3.0.
 
 ---
 
@@ -36,18 +36,18 @@
 
 | ID | Package | Description | Impact | Effort | Blocked By |
 |----|---------|-------------|--------|--------|------------|
-| TPL-002 | AnvilTemplate | Add `.dictionary` to `TemplateValue` | 8 | medium | — |
 | DOC-002 | AnvilDocs | CLI integration for docs compose | 5 | medium | — |
 | TPL-003 | AnvilTemplate | Template parse caching | 5 | small | — |
-| DOC-001 | AnvilDocs | Template-based landing page | 5 | medium | TPL-002 |
+| DOC-001 | AnvilDocs | Template-based landing page | 5 | medium | TPL-002 (resolved) |
 
-### Medium Impact (3-4)
+### Medium Impact (3–4)
 
 | ID | Package | Description | Impact | Effort |
 |----|---------|-------------|--------|--------|
 | TPL-001 | AnvilTemplate | Nested loop error path tests | 3 | small |
 | PRJ-001 | AnvilProject | Advanced README examples | 3 | small |
 | DOC-004 | AnvilDocs | Tag first package release | 3 | small |
+| CLI-001 | swiftanvil-cli | Plugin commands in `--help` | 4 | medium |
 
 ---
 
@@ -55,9 +55,9 @@
 
 | Rule | Status |
 |------|--------|
-| No package at B for >2 sprints | ✅ All B packages on first sprint |
+| No package at B for >2 sprints | ✅ All packages A or initial |
 | No "Later" item >3 months old | ✅ All packages <1 month old |
-| Every sprint improves ≥1 category | ⏳ Next sprint: TPL-002 (correctness +8) |
+| Every sprint improves ≥1 category | ✅ TPL-002 resolved (correctness +8) |
 
 ---
 

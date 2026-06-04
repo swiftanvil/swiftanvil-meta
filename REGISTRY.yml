@@ -637,3 +637,21 @@ documents:
     scope: organization-profile
     audience: [human, agent]
     aliases: []
+
+  planning.child-6-1:
+    title: CLI Integration — Templates & Plugins
+    path: Children/6.1/PLAN.md
+    audience: [human, agent]
+    aliases: []
+
+  planning.child-6-2:
+    title: Documentation Generator CLI Integration
+    path: Children/6.2/PLAN.md
+    audience: [human, agent]
+    aliases: []
+
+  planning.child-6-3:
+    title: Example Projects & Ecosystem Validation
+    path: Children/6.3/PLAN.md
+    audience: [human, agent]
+    aliases: []
