@@ -75,7 +75,8 @@ Sometimes a change affects multiple packages (e.g., shared API pattern):
 2. GitHub auto-fills the PR template from `org.pull-request-template`
 3. Fill in: Summary, Changes, Testing checklist
 4. Link related issues: `Fixes #123`
-5. Request review from maintainer
+5. Fill in the Review Provenance table before requesting review
+6. Request review from maintainer
 
 ### Review Requirements
 
@@ -83,6 +84,8 @@ Sometimes a change affects multiple packages (e.g., shared API pattern):
 |------|-----------------|---------------|
 | All package repos | 1 approval | Branch protection enforces |
 | `.github` org repo | 1 approval | Branch protection enforces |
+
+The shared policy workflow rejects pull requests that omit the Review Provenance table or leave placeholder provenance values. See the `swiftanvil-enforcement` PR provenance enforcement documentation for the exact machine check.
 
 ### After Merge
 

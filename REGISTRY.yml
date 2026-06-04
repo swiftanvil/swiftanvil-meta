@@ -138,6 +138,12 @@ documents:
     audience: [human, agent]
     aliases: []
 
+  process.exception.direct-push-2026-06-04:
+    title: Direct Push Enforcement Remediation Exception
+    path: Process-Exceptions/2026-06-04-direct-push-enforcement-remediation.md
+    audience: [human, agent]
+    aliases: []
+
   checklist.legacy:
     title: Legacy Checklist
     path: CHECKLIST.md
