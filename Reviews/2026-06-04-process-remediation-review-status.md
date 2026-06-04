@@ -5,7 +5,7 @@
 | Phase | Reviewer | Model | Verdict | Rounds | Key Findings |
 |-------|----------|-------|---------|--------|--------------|
 | Plan | User process review | Human | NEEDS_REVISION | 1 | Direct pushes bypassed the documented workflow and omitted the expected review provenance table. |
-| Impl | Independent sibling-host review | Claude Code, then Kimi | NEEDS_REVISION -> APPROVED_WITH_NOTES | 2 | Fixed invalid verdict matching, removed unrelated `.github` checkout bump, and required approved review metadata before a request passes. |
+| Impl | Independent sibling-host review | Claude Code, then Kimi | NEEDS_REVISION -> APPROVED_WITH_NOTES | 2 | Fixed invalid verdict matching, removed unrelated `.github` checkout bump, required approved review metadata before a request passes, and later fixed `.github` CI so non-package repos skip Swift build/test. |
 
 ## Artifacts
 

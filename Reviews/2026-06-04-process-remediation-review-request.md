@@ -113,3 +113,15 @@ Additional hardening was added after reviewing the enforcement behavior:
 - The workflow includes an inline warning not to interpolate pull request body text directly into the shell script.
 - The enforcement README documents the recommended `pull_request` event types and warns against `pull_request_target`.
 - The direct-push/admin-bypass gap is tracked in swiftanvil-meta#1 and linked from the process exception record.
+
+## Post-PR CI Fix
+
+After opening the `.github` PR, the org profile repository CI failed because `.github/workflows/ci.yml` assumed every repository contains `Package.swift`.
+
+The `.github` branch was updated to:
+
+- use `actions/checkout@v6`,
+- detect whether `Package.swift` exists,
+- skip Swift build/test steps when no package exists.
+
+The refreshed `.github` PR checks passed after this fix.
