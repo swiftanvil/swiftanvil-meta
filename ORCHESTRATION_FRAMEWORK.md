@@ -256,10 +256,9 @@ This record is copied into `REVIEW-PROVENANCE.md` at merge time.
 
 After a child is merged / pushed, purge stale artifacts to prevent disk bloat and confusion in future sessions.
 
-**iFoundation repo cleanup:**
+**Repository cleanup:**
 ```bash
-rm -rf .build/                    # Swift build artifacts
-rm -rf Packages/                  # Local package clones (re-clone fresh next session)
+rm -rf .build/                    # Swift build artifacts for the current repo
 ```
 
 **System-wide cleanup:**
@@ -287,7 +286,7 @@ find <workspace-root> -maxdepth 3 -type d -name ".build" -mtime +2 -exec rm -rf 
 
 **Why this matters:**
 - `.build/` directories can grow to 500MB+ per package
-- Stale `Packages/` clones confuse the next session about which source is canonical
+- Stale local clones confuse the next session about which source is canonical
 - Reviewer temp files accumulate in `/tmp/` across sessions
 - DerivedData can grow to 100GB+ with stale project folders
 - Worktree `.build` dirs bloat inactive branches
