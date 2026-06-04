@@ -67,7 +67,7 @@ and eventual host provisioning.
 |-------|------|--------|--------------|
 | 6.1 | CLI Integration — Templates & Plugins | Complete | swiftanvil-cli |
 | 6.2 | Documentation Generator CLI Integration | Complete | swiftanvil-cli, swiftanvil-anvil-docs |
-| 6.3 | Example Projects & Ecosystem Validation | Planned | New example repos |
+| 6.3 | Example Projects & Ecosystem Validation | Complete | swiftanvil-example-library, swiftanvil-example-cli, swiftanvil-example-swiftui |
 
 ## Review Artifact Conventions by Phase
 

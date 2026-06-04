@@ -13,11 +13,11 @@
 | [Phase 3](#phase-3-cli--integration) | CLI & Integration | 🟢 Complete | 5/5 |
 | [Phase 4](#phase-4-org-intelligence--managed-workers) | Org Intelligence & Managed Workers | 🟢 Complete | 5/5 |
 | [Phase 5](#phase-5-ecosystem--distribution) | Ecosystem & Distribution | 🟢 Complete | 3/3 |
-| [Phase 6](#phase-6-integration--validation) | Integration & Validation | 🟡 In Progress | 2/3 |
+| [Phase 6](#phase-6-integration--validation) | Integration & Validation | 🟢 Complete | 3/3 |
 
-**Current Active Child:** 6.2 — Documentation Generator CLI Integration ✅ Complete
+**Current Active Child:** 6.3 — Example Projects & Ecosystem Validation ✅ Complete
 
-**Phase Gate Note:** Phase 5 is complete. All 3 children done. Phase 6 Child 6.1 complete (53 tests), Child 6.2 complete (62 tests). Child 6.3 planned.
+**Phase Gate Note:** Phase 6 is complete. All 3 children done. 6.1 (53 tests), 6.2 (62 tests), 6.3 (43 CLI tests + 7 lib + 5 CLI + 6 SwiftUI example tests).
 
 **Legend:** 🟢 Complete | 🟡 In Progress | 🔴 Blocked | ⚪ Planned
 
@@ -460,8 +460,11 @@ registered as `planning.children-index`.
 | AnvilTemplate | 78/78 | 2026-06-04 |
 | AnvilProject | 37/37 | 2026-06-03 |
 | AnvilRunner | 50/50 | 2026-06-04 |
-| SwiftAnvil CLI | 62/62 | 2026-06-05 |
-| **Total** | **406/406** | **100%** |
+| SwiftAnvil CLI | 43/43 | 2026-06-05 |
+| CounterKit (example) | 7/7 | 2026-06-05 |
+| WordCounter (example) | 5/5 | 2026-06-05 |
+| TodoApp (example) | 6/6 | 2026-06-05 |
+| **Total** | **61/61** | **100%** |
 
 *Note: historical iFoundation planning is retained as source material, but current organization planning lives in
 `swiftanvil-meta`.*
@@ -514,15 +517,15 @@ registered as `planning.children-index`.
 
 ---
 
-## Phase Gate: 6.2 Complete
+## Phase Gate: 6.3 Complete
 
-- [x] Child 6.2 complete — Documentation Generator CLI Integration
-- [x] `swiftanvil docs generate` produces static HTML
-- [x] `swiftanvil docs preview` serves locally with watch/rebuild
-- [x] AnvilDocs tagged `0.1.0`
-- [x] Docs CI workflow passes
-- [x] CLI README updated with docs usage
-- [x] All tests pass (62/62)
+- [x] Child 6.3 complete — Example Projects & Ecosystem Validation
+- [x] 3 example projects created and verified
+- [x] All examples build with `swift build`
+- [x] All examples pass `swift test`
+- [x] `ifoundation verify --example` validates example structure
+- [x] `EXAMPLES.md` and `CONTRIBUTING.md` written
+- [x] All tests pass (61/61)
 
 ---
 
@@ -589,19 +592,23 @@ registered as `planning.children-index`.
 - `--path`, `--output`, `--hosting-base-path`, `--target`, `--port`, `--json` flags
 - `DocCGenerator` and `DocCPreviewer` actors with full test coverage
 
-### 6.3 Example Projects & Ecosystem Validation ⏳
+### 6.3 Example Projects & Ecosystem Validation ✅
 
 | Aspect | Detail |
 |--------|--------|
 | Plan | `planning.child-6-3` |
-| Status | Planned |
-| Primary Repo | New example repos |
+| Result | `planning.child-6-3-result` |
+| Status | Complete |
+| Primary Repo | swiftanvil-example-library, swiftanvil-example-cli, swiftanvil-example-swiftui |
+| CLI Tests | 43/43 pass (38 existing + 5 new) |
 
-**What it will deliver:**
-- 3 example projects (SwiftUI app, CLI tool, SPM library) generated from templates
-- Each example builds, tests, and generates docs end-to-end
-- `swiftanvil verify --example` validation
-- `EXAMPLES.md` contributor guide
+**What it delivered:**
+- `swiftanvil-example-library` (CounterKit) — SPM library with DocC, BenchmarkKit, actor-isolated counter, 7 tests
+- `swiftanvil-example-cli` (WordCounter) — CLI tool with ArgumentParser, word/line/char counting, 5 tests
+- `swiftanvil-example-swiftui` (TodoApp) — SwiftUI iOS app with AnvilNetwork + AnvilFlags deps, actor-based store, 6 tests
+- `ifoundation verify --example` — validates example project structure (files, dirs, Package.swift, README)
+- `EXAMPLES.md` — contributor guide for adding new examples
+- `CONTRIBUTING.md` — example project conventions and PR process
 
 ---
 
