@@ -1,0 +1,11 @@
+schema_version: 1
+status: success
+agent: kimi
+builder: codex
+request: 'Reviews/2026-06-04-process-remediation-review-request.md'
+output: 'Reviews/2026-06-04-process-remediation-review-kimi-v2.md'
+verdict: APPROVED_WITH_NOTES
+started_at: '2026-06-04T00:28:31Z'
+finished_at: '2026-06-04T00:30:15Z'
+exit_code: 0
+home_strategy: login_home
