@@ -65,8 +65,8 @@ and eventual host provisioning.
 
 | Child | Name | Status | Primary Repo |
 |-------|------|--------|--------------|
-| 6.1 | CLI Integration — Templates & Plugins | Planned | swiftanvil-cli |
-| 6.2 | Documentation Generator CLI Integration | Planned | swiftanvil-cli, swiftanvil-anvil-docs |
+| 6.1 | CLI Integration — Templates & Plugins | Complete | swiftanvil-cli |
+| 6.2 | Documentation Generator CLI Integration | Complete | swiftanvil-cli, swiftanvil-anvil-docs |
 | 6.3 | Example Projects & Ecosystem Validation | Planned | New example repos |
 
 ## Review Artifact Conventions by Phase

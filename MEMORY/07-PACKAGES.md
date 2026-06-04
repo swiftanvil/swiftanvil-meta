@@ -13,7 +13,7 @@ last_updated: 2026-06-04
 |---------|------|---------|-----|-------|--------|---------|-----------|
 | AnvilTemplate | swiftanvil-anvil-template | 1.3.0 | 82 | A | 🟢 Healthy | 18 | 15 |
 | AnvilProject | swiftanvil-anvil-project | 1.0.0 | 82 | A | 🟢 Healthy | — | 15 |
-| AnvilDocs | swiftanvil-anvil-docs | unreleased | — | — | 🟢 Initial package | — | 15 |
+| AnvilDocs | swiftanvil-anvil-docs | 0.1.0 | — | — | 🟢 Healthy | — | 15 |
 | AnvilWizard | swiftanvil-anvil-wizard | 1.0.0 | — | — | 🟢 Healthy | — | 15 |
 | AnvilNetwork | swiftanvil-anvil-network | 1.0.0 | — | — | 🟢 Healthy | 18 | 15 |
 | AnvilFlags | swiftanvil-anvil-flags | 1.0.0 | — | — | 🟢 Healthy | 18 | 15 |
@@ -32,6 +32,4 @@ All actively maintained packages are now compliant with `policy.platform` (iOS 1
 
 | Priority | Package | Item | Impact |
 |----------|---------|------|--------|
-| 🟡 Medium | AnvilDocs | CLI integration for docs compose | 5 |
-| 🟡 Medium | AnvilDocs | Template-based landing page | 5 |
 | 🟢 Low | AnvilProject | README examples | 3 |

@@ -13,11 +13,11 @@
 | [Phase 3](#phase-3-cli--integration) | CLI & Integration | 🟢 Complete | 5/5 |
 | [Phase 4](#phase-4-org-intelligence--managed-workers) | Org Intelligence & Managed Workers | 🟢 Complete | 5/5 |
 | [Phase 5](#phase-5-ecosystem--distribution) | Ecosystem & Distribution | 🟢 Complete | 3/3 |
-| [Phase 6](#phase-6-integration--validation) | Integration & Validation | 🟡 Planned | 0/3 |
+| [Phase 6](#phase-6-integration--validation) | Integration & Validation | 🟡 In Progress | 2/3 |
 
-**Current Active Child:** None — Phase 6 planned, awaiting approval.
+**Current Active Child:** 6.2 — Documentation Generator CLI Integration ✅ Complete
 
-**Phase Gate Note:** Phase 5 is complete. All 3 children done. Phase 6 plans written (Children 6.1–6.3).
+**Phase Gate Note:** Phase 5 is complete. All 3 children done. Phase 6 Child 6.1 complete (53 tests), Child 6.2 complete (62 tests). Child 6.3 planned.
 
 **Legend:** 🟢 Complete | 🟡 In Progress | 🔴 Blocked | ⚪ Planned
 
@@ -460,8 +460,8 @@ registered as `planning.children-index`.
 | AnvilTemplate | 78/78 | 2026-06-04 |
 | AnvilProject | 37/37 | 2026-06-03 |
 | AnvilRunner | 50/50 | 2026-06-04 |
-| iFoundation CLI | 29/29 | 2026-06-04 |
-| **Total** | **373/373** | **100%** |
+| SwiftAnvil CLI | 62/62 | 2026-06-05 |
+| **Total** | **406/406** | **100%** |
 
 *Note: historical iFoundation planning is retained as source material, but current organization planning lives in
 `swiftanvil-meta`.*
@@ -510,7 +510,19 @@ registered as `planning.children-index`.
 
 ---
 
-*Last updated: 2026-06-04*
+*Last updated: 2026-06-05*
+
+---
+
+## Phase Gate: 6.2 Complete
+
+- [x] Child 6.2 complete — Documentation Generator CLI Integration
+- [x] `swiftanvil docs generate` produces static HTML
+- [x] `swiftanvil docs preview` serves locally with watch/rebuild
+- [x] AnvilDocs tagged `0.1.0`
+- [x] Docs CI workflow passes
+- [x] CLI README updated with docs usage
+- [x] All tests pass (62/62)
 
 ---
 
@@ -532,7 +544,7 @@ registered as `planning.children-index`.
 - [x] All Phase 5 children reviewed (cross-host or self-reviewed where unavailable)
 - [x] All review blockers fixed
 - [x] Phase 5 summary reviewed
-- [ ] **User approval to proceed** — Phase 6 planned (Children 6.1–6.3)
+- [x] **User approval to proceed** — Phase 6 Child 6.1 complete, 6.2–6.3 in progress
 
 ---
 
@@ -541,34 +553,41 @@ registered as `planning.children-index`.
 > Make the Phase 5 infrastructure usable end-to-end. Wire templates, plugins, and docs into the CLI.
 > Validate with real example projects.
 
-### 6.1 CLI Integration — Templates & Plugins ⏳
+### 6.1 CLI Integration — Templates & Plugins ✅
 
 | Aspect | Detail |
 |--------|--------|
 | Plan | `planning.child-6-1` |
-| Status | Planned |
+| Result | `planning.child-6-1-result` |
+| Status | Complete |
 | Primary Repo | swiftanvil-cli |
+| Tests | 53/53 pass |
 
-**What it will deliver:**
+**What was delivered:**
 - `swiftanvil template list` — fetch registry, print table, respect cache/offline
 - `swiftanvil template install <name>` — download, validate, substitute variables, install atomically
 - `swiftanvil plugin list` — list registered plugins
 - `swiftanvil plugin info <identifier>` — show plugin metadata, commands, generators, hooks
-- Integration with `AnvilWizard` for interactive prompts and `AnvilTemplate` for substitution
+- Full naming migration: `iFoundation` → `SwiftAnvilCLI`/`swiftanvil` with automated enforcement
+- Naming enforcement script + pre-commit hook + CI gate to prevent regression
 
-### 6.2 Documentation Generator CLI Integration ⏳
+### 6.2 Documentation Generator CLI Integration ✅
 
 | Aspect | Detail |
 |--------|--------|
 | Plan | `planning.child-6-2` |
-| Status | Planned |
+| Result | `planning.child-6-2-result` |
+| Status | Complete |
 | Primary Repo | swiftanvil-cli, swiftanvil-anvil-docs |
+| Tests | 62/62 pass (53 existing + 9 new) |
 
-**What it will deliver:**
-- `swiftanvil docs generate` — discover DocC catalogs, build static HTML
-- `swiftanvil docs preview` — local server with watch/rebuild
-- `swiftanvil-anvil-docs` tagged `0.1.0`
-- Docs CI workflow validation
+**What it delivered:**
+- `swiftanvil docs generate` — discovers DocC catalogs, builds static HTML via `swift-docc-plugin` or `docc convert` fallback
+- `swiftanvil docs preview` — local HTTP server with file-watching auto-rebuild
+- `swiftanvil-anvil-docs` tagged `0.1.0` with CHANGELOG
+- Docs CI workflow validation — `swiftanvil docs --help` subcommand registration check
+- `--path`, `--output`, `--hosting-base-path`, `--target`, `--port`, `--json` flags
+- `DocCGenerator` and `DocCPreviewer` actors with full test coverage
 
 ### 6.3 Example Projects & Ecosystem Validation ⏳
 

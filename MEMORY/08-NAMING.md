@@ -177,15 +177,46 @@ If AI generates code with old names:
 
 ---
 
+## Enforcement
+
+### Automated Checks
+
+Each product repo must include a naming enforcement script at `scripts/enforce-naming.sh`
+that blocks deprecated names from being committed. The script:
+
+1. Scans staged files (pre-commit) or the entire repo (`--all`)
+2. Flags any occurrence of deprecated names
+3. Fails with exit code 1 and descriptive error messages
+4. Is wired into CI (GitHub Actions) and local pre-commit hooks
+
+**Reference implementation:** `swiftanvil-cli/scripts/enforce-naming.sh`
+
+### Pre-Commit Hook (per repo)
+
+```bash
+# .git/hooks/pre-commit
+REPO_ROOT="$(cd "$(dirname "$0")/../.." && pwd)"
+"$REPO_ROOT/scripts/enforce-naming.sh"
+```
+
+### CI Integration
+
+Add to `.github/workflows/ci.yml`:
+
+```yaml
+- name: Naming Enforcement
+  run: bash scripts/enforce-naming.sh --all
+```
+
 ## Current Drift Audit
 
 | Old Name | New Name | Occurrences | Status |
 |----------|----------|-------------|--------|
-| `iFoundation` | `SwiftAnvilCLI` or `swiftanvil` | ~350 | 🔴 Active drift |
-| `ifoundation-*` | `swiftanvil-anvil-*` | ~50 | 🔴 Active drift |
-| `github.com/iFoundation` | `github.com/swiftanvil` | ~20 | 🔴 Active drift |
+| `iFoundation` | `SwiftAnvilCLI` or `swiftanvil` | 0 in swiftanvil-cli Sources/Tests/Templates | 🟢 Clean |
+| `ifoundation-*` | `swiftanvil-anvil-*` | ~50 in archived docs | 🟡 Historical only |
+| `github.com/iFoundation` | `github.com/swiftanvil` | ~20 in archived docs | 🟡 Historical only |
 
-**Action:** Naming cleanup sprint required. See `upgrade.platform` for scheduling.
+**Action:** Naming enforcement scripts active in swiftanvil-cli. Other repos to adopt pattern as they are touched.
 
 ---
 

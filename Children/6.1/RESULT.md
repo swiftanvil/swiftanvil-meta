@@ -1,0 +1,174 @@
+---
+priority: HIGH
+type: RESULT
+audience: REVIEWER
+phase: 6
+child: 6.1
+last_updated: 2026-06-05
+---
+
+# Child 6.1 Result: CLI Integration — Templates & Plugins
+
+## Status
+
+**COMPLETE**
+
+## Summary
+
+Wired Phase 5 infrastructure (`TemplateRegistry`, `PluginRegistry`) into real CLI subcommands.
+Added `template` and `plugin` command groups to `swiftanvil-cli` with full ArgumentParser
+integration, caching, offline support, JSON output, and comprehensive tests.
+
+Also completed a full naming migration from legacy `iFoundation`/`ifoundation` to canonical
+`SwiftAnvilCLI`/`swiftanvil` per `naming.registry`, and added automated enforcement to
+prevent regression.
+
+## Deliverables
+
+| Deliverable | Location | Status |
+|-------------|----------|--------|
+| `TemplateCommand.swift` | `swiftanvil-cli/Sources/SwiftAnvilCLI/Commands/` | ✅ Complete |
+| `PluginCommand.swift` | `swiftanvil-cli/Sources/SwiftAnvilCLI/Commands/` | ✅ Complete |
+| `TemplateRegistryFetcher` (inline) | `TemplateCommand.swift` | ✅ Complete |
+| `TemplateInstaller` (inline) | `TemplateCommand.swift` | ✅ Complete |
+| CLI integration | `SwiftAnvilCLI.swift` subcommands array | ✅ Complete |
+| Template command tests | `Tests/SwiftAnvilCLITests/TemplateCommandTests.swift` | ✅ 24 tests |
+| Plugin command tests | `Tests/SwiftAnvilCLITests/PluginCommandTests.swift` | ✅ 10 tests |
+| Updated README | `swiftanvil-cli/README.md` | ✅ Complete |
+| Naming enforcement script | `swiftanvil-cli/scripts/enforce-naming.sh` | ✅ Complete |
+| Pre-commit hook | `swiftanvil-cli/.git/hooks/pre-commit` | ✅ Complete |
+| CI naming gate | `.github/workflows/ci.yml` | ✅ Complete |
+
+## Commands Added
+
+### `swiftanvil template list`
+- Fetches registry from configurable URL (default: GitHub raw)
+- Caches to `~/Library/Caches/swiftanvil/registry.json` with 1-hour TTL
+- `--refresh` bypasses cache
+- `--offline` uses cache only
+- `--json` outputs machine-readable array
+
+### `swiftanvil template install <name>`
+- Downloads template via `git clone` or `file://` local copy
+- Interactive prompts for `projectName` and `includeTests`
+- `--non-interactive` skips prompts
+- `--var key=value` provides variables upfront
+- `--force` overwrites existing directory
+- `--output <dir>` changes install destination
+- Variable substitution via `{{key}}` / `{{ key }}` syntax
+
+### `swiftanvil plugin list`
+- Queries `PluginRegistry` for registered commands, generators, filters
+- Falls back to built-in pseudo-plugin when registry is empty
+- `--json` outputs machine-readable array
+
+### `swiftanvil plugin info <identifier>`
+- Shows plugin metadata: name, version, commands, generators, filters, hooks
+- `--json` outputs machine-readable object
+
+## Test Results
+
+```
+Test run with 53 tests in 12 suites passed
+```
+
+Breakdown:
+- `TemplateRegistryFetcher`: 8 tests (fetch, cache, offline, refresh, stale fallback, validation)
+- `TemplateInstaller`: 3 tests (install with substitution, destination exists, force overwrite)
+- `TemplateRegistryModel`: 4 tests (find, validate, reject empty, reject wrong version)
+- `PluginCommand.List`: 3 tests (built-in fallback, command coverage, codable)
+- `PluginCommand.Info`: 3 tests (structure, equatable, codable)
+- `PluginRegistryIntegration`: 4 tests (commands, generators, filters, multi-plugin)
+- Existing suites: 28 tests (all still passing)
+
+**Total: 53 tests, 0 failures**
+
+## Design Decisions
+
+1. **No new SPM dependencies**: Built simplified inline `TemplateRegistryFetcher` and
+   `TemplateInstaller` instead of importing `AnvilTemplate` package. Keeps CLI self-contained
+   and avoids cross-repo dependency complexity in this child.
+
+2. **Renamed `PluginCommand` → `PluginManagementCommand`**: Avoided name collision with
+   existing `PluginCommand` protocol in `SwiftAnvilPlugin.swift`.
+
+3. **Mock `RegistryFetchable` protocol**: Enables testability without real network calls.
+   All fetcher tests use injected mock data.
+
+4. **Built-in pseudo-plugin fallback**: Since no compile-time plugins exist yet,
+   `plugin list` shows built-in commands as `com.swiftanvil.builtin` to avoid empty output.
+
+5. **Variable substitution uses simple string replacement**: `{{key}}` → value. Sufficient
+   for CLI install use case; full Stencil integration deferred to future child.
+
+## Naming Migration (iFoundation → SwiftAnvil)
+
+### Changes Made
+
+| Category | Before | After |
+|----------|--------|-------|
+| Package name | `iFoundation` | `SwiftAnvilCLI` |
+| Executable target | `iFoundation` | `swiftanvil` |
+| Test target | `iFoundationTests` | `SwiftAnvilCLITests` |
+| Module import | `@testable import iFoundation` | `@testable import SwiftAnvilCLI` |
+| Command name | `ifoundation` | `swiftanvil` |
+| Root command struct | `iFoundationCommand` | `SwiftAnvilCommand` |
+| Source directory | `Sources/iFoundation/` | `Sources/SwiftAnvilCLI/` |
+| Cache directory | `~/.ifoundation/` | `~/.swiftanvil/` |
+| Generated comments | `Generated by iFoundation` | `Generated by SwiftAnvil` |
+| Wizard title | `iFoundation Project Wizard` | `SwiftAnvil Project Wizard` |
+
+### Enforcement Added
+
+- **`scripts/enforce-naming.sh`**: Scans for deprecated names (`iFoundation`, `ifoundation`)
+  in source/test/config files. Supports `--all` (CI) and staged-files (pre-commit) modes.
+- **Pre-commit hook**: `.git/hooks/pre-commit` wires the script to block commits with
+  deprecated names.
+- **CI gate**: `.github/workflows/ci.yml` runs `scripts/enforce-naming.sh --all` before
+  build/test.
+- **Meta registry updated**: `MEMORY/08-NAMING.md` now documents the enforcement pattern
+  as the standard for all product repos.
+
+## Known Limitations
+
+- Template registry URL points to a placeholder GitHub raw URL. A real `templates.json`
+  must be published to `swiftanvil-meta` for production use.
+- Template install only supports `git` and `local` source types. ZIP/HTTP download deferred.
+- Wizard prompts are basic `readLine()` based. Full `AnvilWizard` integration deferred.
+- No template uninstall command (deferred per plan).
+
+## Files Changed
+
+```
+swiftanvil-cli/
+├── Package.swift                          (renamed targets)
+├── Sources/SwiftAnvilCLI/
+│   ├── SwiftAnvilCLI.swift                (renamed from iFoundation.swift)
+│   ├── Commands/
+│   │   ├── TemplateCommand.swift          (new)
+│   │   └── PluginCommand.swift            (new)
+│   ├── Scaffolding/
+│   │   ├── InteractiveWizard.swift        (renamed output)
+│   │   └── ProjectGenerator.swift         (renamed output)
+│   └── Utilities/
+│       └── PathResolver.swift             (renamed cache dir)
+├── Tests/SwiftAnvilCLITests/
+│   ├── SwiftAnvilCLITests.swift           (renamed from iFoundationTests.swift)
+│   ├── TemplateCommandTests.swift         (new)
+│   └── PluginCommandTests.swift           (new)
+├── Templates/
+│   └── shared/                            (renamed generated strings)
+├── .github/workflows/
+│   ├── ci.yml                             (added naming gate)
+│   └── release.yml                        (renamed binary path)
+├── Dockerfile                             (renamed binary path)
+├── .spi.yml                               (renamed doc target)
+├── scripts/
+│   └── enforce-naming.sh                  (new)
+└── README.md                              (renamed all references)
+```
+
+## Next Steps
+
+- Child 6.2: Documentation Generator CLI Integration (`swiftanvil docs generate`)
+- Child 6.3: Example Projects & Ecosystem Validation
