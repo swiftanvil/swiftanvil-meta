@@ -1,7 +1,7 @@
 # SwiftAnvil Organization Health Report
 
 > Auto-generated report for the SwiftAnvil organization.  
-> **Generated**: 2026-06-04T12:06:12Z  
+> **Generated**: 2026-06-04T12:30:45Z  
 > **Next Active Child**: `planning.child-4-4` — Managed Worker Capability Discovery and Doctor  
 > **Generator**: `script.org-report`
 
@@ -74,8 +74,8 @@
 
 | Check | Status | Last Run |
 |-------|--------|----------|
-| Document registry validation | Passing | 2026-06-04T12:06:12Z |
-| Review artifact validation | Passing | 2026-06-04T12:06:12Z |
+| Document registry validation | Passing | 2026-06-04T12:30:45Z |
+| Review artifact validation | Passing | 2026-06-04T12:30:45Z |
 
 *Run locally via `swiftanvil-enforcement/scripts/enforce-local.sh`.*
 

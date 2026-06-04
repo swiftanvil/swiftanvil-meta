@@ -11,10 +11,10 @@
 | [Phase 1](#phase-1-foundation) | Foundation | 🟢 Complete | 5/5 |
 | [Phase 2](#phase-2-core-packages) | Core Packages | 🟢 Complete | 3/3 |
 | [Phase 3](#phase-3-cli--integration) | CLI & Integration | 🟢 Complete | 5/5 |
-| [Phase 4](#phase-4-org-intelligence--managed-workers) | Org Intelligence & Managed Workers | 🟡 In Progress | 3/5 |
+| [Phase 4](#phase-4-org-intelligence--managed-workers) | Org Intelligence & Managed Workers | 🟡 In Progress | 4/5 |
 | [Phase 5](#phase-5-ecosystem--distribution) | Ecosystem & Distribution | ⚪ Planned | 0/3 |
 
-**Current Active Child:** `planning.child-4-4` — Managed Worker Capability Discovery and Doctor.
+**Current Active Child:** `planning.child-4-5` — Worker Provisioning and Fleet Profiles.
 
 **Phase Gate Note:** Phase 3 is closed. New implementation should proceed through Phase 4 children in order unless
 explicitly re-prioritized.
@@ -344,17 +344,23 @@ registered as `planning.children-index`.
 - Reserved sections for Child 4.4 (Worker Capabilities) and 4.5 (Fleet Status)
 - All artifacts registered in `meta.registry` with stable document IDs
 
-### 4.4 Managed Worker Capability Discovery and Doctor
+### 4.4 Managed Worker Capability Discovery and Doctor ✅
 
 | Aspect | Detail |
 |--------|--------|
 | Primary Repo | `swiftanvil-anvil-runner` |
 | Plan | `planning.child-4-4` |
-| Status | Planned |
+| Result | `planning.child-4-4-result` |
+| Provenance | `planning.child-4-4-provenance` |
+| Status | Complete |
 
-This child adds read-only worker capability discovery and doctor checks before any provisioning work. It should detect
-host capabilities, installed developer tools, agent availability, auth readiness where safe, SSH posture, Tailscale
-availability, and power-management posture without changing the machine.
+**What it established:**
+- `anvil-runner discover [--json]` — read-only host capability scan
+- `anvil-runner doctor [--json]` — health checks with pass/warn/fail and CI-friendly exit codes
+- Capability schema (JSON) covering host info, tools, agents, network, power, and health checks
+- Detection for Swift, Xcode, Git, GitHub CLI (with auth), Claude, Codex, Gemini, SSH, Tailscale, power state
+- 8 Swift Testing tests, all passing
+- Read-only by design: no installation, no network calls, no secret exposure
 
 ### 4.5 Worker Provisioning and Fleet Profiles
 

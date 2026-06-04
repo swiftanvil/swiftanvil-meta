@@ -465,6 +465,24 @@ documents:
     audience: [human, agent]
     aliases: []
 
+  planning.child-4-4-review-plan:
+    title: Managed Worker Capability Discovery Plan Review
+    path: Children/4.4/REVIEW-PLAN.md
+    audience: [human, agent]
+    aliases: []
+
+  planning.child-4-4-result:
+    title: Managed Worker Capability Discovery Result
+    path: Children/4.4/RESULT.md
+    audience: [human, agent]
+    aliases: []
+
+  planning.child-4-4-provenance:
+    title: Managed Worker Capability Discovery Review Provenance
+    path: Children/4.4/REVIEW-PROVENANCE.md
+    audience: [human, agent]
+    aliases: []
+
   planning.child-4-3-review-plan:
     title: AnvilReport Plan Review
     path: Children/4.3/REVIEW-PLAN.md

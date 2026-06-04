@@ -1,6 +1,6 @@
 report:
   version: 1
-  generated_at: "2026-06-04T12:06:12Z"
+  generated_at: "2026-06-04T12:30:45Z"
   generator: "scripts/generate-org-report.sh"
   next_active_child:
     id: "planning.child-4-4"
@@ -103,7 +103,7 @@ review_coverage:
   pending_review: 0
 
 enforcement:
-  last_run: "2026-06-04T12:06:12Z"
+  last_run: "2026-06-04T12:30:45Z"
   status: "passing"
   failures: []
 
