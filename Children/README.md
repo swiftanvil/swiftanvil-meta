@@ -10,9 +10,8 @@ specific child plan says otherwise.
 
 ## Phase 3 Recovery
 
-The historical roadmap overstated Phase 3 completion. Current verification shows that `swiftanvil-anvil-docs` does
-not exist in the GitHub organization, and the old local folder contains only a roadmap file. Phase 3 must be closed
-honestly before new Phase 4 implementation work proceeds.
+The historical roadmap overstated Phase 3 completion. The missing documentation package was recovered as
+`swiftanvil-anvil-docs`, and generated-project verification now exists in `swiftanvil-cli`.
 
 | Child | Name | Status | Primary Repo |
 |-------|------|--------|--------------|
@@ -20,7 +19,7 @@ honestly before new Phase 4 implementation work proceeds.
 | 3.2 | Template Engine | Complete | swiftanvil-anvil-template |
 | 3.3 | Project Generator | Complete | swiftanvil-anvil-project |
 | 3.4 | Documentation Generator Recovery and Promotion | Complete | swiftanvil-anvil-docs |
-| 3.5 | Testing and Verification | Planned | TBD |
+| 3.5 | Testing and Verification | Complete | swiftanvil-cli |
 
 ## Phase 4
 
