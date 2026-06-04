@@ -21,6 +21,7 @@ Read `meta.registry`, then resolve and read these document IDs in order:
 - [ ] `agents.diagnostics`
 - [ ] `packages.registry`
 - [ ] `naming.registry`
+- [ ] `planning.children-index`
 
 ## Step 2: Check Health (1 min)
 

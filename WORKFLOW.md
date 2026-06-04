@@ -8,6 +8,8 @@
 
 ```
 swiftanvil/                          ← GitHub Org
+├── swiftanvil-meta/                 ← Org memory, roadmap, policy, phase children
+├── swiftanvil-enforcement/          ← Shared enforcement scripts and workflows
 ├── .github/                         ← Org profile, shared templates
 │   ├── org.profile-readme            ← Renders on github.com/swiftanvil
 │   ├── LICENSE                      ← MIT (applies to all repos)
@@ -18,6 +20,7 @@ swiftanvil/                          ← GitHub Org
 ├── swiftanvil-anvil-a11y/           ← Package: Accessibility identifiers
 ├── swiftanvil-anvil-bench/          ← Package: Performance benchmarking
 ├── swiftanvil-anvil-strings/        ← Package: Type-safe localization
+├── swiftanvil-anvil-runner/         ← External worker and runner tooling
 └── swiftanvil-cli/                  ← Tool: CLI scaffolding
 ```
 
@@ -82,10 +85,14 @@ Sometimes a change affects multiple packages (e.g., shared API pattern):
 
 | Repo | Required Reviews | Status Checks |
 |------|-----------------|---------------|
-| All package repos | 1 approval | Branch protection enforces |
-| `.github` org repo | 1 approval | Branch protection enforces |
+| All repos while single-maintainer | Independent review provenance required; GitHub-native approval optional | CI and enforcement required |
+| All repos after second eligible maintainer exists | 1 GitHub approval plus independent review provenance | Branch protection, CI, and enforcement required |
 
 The shared policy workflow rejects pull requests that omit the Review Provenance table or leave placeholder provenance values. See the `swiftanvil-enforcement` PR provenance enforcement documentation for the exact machine check.
+
+The single-maintainer exception is temporary. It exists because GitHub correctly prevents the only maintainer from
+approving their own PR. Re-enable GitHub-native required approvals as soon as another eligible maintainer or
+collaborator can review.
 
 ### After Merge
 
@@ -288,6 +295,7 @@ git tag -d 1.2.0
 |----------|-------------|----------|
 | `roadmap.org` | After each phase/child completes | Builder |
 | `checklist.legacy` | After each task completes | Builder |
+| `planning.children-index` | When child structure changes | Builder |
 | `Children/{id}/RESULT.md` | After child execution | Builder |
 | `Children/{id}/REVIEW-PLAN.md` | After cross-host plan review | Reviewer model |
 | `Children/{id}/REVIEW-IMPL.md` | After cross-host impl review | Reviewer model |

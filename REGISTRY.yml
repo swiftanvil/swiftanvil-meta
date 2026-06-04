@@ -120,6 +120,66 @@ documents:
     audience: [human, agent]
     aliases: []
 
+  planning.children-index:
+    title: Phase Child Plan Index
+    path: Children/README.md
+    audience: [human, agent]
+    aliases: []
+
+  planning.child-4-1:
+    title: Governance and Enforcement Baseline
+    path: Children/4.1/PLAN.md
+    audience: [human, agent]
+    aliases: []
+
+  planning.child-4-1-result:
+    title: Governance and Enforcement Baseline Result
+    path: Children/4.1/RESULT.md
+    audience: [human, agent]
+    aliases: []
+
+  planning.child-4-1-provenance:
+    title: Governance and Enforcement Baseline Review Provenance
+    path: Children/4.1/REVIEW-PROVENANCE.md
+    audience: [human, agent]
+    aliases: []
+
+  planning.child-4-2:
+    title: AnvilRunner 0.1 Release
+    path: Children/4.2/PLAN.md
+    audience: [human, agent]
+    aliases: []
+
+  planning.child-4-2-result:
+    title: AnvilRunner 0.1 Release Result
+    path: Children/4.2/RESULT.md
+    audience: [human, agent]
+    aliases: []
+
+  planning.child-4-2-provenance:
+    title: AnvilRunner 0.1 Release Review Provenance
+    path: Children/4.2/REVIEW-PROVENANCE.md
+    audience: [human, agent]
+    aliases: []
+
+  planning.child-4-3:
+    title: AnvilReport Organization Health Report
+    path: Children/4.3/PLAN.md
+    audience: [human, agent]
+    aliases: []
+
+  planning.child-4-4:
+    title: Managed Worker Capability Discovery and Doctor
+    path: Children/4.4/PLAN.md
+    audience: [human, agent]
+    aliases: []
+
+  planning.child-4-5:
+    title: Worker Provisioning and Fleet Profiles
+    path: Children/4.5/PLAN.md
+    audience: [human, agent]
+    aliases: []
+
   upgrade.platform:
     title: Platform Upgrade Plan
     path: PLATFORM_UPGRADE_PLAN.md

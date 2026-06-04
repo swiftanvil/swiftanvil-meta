@@ -11,9 +11,10 @@
 | [Phase 1](#phase-1-foundation) | Foundation | 🟢 Complete | 5/5 |
 | [Phase 2](#phase-2-core-packages) | Core Packages | 🟢 Complete | 3/3 |
 | [Phase 3](#phase-3-cli--integration) | CLI & Integration | 🟡 In Progress | 4/5 |
-| [Phase 4](#phase-4-ecosystem) | Ecosystem | ⚪ Planned | 0/3 |
+| [Phase 4](#phase-4-org-intelligence--managed-workers) | Org Intelligence & Managed Workers | 🟡 In Progress | 2/5 |
+| [Phase 5](#phase-5-ecosystem--distribution) | Ecosystem & Distribution | ⚪ Planned | 0/3 |
 
-**Phase 2 Progress:** All children complete. Ready for Phase Gate 2→3.
+**Current Active Child:** `planning.child-4-3` — AnvilReport Organization Health Report.
 
 **Legend:** 🟢 Complete | 🟡 In Progress | 🔴 Blocked | ⚪ Planned
 
@@ -276,19 +277,96 @@ Built-in test runner integration, snapshot testing setup, CI config generation.
 
 ---
 
-## Phase 4: Ecosystem ⚪
+## Phase 4: Org Intelligence & Managed Workers 🟡
 
-> Community and distribution.
+> Make the multi-repo organization understandable, enforceable, and able to use managed Mac workers without
+> scattering the work across unrelated threads.
 
-### 4.1 Community Templates
+Phase 4 carries forward the phase-child workflow from the original planning repository. The child plan index is
+registered as `planning.children-index`.
+
+### 4.1 Governance and Enforcement Baseline ✅
+
+| Aspect | Detail |
+|--------|--------|
+| Primary Repos | `swiftanvil-meta`, `swiftanvil-enforcement`, `.github` |
+| Plan | `planning.child-4-1` |
+| Result | `planning.child-4-1-result` |
+| Review | `planning.child-4-1-provenance` |
+| Status | Complete |
+
+**What it established:**
+- `swiftanvil-meta` as the organization planning and memory source of truth.
+- `swiftanvil-enforcement` as the reusable enforcement repository.
+- Document registry validation and PR review provenance validation.
+- Local enforcement support for cases where GitHub Actions cannot be used.
+- A reversible single-maintainer exception for GitHub-native required approvals.
+
+### 4.2 AnvilRunner 0.1 Release ✅
+
+| Aspect | Detail |
+|--------|--------|
+| Primary Repo | `swiftanvil-anvil-runner` |
+| Plan | `planning.child-4-2` |
+| Result | `planning.child-4-2-result` |
+| Review | `planning.child-4-2-provenance` |
+| Release | `0.1.0` |
+| Status | Complete |
+
+**What it established:**
+- A hardened first release of AnvilRunner.
+- CI, release hygiene, local enforcement, and managed worker vocabulary.
+- A clear boundary: 0.1 is a runner baseline, not host provisioning.
+
+### 4.3 AnvilReport Organization Health Report
+
+| Aspect | Detail |
+|--------|--------|
+| Primary Repo | `swiftanvil-meta` |
+| Plan | `planning.child-4-3` |
+| Status | Planned Next |
+
+This child creates the shared organization report that agents and contributors use to understand repository health,
+release state, CI state, enforcement state, review provenance, and next phase ownership.
+
+### 4.4 Managed Worker Capability Discovery and Doctor
+
+| Aspect | Detail |
+|--------|--------|
+| Primary Repo | `swiftanvil-anvil-runner` |
+| Plan | `planning.child-4-4` |
+| Status | Planned |
+
+This child adds read-only worker capability discovery and doctor checks before any provisioning work. It should detect
+host capabilities, installed developer tools, agent availability, auth readiness where safe, SSH posture, Tailscale
+availability, and power-management posture without changing the machine.
+
+### 4.5 Worker Provisioning and Fleet Profiles
+
+| Aspect | Detail |
+|--------|--------|
+| Primary Repo | `swiftanvil-anvil-runner` |
+| Plan | `planning.child-4-5` |
+| Status | Planned |
+
+This child owns safe provisioning after discovery is stable: dry-run-first setup plans, explicit user consent,
+worker profiles, SSH/Tailscale guidance, power-management guidance, and the first fleet vocabulary.
+
+---
+
+## Phase 5: Ecosystem & Distribution ⚪
+
+> Community, plugins, and public distribution after the org intelligence and worker foundation is stable.
+
+### 5.1 Community Templates
 
 Template gallery contributed by the community.
 
-### 4.2 Plugin System
+### 5.2 Plugin System
 
 Extensible plugin architecture for custom generators.
 
-### 4.3 Release & Distribution
+### 5.3 Release & Distribution
 
 Homebrew tap, Swift Package Index listing, release automation.
 
@@ -307,10 +385,12 @@ Homebrew tap, Swift Package Index listing, release automation.
 | AnvilWizard | 20/20 | 2026-06-03 |
 | AnvilTemplate | 30/30 | 2026-06-03 |
 | AnvilProject | 37/37 | 2026-06-03 |
+| AnvilRunner | CI passed for 0.1.0 release | 2026-06-04 |
 | iFoundation CLI | 8/8 | 2026-06-02 |
 | **Total** | **262/262** | **100%** |
 
-*Note: iFoundation CLI is the root project scaffolding tool, not a published package. Lives in this repo.*
+*Note: historical iFoundation planning is retained as source material, but current organization planning lives in
+`swiftanvil-meta`.*
 
 ---
 
@@ -326,6 +406,9 @@ Homebrew tap, Swift Package Index listing, release automation.
 | Agent-agnostic orchestration | Any model can build, any *different* model can review | 2026-06-02 |
 | Phase 2 simplified | AppNetworking builder-first (macros later), docs moved to CLI | 2026-06-02 |
 | 5-step per-child workflow | PLAN → REVIEW → EXECUTE → VERIFY → DOCUMENT | 2026-06-03 |
+| `swiftanvil-meta` source of truth | Planning moved out of the misleading legacy local repository into org memory | 2026-06-04 |
+| Single-maintainer approval exception | GitHub-native approval requirement waits until a second eligible maintainer exists; CI and provenance remain required | 2026-06-04 |
+| Managed worker phase | Runner, report, doctor, provisioning, and fleet work belong to Phase 4 children | 2026-06-04 |
 
 ---
 
@@ -334,6 +417,9 @@ Homebrew tap, Swift Package Index listing, release automation.
 | Resource | URL |
 |----------|-----|
 | Org | https://github.com/swiftanvil |
+| Meta | https://github.com/swiftanvil/swiftanvil-meta |
+| Enforcement | https://github.com/swiftanvil/swiftanvil-enforcement |
+| AnvilRunner | https://github.com/swiftanvil/swiftanvil-anvil-runner |
 | A11yIdentifiers | https://github.com/swiftanvil/swiftanvil-anvil-a11y |
 | BenchmarkKit | https://github.com/swiftanvil/swiftanvil-anvil-bench |
 | AppStrings | https://github.com/swiftanvil/swiftanvil-anvil-strings |
@@ -350,33 +436,3 @@ Homebrew tap, Swift Package Index listing, release automation.
 ---
 
 *Last updated: 2026-06-04*
-
----
-
-## Phase 3 Progress
-
-- [x] Child 3.1: Wizard System
-- [x] Child 3.2: Template Engine
-- [x] Child 3.3: Project Generator
-- [x] Child 3.4: Documentation Generator
-- [ ] Child 3.5: Testing & Verification
-
----
-
-## Phase Gate: 2 → 3
-
-- [x] All Phase 2 children complete
-- [x] All Phase 2 children cross-host reviewed (Codex for impl, Claude for 2.1/2.2 plans)
-- [x] All review blockers fixed (3 rounds for some packages)
-- [x] Phase 2 summary reviewed (Codex cross-host)
-- [x] **User approval to proceed** — Phase 3 started (Child 3.1 complete)
-
----
-
-## Phase 3 Progress
-
-- [x] Child 3.1: Wizard System
-- [x] Child 3.2: Template Engine
-- [x] Child 3.3: Project Generator
-- [ ] Child 3.4: Documentation Generator
-- [ ] Child 3.5: Testing & Verification
