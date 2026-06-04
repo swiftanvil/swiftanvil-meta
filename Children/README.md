@@ -59,7 +59,7 @@ and eventual host provisioning.
 |-------|------|--------|--------------|
 | 5.1 | Community Templates | Complete | swiftanvil-anvil-template |
 | 5.2 | Plugin System | Complete | swiftanvil-cli |
-| 5.3 | Release & Distribution | Planned | swiftanvil-meta, swiftanvil-cli |
+| 5.3 | Release & Distribution | Complete | swiftanvil-meta, swiftanvil-cli |
 
 ## Review Artifact Conventions by Phase
 

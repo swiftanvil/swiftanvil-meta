@@ -12,12 +12,11 @@
 | [Phase 2](#phase-2-core-packages) | Core Packages | 🟢 Complete | 3/3 |
 | [Phase 3](#phase-3-cli--integration) | CLI & Integration | 🟢 Complete | 5/5 |
 | [Phase 4](#phase-4-org-intelligence--managed-workers) | Org Intelligence & Managed Workers | 🟢 Complete | 5/5 |
-| [Phase 5](#phase-5-ecosystem--distribution) | Ecosystem & Distribution | 🟡 In Progress | 0/3 |
+| [Phase 5](#phase-5-ecosystem--distribution) | Ecosystem & Distribution | 🟢 Complete | 3/3 |
 
-**Current Active Child:** `planning.child-5-1` — Community Templates.
+**Current Active Child:** None — Phase 5 complete.
 
-**Phase Gate Note:** Phase 4 is closed. New implementation should proceed through Phase 5 children in order unless
-explicitly re-prioritized.
+**Phase Gate Note:** Phase 5 is complete. All 3 children done. Next phase to be planned.
 
 **Legend:** 🟢 Complete | 🟡 In Progress | 🔴 Blocked | ⚪ Planned
 
@@ -423,14 +422,26 @@ registered as `planning.children-index`.
 - Hook execution with error isolation and priority ordering
 - 16 new tests, all passing (29 total in CLI)
 
-### 5.3 Release & Distribution
+### 5.3 Release & Distribution ✅
 
 | Aspect | Detail |
 |--------|--------|
 | Plan | `planning.child-5-3` |
-| Status | Planned |
+| Result | `planning.child-5-3-result` |
+| Provenance | `planning.child-5-3-provenance` |
+| Status | Complete |
+| Release | `0.3.0` |
 
-Homebrew tap, Swift Package Index listing, release automation. See `Children/5.3/PLAN.md`.
+**What it established:**
+- CI workflow (`ci.yml`) — test + release dry-run on PRs
+- Release workflow (`release.yml`) — sign, notarize, staple, GitHub Release
+- `bump-version.sh` — SemVer bump with CHANGELOG update per repo
+- `test-docker-image.sh` + `test-homebrew-formula.sh` — validation scripts
+- `homebrew-formula-template.rb` — formula template for CLI
+- `Dockerfile` — multi-stage build (swift:6.0-jammy → ubuntu:24.04)
+- `.spi.yml` — Swift Package Index manifest
+- `RELEASE_PLAYBOOK.md` — release checklist, steps, rollback procedure
+- `workflow.general` updated with automated release pipeline
 
 ---
 
@@ -502,13 +513,15 @@ Homebrew tap, Swift Package Index listing, release automation. See `Children/5.3
 
 ---
 
-## Phase Gate: 5.2 → 5.3
+## Phase Gate: 5 Complete
 
-- [x] Child 5.1 complete (AnvilTemplate 1.3.0)
-- [x] Child 5.2 complete (swiftanvil-cli 0.2.0)
+- [x] Child 5.1 complete (AnvilTemplate 1.3.0) — Community Templates
+- [x] Child 5.2 complete (swiftanvil-cli 0.2.0) — Plugin System
+- [x] Child 5.3 complete (swiftanvil-cli 0.3.0) — Release & Distribution
 - [x] All tests pass (373/373 total)
-- [x] Code committed and tagged
-- [x] `RESULT.md` written for both children
+- [x] All code committed and tagged
+- [x] All `RESULT.md` files written
+- [x] `roadmap.org` and `planning.children-index` updated
 
 ---
 
