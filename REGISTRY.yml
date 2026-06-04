@@ -150,6 +150,18 @@ documents:
     audience: [human, agent]
     aliases: []
 
+  planning.child-3-5-result:
+    title: Testing and Verification Result
+    path: Children/3.5/RESULT.md
+    audience: [human, agent]
+    aliases: []
+
+  planning.child-3-5-provenance:
+    title: Testing and Verification Review Provenance
+    path: Children/3.5/REVIEW-PROVENANCE.md
+    audience: [human, agent]
+    aliases: []
+
   planning.child-4-1:
     title: Governance and Enforcement Baseline
     path: Children/4.1/PLAN.md

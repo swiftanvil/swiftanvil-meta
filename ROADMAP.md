@@ -10,14 +10,14 @@
 |-------|-------|--------|----------|
 | [Phase 1](#phase-1-foundation) | Foundation | 🟢 Complete | 5/5 |
 | [Phase 2](#phase-2-core-packages) | Core Packages | 🟢 Complete | 3/3 |
-| [Phase 3](#phase-3-cli--integration) | CLI & Integration | 🟡 In Progress | 4/5 |
+| [Phase 3](#phase-3-cli--integration) | CLI & Integration | 🟢 Complete | 5/5 |
 | [Phase 4](#phase-4-org-intelligence--managed-workers) | Org Intelligence & Managed Workers | 🟡 Partially Started | 2/5 |
 | [Phase 5](#phase-5-ecosystem--distribution) | Ecosystem & Distribution | ⚪ Planned | 0/3 |
 
-**Current Active Child:** `planning.child-3-5` — Testing and Verification.
+**Current Active Child:** `planning.child-4-3` — AnvilReport Organization Health Report.
 
-**Phase Gate Note:** Phase 4 has already captured completed governance and runner work, but new Phase 4 implementation
-should wait until Phase 3.5 is complete or explicitly de-scoped.
+**Phase Gate Note:** Phase 3 is closed. New implementation should proceed through Phase 4 children in order unless
+explicitly re-prioritized.
 
 **Legend:** 🟢 Complete | 🟡 In Progress | 🔴 Blocked | ⚪ Planned
 
@@ -186,7 +186,7 @@ should wait until Phase 3.5 is complete or explicitly de-scoped.
 
 ---
 
-## Phase 3: CLI & Integration 🟡
+## Phase 3: CLI & Integration 🟢
 
 > The `swiftanvil` CLI tool that ties everything together.
 
@@ -264,14 +264,21 @@ should wait until Phase 3.5 is complete or explicitly de-scoped.
 **Decision:** AnvilDocs is a separate package. It owns reusable registry load, validate, and compose logic.
 `swiftanvil-cli` should own command-line UX in a later child.
 
-### 3.5 Testing & Verification ⚪
+### 3.5 Testing & Verification ✅
 
 | Aspect | Detail |
 |--------|--------|
 | Plan | `planning.child-3-5` |
-| Status | Planned |
+| Result | `planning.child-3-5-result` |
+| Review | `planning.child-3-5-provenance` |
+| Repo | [`swiftanvil-cli`](https://github.com/swiftanvil/swiftanvil-cli) |
+| Status | Complete |
+| Tests | 13/13 pass |
+| CI | Passed on main |
 
-Built-in test runner integration, snapshot testing setup, generated project verification, and CI config validation.
+**Decision:** Generated-project verification starts in `swiftanvil-cli` as `ifoundation verify --path <project>`.
+Package extraction and a separate integration-test repository remain deferred until there is a concrete shared
+verification API or cross-repository test matrix.
 
 ---
 
