@@ -11,7 +11,7 @@ last_updated: 2026-06-04
 
 | Package | Repo | Version | PMS | Grade | Status | Min iOS | Min macOS |
 |---------|------|---------|-----|-------|--------|---------|-----------|
-| AnvilTemplate | swiftanvil-anvil-template | 1.1.0 | 78 | B | 🟡 Improve | 18 | 15 |
+| AnvilTemplate | swiftanvil-anvil-template | 1.2.0 | 82 | A | 🟢 Healthy | 18 | 15 |
 | AnvilProject | swiftanvil-anvil-project | 1.0.0 | 82 | A | 🟢 Healthy | — | 15 |
 | AnvilDocs | swiftanvil-anvil-docs | unreleased | — | — | 🟢 Initial package | — | 15 |
 | AnvilWizard | swiftanvil-anvil-wizard | 1.0.0 | — | — | 🟢 Healthy | — | 15 |
@@ -33,6 +33,5 @@ Packages without Swift code (A11yIdentifiers, BenchmarkKit, AppStrings) have emp
 
 | Priority | Package | Item | Impact |
 |----------|---------|------|--------|
-| 🟡 Medium | AnvilTemplate | Add .dictionary support | 8 |
 | 🟡 Medium | AnvilDocs | Template-based landing page | 5 |
 | 🟢 Low | AnvilProject | README examples | 3 |
