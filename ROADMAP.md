@@ -11,12 +11,12 @@
 | [Phase 1](#phase-1-foundation) | Foundation | 🟢 Complete | 5/5 |
 | [Phase 2](#phase-2-core-packages) | Core Packages | 🟢 Complete | 3/3 |
 | [Phase 3](#phase-3-cli--integration) | CLI & Integration | 🟢 Complete | 5/5 |
-| [Phase 4](#phase-4-org-intelligence--managed-workers) | Org Intelligence & Managed Workers | 🟡 In Progress | 4/5 |
-| [Phase 5](#phase-5-ecosystem--distribution) | Ecosystem & Distribution | ⚪ Planned | 0/3 |
+| [Phase 4](#phase-4-org-intelligence--managed-workers) | Org Intelligence & Managed Workers | 🟢 Complete | 5/5 |
+| [Phase 5](#phase-5-ecosystem--distribution) | Ecosystem & Distribution | 🟡 In Progress | 0/3 |
 
-**Current Active Child:** `planning.child-4-5` — Worker Provisioning and Fleet Profiles.
+**Current Active Child:** `planning.child-5-1` — Community Templates.
 
-**Phase Gate Note:** Phase 3 is closed. New implementation should proceed through Phase 4 children in order unless
+**Phase Gate Note:** Phase 4 is closed. New implementation should proceed through Phase 5 children in order unless
 explicitly re-prioritized.
 
 **Legend:** 🟢 Complete | 🟡 In Progress | 🔴 Blocked | ⚪ Planned
@@ -362,34 +362,65 @@ registered as `planning.children-index`.
 - 8 Swift Testing tests, all passing
 - Read-only by design: no installation, no network calls, no secret exposure
 
-### 4.5 Worker Provisioning and Fleet Profiles
+### 4.5 Worker Provisioning and Fleet Profiles ✅
 
 | Aspect | Detail |
 |--------|--------|
 | Primary Repo | `swiftanvil-anvil-runner` |
 | Plan | `planning.child-4-5` |
-| Status | Planned |
+| Result | `planning.child-4-5-result` |
+| Provenance | `planning.child-4-5-provenance` |
+| Status | Complete |
+| Release | `0.3.0` |
 
-This child owns safe provisioning after discovery is stable: dry-run-first setup plans, explicit user consent,
-worker profiles, SSH/Tailscale guidance, power-management guidance, and the first fleet vocabulary.
+**What it established:**
+- `ProvisioningModels` — `ProvisioningPlan`, `ProvisioningStep`, `ProvisioningResult`, `ProvisioningError`
+- `ProvisioningPlanner` — converts capability scan into a step-by-step plan
+- `ProvisioningExecutor` — dry-run by default, explicit consent for privileged changes, audit logging
+- `anvil-runner provision` command with `--dry-run` (default) and `--yes` flags
+- 50 Swift Testing tests, all passing
+- Safe by design: no changes without user confirmation, no destructive operations without explicit opt-in
 
 ---
 
-## Phase 5: Ecosystem & Distribution ⚪
+## Phase 5: Ecosystem & Distribution 🟡
 
 > Community, plugins, and public distribution after the org intelligence and worker foundation is stable.
 
-### 5.1 Community Templates
+### 5.1 Community Templates ✅
 
-Template gallery contributed by the community.
+| Aspect | Detail |
+|--------|--------|
+| Plan | `planning.child-5-1` |
+| Result | `planning.child-5-1-result` |
+| Provenance | `planning.child-5-1-provenance` |
+| Status | Complete |
+| Release | `1.3.0` |
+
+**What it established:**
+- `TemplateManifest` — v1 schema with validation, path traversal protection, variable types
+- `TemplateRegistry` — JSON registry with caching, TTL, offline mode
+- `TemplateInstaller` — atomic install with rollback, SHA-256 verification, variable substitution
+- `TemplateValue` — added `Codable`/`Equatable` for manifest serialization
+- 41 new tests, all passing (78 total in package)
 
 ### 5.2 Plugin System
 
-Extensible plugin architecture for custom generators.
+| Aspect | Detail |
+|--------|--------|
+| Plan | `planning.child-5-2` |
+| Status | Planned |
+
+Extensible plugin architecture for custom generators. See `Children/5.2/PLAN.md`.
 
 ### 5.3 Release & Distribution
 
-Homebrew tap, Swift Package Index listing, release automation.
+| Aspect | Detail |
+|--------|--------|
+| Plan | `planning.child-5-3` |
+| Status | Planned |
+
+Homebrew tap, Swift Package Index listing, release automation. See `Children/5.3/PLAN.md`.
 
 ---
 
@@ -404,11 +435,11 @@ Homebrew tap, Swift Package Index listing, release automation.
 | AnvilFlags | 37/37 | 2026-06-03 |
 | AnvilDevMenu | 16/16 | 2026-06-03 |
 | AnvilWizard | 20/20 | 2026-06-03 |
-| AnvilTemplate | 30/30 | 2026-06-03 |
+| AnvilTemplate | 78/78 | 2026-06-04 |
 | AnvilProject | 37/37 | 2026-06-03 |
-| AnvilRunner | CI passed for 0.1.0 release | 2026-06-04 |
+| AnvilRunner | 50/50 | 2026-06-04 |
 | iFoundation CLI | 8/8 | 2026-06-02 |
-| **Total** | **262/262** | **100%** |
+| **Total** | **352/352** | **100%** |
 
 *Note: historical iFoundation planning is retained as source material, but current organization planning lives in
 `swiftanvil-meta`.*
@@ -430,6 +461,7 @@ Homebrew tap, Swift Package Index listing, release automation.
 | `swiftanvil-meta` source of truth | Planning moved out of the misleading legacy local repository into org memory | 2026-06-04 |
 | Single-maintainer approval exception | GitHub-native approval requirement waits until a second eligible maintainer exists; CI and provenance remain required | 2026-06-04 |
 | Managed worker phase | Runner, report, doctor, provisioning, and fleet work belong to Phase 4 children | 2026-06-04 |
+| Phase 4 complete | All 5 children done; Phase 5 is active | 2026-06-04 |
 
 ---
 
@@ -457,3 +489,24 @@ Homebrew tap, Swift Package Index listing, release automation.
 ---
 
 *Last updated: 2026-06-04*
+
+---
+
+## Phase Gate: 5.1 → 5.2
+
+- [x] Child 5.1 complete
+- [x] All tests pass (78/78 in AnvilTemplate)
+- [x] Code committed and tagged (`1.3.0`)
+- [x] `RESULT.md` written
+- [ ] Cross-host implementation review (pending)
+- [ ] `REVIEW-PROVENANCE.md` written
+
+---
+
+## Phase Gate: 4 → 5
+
+- [x] All Phase 4 children complete
+- [x] All Phase 4 children reviewed (cross-host provenance)
+- [x] All review blockers fixed
+- [x] Phase 4 summary reviewed
+- [x] **User approval to proceed** — Phase 5 work started (Child 5.1 planned)

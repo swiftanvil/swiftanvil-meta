@@ -51,7 +51,15 @@ and eventual host provisioning.
 | 4.2 | AnvilRunner 0.1 Release | Complete | swiftanvil-anvil-runner |
 | 4.3 | AnvilReport Organization Health Report | Planned Next | swiftanvil-meta |
 | 4.4 | Managed Worker Capability Discovery and Doctor | Planned | swiftanvil-anvil-runner |
-| 4.5 | Worker Provisioning and Fleet Profiles | Planned | swiftanvil-anvil-runner |
+| 4.5 | Worker Provisioning and Fleet Profiles | Complete | swiftanvil-anvil-runner |
+
+## Phase 5 — Ecosystem & Distribution
+
+| Child | Name | Status | Primary Repo |
+|-------|------|--------|--------------|
+| 5.1 | Community Templates | Complete | swiftanvil-anvil-template |
+| 5.2 | Plugin System | Planned | swiftanvil-cli |
+| 5.3 | Release & Distribution | Planned | swiftanvil-meta, swiftanvil-cli |
 
 ## Review Artifact Conventions by Phase
 
