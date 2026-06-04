@@ -24,6 +24,14 @@ last_updated: 2026-06-04
 | BenchmarkKit | swiftanvil-anvil-bench | 1.0.0 | — | — | 🟢 Healthy | 18 | 15 |
 | AppStrings | swiftanvil-anvil-strings | 1.0.0 | — | — | 🟢 Healthy | 18 | 15 |
 
+## Example Projects
+
+| Example | Repo | Type | Tests | Status |
+|---------|------|------|-------|--------|
+| CounterKit | swiftanvil-example-library | Library | 7/7 | 🟢 Healthy |
+| WordCounter | swiftanvil-example-cli | CLI | 5/5 | 🟢 Healthy |
+| TodoApp | swiftanvil-example-swiftui | SwiftUI App | 6/6 | 🟢 Healthy |
+
 ## ✅ Platform Policy Status
 
 All actively maintained packages are now compliant with `policy.platform` (iOS 18+ / macOS 15+ / tvOS 18+ / watchOS 11+ / visionOS 2+).
