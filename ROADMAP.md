@@ -10,11 +10,14 @@
 |-------|-------|--------|----------|
 | [Phase 1](#phase-1-foundation) | Foundation | 🟢 Complete | 5/5 |
 | [Phase 2](#phase-2-core-packages) | Core Packages | 🟢 Complete | 3/3 |
-| [Phase 3](#phase-3-cli--integration) | CLI & Integration | 🟡 In Progress | 4/5 |
-| [Phase 4](#phase-4-org-intelligence--managed-workers) | Org Intelligence & Managed Workers | 🟡 In Progress | 2/5 |
+| [Phase 3](#phase-3-cli--integration) | CLI & Integration | 🟡 In Progress | 3/5 |
+| [Phase 4](#phase-4-org-intelligence--managed-workers) | Org Intelligence & Managed Workers | 🟡 Partially Started | 2/5 |
 | [Phase 5](#phase-5-ecosystem--distribution) | Ecosystem & Distribution | ⚪ Planned | 0/3 |
 
-**Current Active Child:** `planning.child-4-3` — AnvilReport Organization Health Report.
+**Current Active Child:** `planning.child-3-4` — Documentation Generator Recovery and Promotion.
+
+**Phase Gate Note:** Phase 4 has already captured completed governance and runner work, but new Phase 4 implementation
+should wait until Phase 3 is reconciled or explicitly de-scoped.
 
 **Legend:** 🟢 Complete | 🟡 In Progress | 🔴 Blocked | ⚪ Planned
 
@@ -183,7 +186,7 @@
 
 ---
 
-## Phase 3: CLI & Integration ⚪
+## Phase 3: CLI & Integration 🟡
 
 > The `swiftanvil` CLI tool that ties everything together.
 
@@ -246,34 +249,26 @@
 - Non-test targets cannot depend on test targets
 - Swift identifier sanitization in templates (hyphens→underscores)
 
-### 3.4 Documentation Generator ✅
+### 3.4 Documentation Generator Recovery and Promotion 🟡
 
 | Aspect | Detail |
 |--------|--------|
-| Repo | `swiftanvil-anvil-docs` (ready for push) |
-| Source | Built from scratch |
-| Core Types | `DocumentationGenerator`, `TargetDiscovery`, `CatalogGenerator`, `DocCToolLocator`, `ProcessRunner`, `DocumentationLogger` |
-| Platforms | macOS 13+ |
-| Tests | 13/13 pass |
-| Review | ✅ APPROVED_WITH_NOTES (Codex CLI GPT-5.5, 1 round, 4 issues fixed) |
+| Plan | `planning.child-3-4` |
+| Repo | TBD |
+| Status | Needs recovery |
+| Evidence | `swiftanvil-anvil-docs` does not exist in the GitHub organization; old local folder contains only a roadmap file |
 
-**What it does:**
-- Single-package DocC generation (symbol graph → catalog → `docc convert` → `.doccarchive`)
-- Aggregate documentation for multi-package catalogs with HTML landing page
-- Static hosting transformation (`docc process-archive transform-for-static-hosting`)
-- Target filtering (include/exclude) and custom target path support
+**Next step:** Recover the intended documentation generator from historical source, decide whether it belongs in a
+standalone package or `swiftanvil-cli`, and only then mark this child complete.
 
-**Key fixes from review:**
-- P1: Replaced synchronous pipe reading with `PipeDataActor` to prevent deadlock on large output
-- P2: Landing page now links to `.doccarchive/` instead of bare package directory
-- P2: `hostingBasePath` is now applied via static hosting transform per package
-- P2: `CatalogGenerator` respects custom `path` from `Package.swift` via `TargetDiscovery`
+### 3.5 Testing & Verification ⚪
 
-**Dependencies:** `AnvilTemplate` (remote)
+| Aspect | Detail |
+|--------|--------|
+| Plan | `planning.child-3-5` |
+| Status | Planned |
 
-### 3.5 Testing & Verification
-
-Built-in test runner integration, snapshot testing setup, CI config generation.
+Built-in test runner integration, snapshot testing setup, generated project verification, and CI config validation.
 
 ---
 

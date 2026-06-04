@@ -1,4 +1,7 @@
-# iFoundation Build Checklist
+# SwiftAnvil Legacy Build Checklist
+
+This file is retained as `checklist.legacy`. Use `roadmap.org` and `planning.children-index` as the current source of
+truth when this checklist conflicts with newer phase records.
 
 ## Phase 1: Foundation
 
@@ -74,7 +77,8 @@
 - [ ] Child 3.1: Wizard System
 - [ ] Child 3.2: Template Engine
 - [ ] Child 3.3: Project Generator
-- [ ] Child 3.4: Testing & Verification
+- [ ] Child 3.4: Documentation Generator Recovery and Promotion
+- [ ] Child 3.5: Testing & Verification
 
 ## Phase 4: Ecosystem
 - [ ] Child 4.1: Community Templates
@@ -87,8 +91,8 @@
 |-------|--------|-------------------|----------------|
 | Phase 1 | 🟢 Complete | 5/5 | 5 |
 | Phase 2 | ⚪ Planned | 0/3 | 3 |
-| Phase 3 | ⚪ Planned | 0/5 | 5 |
-| Phase 4 | ⚪ Planned | 0/3 | 3 |
+| Phase 3 | 🟡 In Progress | 3/5 | 5 |
+| Phase 4 | 🟡 Partially Started | 2/5 | 5 |
 
 ## Single Source of Truth
 
@@ -143,9 +147,10 @@
 ### Child 3.3: Project Generator
 - [ ] `swiftanvil create app` command
 
-### Child 3.4: Documentation Generator
-- [ ] `swiftanvil docs generate` command
-- [ ] DocC integration across packages
+### Child 3.4: Documentation Generator Recovery and Promotion
+- [ ] Recover or de-scope `swiftanvil-anvil-docs`
+- [ ] Decide standalone package vs CLI ownership
+- [ ] Add real source, tests, CI, and review provenance before marking complete
 
 ### Child 3.5: Testing & Verification
 - [ ] Built-in test runner integration
