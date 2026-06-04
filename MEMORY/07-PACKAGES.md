@@ -18,7 +18,7 @@ last_updated: 2026-06-04
 | AnvilNetwork | swiftanvil-anvil-network | 1.0.0 | — | — | 🟢 Healthy | 18 | 15 |
 | AnvilFlags | swiftanvil-anvil-flags | 1.0.0 | — | — | 🟢 Healthy | 18 | 15 |
 | AnvilDevMenu | swiftanvil-anvil-devmenu | 1.0.0 | — | — | 🟢 Healthy | 18 | 15 |
-| AnvilRunner | swiftanvil-anvil-runner | 0.2.0 | — | — | 🟢 Healthy | — | 15 |
+| AnvilRunner | swiftanvil-anvil-runner | 0.3.0 | — | — | 🟢 Healthy | — | 15 |
 | A11yIdentifiers | swiftanvil-anvil-a11y | 1.0.0 | — | — | ⚪ Unknown | — | — |
 | BenchmarkKit | swiftanvil-anvil-bench | 1.0.0 | — | — | ⚪ Unknown | — | — |
 | AppStrings | swiftanvil-anvil-strings | 1.0.0 | — | — | ⚪ Unknown | — | — |
