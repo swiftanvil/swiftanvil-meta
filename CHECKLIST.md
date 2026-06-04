@@ -91,7 +91,7 @@ truth when this checklist conflicts with newer phase records.
 |-------|--------|-------------------|----------------|
 | Phase 1 | 🟢 Complete | 5/5 | 5 |
 | Phase 2 | ⚪ Planned | 0/3 | 3 |
-| Phase 3 | 🟡 In Progress | 3/5 | 5 |
+| Phase 3 | 🟡 In Progress | 4/5 | 5 |
 | Phase 4 | 🟡 Partially Started | 2/5 | 5 |
 
 ## Single Source of Truth
@@ -148,9 +148,9 @@ truth when this checklist conflicts with newer phase records.
 - [ ] `swiftanvil create app` command
 
 ### Child 3.4: Documentation Generator Recovery and Promotion
-- [ ] Recover or de-scope `swiftanvil-anvil-docs`
-- [ ] Decide standalone package vs CLI ownership
-- [ ] Add real source, tests, CI, and review provenance before marking complete
+- [x] Recover `swiftanvil-anvil-docs`
+- [x] Decide standalone package vs CLI ownership
+- [x] Add real source, tests, CI, and review provenance before marking complete
 
 ### Child 3.5: Testing & Verification
 - [ ] Built-in test runner integration

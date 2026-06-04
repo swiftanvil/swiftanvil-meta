@@ -132,6 +132,18 @@ documents:
     audience: [human, agent]
     aliases: []
 
+  planning.child-3-4-result:
+    title: Documentation Generator Recovery and Promotion Result
+    path: Children/3.4/RESULT.md
+    audience: [human, agent]
+    aliases: []
+
+  planning.child-3-4-provenance:
+    title: Documentation Generator Recovery and Promotion Review Provenance
+    path: Children/3.4/REVIEW-PROVENANCE.md
+    audience: [human, agent]
+    aliases: []
+
   planning.child-3-5:
     title: Testing and Verification
     path: Children/3.5/PLAN.md

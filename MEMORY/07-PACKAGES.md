@@ -13,7 +13,7 @@ last_updated: 2026-06-04
 |---------|------|---------|-----|-------|--------|---------|-----------|
 | AnvilTemplate | swiftanvil-anvil-template | 1.0.0 | 78 | B | 🟡 Improve | 16 | 13 |
 | AnvilProject | swiftanvil-anvil-project | 1.0.0 | 82 | A | 🟢 Healthy | 16 | 13 |
-| AnvilDocs | swiftanvil-anvil-docs | — | — | — | 🔴 Missing repo; recover Child 3.4 | — | — |
+| AnvilDocs | swiftanvil-anvil-docs | unreleased | — | — | 🟢 Initial package | — | 15 |
 | AnvilWizard | swiftanvil-anvil-wizard | 1.0.0 | — | — | ⚪ Unknown | 16 | 13 |
 | AnvilNetwork | swiftanvil-anvil-network | 1.0.0 | — | — | ⚪ Unknown | 16 | 13 |
 | AnvilFlags | swiftanvil-anvil-flags | 1.0.0 | — | — | ⚪ Unknown | 16 | 13 |
@@ -28,7 +28,6 @@ The following packages have incorrect minimum platforms (should be iOS 18+ / mac
 
 - AnvilTemplate: iOS 16 → **must upgrade to iOS 18**
 - AnvilProject: iOS 16 → **must upgrade to iOS 18**
-- AnvilDocs: iOS 13 → **must upgrade to iOS 18**
 - AnvilWizard: iOS 16 → **must upgrade to iOS 18**
 - AnvilNetwork: iOS 16 → **must upgrade to iOS 18**
 - AnvilFlags: iOS 16 → **must upgrade to iOS 18**

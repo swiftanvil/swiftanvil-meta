@@ -19,7 +19,7 @@ honestly before new Phase 4 implementation work proceeds.
 | 3.1 | Wizard System | Complete | swiftanvil-anvil-wizard |
 | 3.2 | Template Engine | Complete | swiftanvil-anvil-template |
 | 3.3 | Project Generator | Complete | swiftanvil-anvil-project |
-| 3.4 | Documentation Generator Recovery and Promotion | Needs Recovery | TBD |
+| 3.4 | Documentation Generator Recovery and Promotion | Complete | swiftanvil-anvil-docs |
 | 3.5 | Testing and Verification | Planned | TBD |
 
 ## Phase 4

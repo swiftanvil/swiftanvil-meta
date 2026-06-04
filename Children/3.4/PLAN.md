@@ -2,13 +2,13 @@
 
 ## Status
 
-Needs recovery.
+Complete.
 
 ## Reason
 
-The roadmap previously marked Documentation Generator as complete, but the claimed repository
-`swiftanvil-anvil-docs` does not exist in the SwiftAnvil GitHub organization. The old local folder under the
-historical planning repository contains only a roadmap file and a stale remote URL.
+The roadmap previously marked Documentation Generator as complete, but the claimed repository did not exist in the
+SwiftAnvil GitHub organization. The old local folder under the historical planning repository contained only a roadmap
+file and a stale remote URL.
 
 ## Goal
 
@@ -19,8 +19,8 @@ the roadmap if the implementation cannot be recovered.
 
 - Inspect the historical `iFoundation` documentation command and documentation-related source files.
 - Determine whether the docs generator should be a standalone package, part of `swiftanvil-cli`, or deferred.
-- If standalone, create or restore `swiftanvil-anvil-docs` as a proper Swift package with source, tests, CI, README,
-  release hygiene, and enforcement.
+- Create `swiftanvil-anvil-docs` as a proper Swift package with source, tests, CI, README, roadmap, review artifacts,
+  and enforcement.
 - If part of CLI, create the corresponding CLI child/PR and update package registry references.
 - Capture plan review and implementation review before marking complete.
 
@@ -37,3 +37,8 @@ the roadmap if the implementation cannot be recovered.
 - Review provenance is captured.
 - `packages.registry` no longer lists a non-existent docs package as released.
 - Phase 3 progress is updated honestly.
+
+## Decision
+
+AnvilDocs is a separate package. It owns reusable documentation registry load, validate, and compose logic.
+`swiftanvil-cli` should own command-line UX in a later child.
