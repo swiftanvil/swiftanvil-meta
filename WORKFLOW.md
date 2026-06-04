@@ -145,20 +145,44 @@ We use [Semantic Versioning](https://semver.org/):
 - **MINOR**: New features, backwards compatible
 - **PATCH**: Bug fixes
 
-### Releasing a Package
+### Automated Release Pipeline
 
-```bash
-# In the package repo
-git checkout main
-git pull origin main
+Releases are automated via GitHub Actions. See `Children/5.3/PLAN.md` for full details.
 
-# Tag the release
-git tag -a 1.2.0 -m "Release 1.2.0: Add BenchmarkTrait support"
-git push origin 1.2.0
+#### For Packages (Library)
 
-# GitHub auto-generates release notes from PRs
-# Go to GitHub → Releases → Draft a new release → Auto-generate
-```
+1. Run version bump script:
+   ```bash
+   cd swiftanvil-meta
+   ./scripts/bump-version.sh --package <name> --type <patch|minor|major>
+   ```
+2. Review changes, commit, push
+3. Tag: `git tag <package>-X.Y.Z && git push origin --tags`
+4. CI runs tests and creates GitHub Release with auto-generated notes
+
+#### For CLI (Binary)
+
+1. Run version bump script (as above)
+2. Tag: `git tag swiftanvil-cli-X.Y.Z && git push origin --tags`
+3. CI:
+   - Runs tests
+   - Builds universal macOS binary (arm64 + x86_64)
+   - Signs with Developer ID and notarizes via `notarytool`
+   - Staples notarization ticket
+   - Creates GitHub Release with binary artifact
+   - Updates Homebrew formula in `swiftanvil-homebrew-tap`
+   - Pushes Docker image to `ghcr.io/swiftanvil/cli:X.Y.Z`
+
+#### Required Secrets
+
+| Secret | Purpose |
+|--------|---------|
+| `APPLE_DEVELOPER_ID_CERTIFICATE` | Base64 `.p12` for code signing |
+| `APPLE_DEVELOPER_ID_PASSWORD` | `.p12` password |
+| `APPLE_TEAM_ID` | Apple Developer Team ID |
+| `APPLE_ID` | For notarytool |
+| `APPLE_ID_PASSWORD` | App-specific password for notarytool |
+| `HOMEBREW_TAP_TOKEN` | PAT for tap repo push |
 
 ### Cross-Package Dependency Updates
 
