@@ -32,24 +32,22 @@ Created `swiftanvil-example-golden-path` — a SwiftUI example app that demonstr
 
 | Feature | Package | UI Element |
 |---------|---------|------------|
-| Network request | AnvilNetwork | "Fetch Data" button |
+| Network request | AnvilNetwork | "Refresh" button triggers API call |
 | Accessibility IDs | AnvilA11y | All views tagged with `A11yID` |
 | Localized strings | AnvilStrings | Title, labels, buttons |
 | Developer menu | AnvilDevMenu | "Open Dev Menu" button |
-| Injectable macro | AnvilMacros | `User` and `Post` models |
-| Benchmark macro | AnvilMacros | `processData()` function |
-| Core utilities | AnvilCore | `AnvilLogger`, `AnvilConfiguration` |
-| Project generation | AnvilProject | Mentioned in README |
+| Benchmarks | AnvilBench | "Run Benchmark" button |
+| Feature flags | AnvilFlags | Toggle features at runtime |
 
 ## Dependencies
 
 ```swift
-.package(url: "https://github.com/swiftanvil/swiftanvil-anvil-core.git", from: "0.1.0"),
 .package(url: "https://github.com/swiftanvil/swiftanvil-anvil-network.git", from: "1.0.0"),
-.package(url: "https://github.com/swiftanvil/swiftanvil-anvil-a11y.git", from: "1.0.0"),
-.package(url: "https://github.com/swiftanvil/swiftanvil-anvil-strings.git", from: "1.0.0"),
-.package(url: "https://github.com/swiftanvil/swiftanvil-anvil-devmenu.git", from: "1.0.0"),
-.package(url: "https://github.com/swiftanvil/swiftanvil-anvil-macros.git", from: "0.1.0"),
+.package(url: "https://github.com/swiftanvil/swiftanvil-anvil-flags.git", from: "1.0.0"),
+.package(url: "https://github.com/swiftanvil/swiftanvil-anvil-a11y.git", branch: "main"),
+.package(url: "https://github.com/swiftanvil/swiftanvil-anvil-strings.git", branch: "main"),
+.package(url: "https://github.com/swiftanvil/swiftanvil-anvil-bench.git", from: "1.0.0"),
+.package(url: "https://github.com/swiftanvil/swiftanvil-anvil-devmenu.git", branch: "main"),
 ```
 
 ## Verification
@@ -65,7 +63,9 @@ Created `swiftanvil-example-golden-path` — a SwiftUI example app that demonstr
 - Swift tools version: 6.0
 - StrictConcurrency enabled
 - Platform: iOS 18+, macOS 15+, tvOS 18+, watchOS 11+, visionOS 2+
-- Uses `@AnvilInjectable` for `User` and `Post` models
-- Uses `@Benchmark` for `processData()` function
-- Uses `AnvilLogger` for structured logging
-- Uses `AnvilConfiguration` for settings storage
+- Uses `AnvilNetwork` for API calls
+- Uses `AnvilA11y` for accessibility identifiers
+- Uses `AppStrings` for localized text
+- Uses `AnvilDevMenu` for developer debugging
+- Uses `BenchmarkKit` for performance measurement
+- Uses `AnvilFlags` for feature toggles
