@@ -12,16 +12,22 @@ Every session begins here. Do not skip steps.
 ## Step 1: Load Memory (2 min)
 
 Read `meta.registry`, then resolve and read these document IDs in order:
-- [ ] `memory.meta`
-- [ ] `memory.identity`
-- [ ] `policy.platform`
-- [ ] `workflow.orchestration`
-- [ ] `improvement.framework`
-- [ ] `agents.compatibility`
-- [ ] `agents.diagnostics`
-- [ ] `packages.registry`
-- [ ] `naming.registry`
-- [ ] `planning.children-index`
+
+**Always read (6 docs):**
+- [ ] `memory.meta` — how this memory system works
+- [ ] `memory.identity` — who we are
+- [ ] `policy.platform` — minimum platform requirements
+- [ ] `workflow.orchestration` — plan/review/execute/verify/document workflow
+- [ ] `packages.registry` — package status and scores
+- [ ] `planning.children-index` — current phase children and status
+
+**Read when relevant (conditional):**
+- [ ] `meta.resume` — human session resumption (human-in-the-loop sessions only)
+- [ ] `improvement.framework` — if any package score < 80 (see Step 2)
+- [ ] `agents.compatibility` — if using a new or unusual agent
+- [ ] `agents.diagnostics` — if agent/reviewer commands fail
+- [ ] `naming.registry` — if naming decisions are being made
+- [ ] `upgrade.platform` — if platform policy violations are present (see Step 2)
 
 ## Step 2: Check Health (1 min)
 

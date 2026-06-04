@@ -36,11 +36,14 @@ The local workspace should keep personal repositories and organization repositor
 
 The folder names are examples. Do not rely on one contributor's local workspace layout as an organization boundary.
 
-## Agent Startup
+## Starting Points
 
-Every agent session should resolve `meta.session-start` from `meta.registry` and begin there.
+| Audience | Start Here | Document ID |
+|----------|-----------|-------------|
+| **Humans** resuming a session | `meta.resume` | `meta.resume` |
+| **Agents** beginning work | `meta.session-start` | `meta.session-start` |
 
-That checklist points to the memory files that define current policy and priority. If a platform policy violation exists, the upgrade sprint takes priority over new feature work.
+The agent checklist points to the memory files that define current policy and priority. If a platform policy violation exists, the upgrade sprint takes priority over new feature work.
 
 ## Sharing Model
 

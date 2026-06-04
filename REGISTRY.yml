@@ -25,6 +25,12 @@ documents:
     audience: [human, agent]
     aliases: []
 
+  meta.resume:
+    title: Human Session Resume Guide
+    path: RESUME.md
+    audience: [human]
+    aliases: []
+
   meta.agents:
     title: Agent Instructions
     path: AGENTS.md
@@ -123,6 +129,249 @@ documents:
   planning.children-index:
     title: Phase Child Plan Index
     path: Children/README.md
+    audience: [human, agent]
+    aliases: []
+
+  # Phase 1 — Foundation (historical, copied from iFoundation archive)
+  planning.child-1-1:
+    title: Research Swift OSS Best Practices
+    path: Children/1.1/PLAN.md
+    audience: [human, agent]
+    aliases: []
+
+  planning.child-1-1-result:
+    title: Research Swift OSS Best Practices Result
+    path: Children/1.1/RESULT.md
+    audience: [human, agent]
+    aliases: []
+
+  planning.child-1-2:
+    title: A11yIdentifiers Extraction
+    path: Children/1.2/PLAN.md
+    audience: [human, agent]
+    aliases: []
+
+  planning.child-1-2-result:
+    title: A11yIdentifiers Extraction Result
+    path: Children/1.2/RESULT.md
+    audience: [human, agent]
+    aliases: []
+
+  planning.child-1-2-review:
+    title: A11yIdentifiers Extraction Review
+    path: Children/1.2/REVIEW.md
+    audience: [human, agent]
+    aliases: []
+
+  planning.child-1-3:
+    title: BenchmarkKit Extraction
+    path: Children/1.3/PLAN.md
+    audience: [human, agent]
+    aliases: []
+
+  planning.child-1-3-result:
+    title: BenchmarkKit Extraction Result
+    path: Children/1.3/RESULT.md
+    audience: [human, agent]
+    aliases: []
+
+  planning.child-1-3-review:
+    title: BenchmarkKit Extraction Review
+    path: Children/1.3/REVIEW.md
+    audience: [human, agent]
+    aliases: []
+
+  planning.child-1-4:
+    title: AppStrings Design
+    path: Children/1.4/PLAN.md
+    audience: [human, agent]
+    aliases: []
+
+  planning.child-1-4-result:
+    title: AppStrings Design Result
+    path: Children/1.4/RESULT.md
+    audience: [human, agent]
+    aliases: []
+
+  planning.child-1-4-review:
+    title: AppStrings Design Review
+    path: Children/1.4/REVIEW.md
+    audience: [human, agent]
+    aliases: []
+
+  planning.child-1-5:
+    title: GitHub Organization Setup
+    path: Children/1.5/PLAN.md
+    audience: [human, agent]
+    aliases: []
+
+  planning.child-1-5-result:
+    title: GitHub Organization Setup Result
+    path: Children/1.5/RESULT.md
+    audience: [human, agent]
+    aliases: []
+
+  planning.child-1-5-review:
+    title: GitHub Organization Setup Review
+    path: Children/1.5/REVIEW.md
+    audience: [human, agent]
+    aliases: []
+
+  # Phase 2 — Core Packages (historical, copied from iFoundation archive)
+  planning.child-2-1:
+    title: AnvilNetwork Package
+    path: Children/2.1/PLAN.md
+    audience: [human, agent]
+    aliases: []
+
+  planning.child-2-1-result:
+    title: AnvilNetwork Package Result
+    path: Children/2.1/RESULT.md
+    audience: [human, agent]
+    aliases: []
+
+  planning.child-2-1-review-plan:
+    title: AnvilNetwork Package Plan Review (canonical)
+    path: Children/2.1/REVIEW-PLAN.md
+    audience: [human, agent]
+    aliases: []
+
+  planning.child-2-1-review-plan-archive:
+    title: AnvilNetwork Package Plan Review Archive
+    path: Children/2.1/archive/
+    audience: [human, agent]
+    aliases: []
+
+  planning.child-2-1-review-impl:
+    title: AnvilNetwork Package Implementation Review
+    path: Children/2.1/REVIEW-IMPL.md
+    audience: [human, agent]
+    aliases: []
+
+  planning.child-2-2:
+    title: FeatureFlags Package
+    path: Children/2.2/PLAN.md
+    audience: [human, agent]
+    aliases: []
+
+  planning.child-2-2-result:
+    title: FeatureFlags Package Result
+    path: Children/2.2/RESULT.md
+    audience: [human, agent]
+    aliases: []
+
+  planning.child-2-2-review-plan:
+    title: FeatureFlags Package Plan Review
+    path: Children/2.2/REVIEW-PLAN.md
+    audience: [human, agent]
+    aliases: []
+
+  planning.child-2-2-review-impl:
+    title: FeatureFlags Package Implementation Review
+    path: Children/2.2/REVIEW-IMPL.md
+    audience: [human, agent]
+    aliases: []
+
+  planning.child-2-3:
+    title: Developer Menu Package
+    path: Children/2.3/PLAN.md
+    audience: [human, agent]
+    aliases: []
+
+  planning.child-2-3-result:
+    title: Developer Menu Package Result
+    path: Children/2.3/RESULT.md
+    audience: [human, agent]
+    aliases: []
+
+  planning.child-2-3-review-plan:
+    title: Developer Menu Package Plan Review
+    path: Children/2.3/REVIEW-PLAN.md
+    audience: [human, agent]
+    aliases: []
+
+  planning.child-2-3-review-impl:
+    title: Developer Menu Package Implementation Review
+    path: Children/2.3/REVIEW-IMPL.md
+    audience: [human, agent]
+    aliases: []
+
+  # Phase 3 — CLI & Integration (historical, copied from iFoundation archive)
+  planning.child-3-1:
+    title: Wizard System
+    path: Children/3.1/PLAN.md
+    audience: [human, agent]
+    aliases: []
+
+  planning.child-3-1-result:
+    title: Wizard System Result
+    path: Children/3.1/RESULT.md
+    audience: [human, agent]
+    aliases: []
+
+  planning.child-3-1-review-plan:
+    title: Wizard System Plan Review
+    path: Children/3.1/REVIEW-PLAN.md
+    audience: [human, agent]
+    aliases: []
+
+  planning.child-3-1-review-impl:
+    title: Wizard System Implementation Review
+    path: Children/3.1/REVIEW-IMPL.md
+    audience: [human, agent]
+    aliases: []
+
+  planning.child-3-2:
+    title: Template Engine
+    path: Children/3.2/PLAN.md
+    audience: [human, agent]
+    aliases: []
+
+  planning.child-3-2-result:
+    title: Template Engine Result
+    path: Children/3.2/RESULT.md
+    audience: [human, agent]
+    aliases: [Children/3.2/STATUS.md]
+
+  planning.child-3-2-review-impl:
+    title: Template Engine Implementation Review
+    path: Children/3.2/REVIEW-IMPL.md
+    audience: [human, agent]
+    aliases: []
+
+  planning.child-3-2-provenance:
+    title: Template Engine Review Provenance
+    path: Children/3.2/REVIEW-PROVENANCE.md
+    audience: [human, agent]
+    aliases: []
+
+  planning.child-3-3:
+    title: Project Generator
+    path: Children/3.3/PLAN.md
+    audience: [human, agent]
+    aliases: []
+
+  planning.child-3-3-result:
+    title: Project Generator Result
+    path: Children/3.3/RESULT.md
+    audience: [human, agent]
+    aliases: []
+
+  planning.child-3-3-review-plan:
+    title: Project Generator Plan Review
+    path: Children/3.3/REVIEW-PLAN.md
+    audience: [human, agent]
+    aliases: []
+
+  planning.child-3-3-review-impl:
+    title: Project Generator Implementation Review
+    path: Children/3.3/REVIEW-IMPL.md
+    audience: [human, agent]
+    aliases: []
+
+  planning.child-3-3-provenance:
+    title: Project Generator Review Provenance
+    path: Children/3.3/REVIEW-PROVENANCE.md
     audience: [human, agent]
     aliases: []
 
@@ -237,6 +486,18 @@ documents:
   process.exception.direct-push-2026-06-04:
     title: Direct Push Enforcement Remediation Exception
     path: Process-Exceptions/2026-06-04-direct-push-enforcement-remediation.md
+    audience: [human, agent]
+    aliases: []
+
+  history.phase-1-plan:
+    title: Phase 1 Plan (Historical)
+    path: HISTORY/PHASE_1_PLAN.md
+    audience: [human, agent]
+    aliases: []
+
+  history.readme:
+    title: Historical Documents Index
+    path: HISTORY/README.md
     audience: [human, agent]
     aliases: []
 

@@ -8,7 +8,25 @@ SwiftAnvil organization memory.
 `swiftanvil-meta` owns organization planning. Older local planning repositories are historical references unless a
 specific child plan says otherwise.
 
-## Phase 3 Recovery
+## Phase 1 — Foundation
+
+| Child | Name | Status | Primary Repo |
+|-------|------|--------|--------------|
+| 1.1 | Research Swift OSS Best Practices | Complete | N/A (research) |
+| 1.2 | A11yIdentifiers | Complete | swiftanvil-anvil-a11y |
+| 1.3 | BenchmarkKit | Complete | swiftanvil-anvil-bench |
+| 1.4 | AppStrings | Complete | swiftanvil-anvil-strings |
+| 1.5 | GitHub Organization Setup | Complete | github.com/swiftanvil |
+
+## Phase 2 — Core Packages
+
+| Child | Name | Status | Primary Repo |
+|-------|------|--------|--------------|
+| 2.1 | AnvilNetwork Package | Complete | swiftanvil-anvil-network |
+| 2.2 | FeatureFlags Package | Complete | swiftanvil-anvil-flags |
+| 2.3 | Developer Menu Package | Complete | swiftanvil-anvil-devmenu |
+
+## Phase 3 — CLI & Integration
 
 The historical roadmap overstated Phase 3 completion. The missing documentation package was recovered as
 `swiftanvil-anvil-docs`, and generated-project verification now exists in `swiftanvil-cli`.
@@ -34,6 +52,18 @@ and eventual host provisioning.
 | 4.3 | AnvilReport Organization Health Report | Planned Next | swiftanvil-meta |
 | 4.4 | Managed Worker Capability Discovery and Doctor | Planned | swiftanvil-anvil-runner |
 | 4.5 | Worker Provisioning and Fleet Profiles | Planned | swiftanvil-anvil-runner |
+
+## Review Artifact Conventions by Phase
+
+The review artifacts evolved across phases. This is historical reality, not inconsistency:
+
+| Phase | Convention | Files |
+|-------|-----------|-------|
+| **Phase 1** (1.1–1.5) | Single combined review | `REVIEW.md` |
+| **Phase 2** (2.1–2.3) | Plan review + implementation review split | `REVIEW-PLAN.md` + `REVIEW-IMPL.md` |
+| **Phase 3+** (3.1+) | Provenance-focused with cross-host enforcement | `REVIEW-PROVENANCE.md` (+ plan/impl variants where applicable) |
+
+When reading historical children, expect the convention that was current at the time. Do not retroactively rename files.
 
 ## Rules
 
