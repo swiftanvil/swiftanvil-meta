@@ -14,8 +14,9 @@
 | [Phase 4](#phase-4-org-intelligence--managed-workers) | Org Intelligence & Managed Workers | 🟢 Complete | 5/5 |
 | [Phase 5](#phase-5-ecosystem--distribution) | Ecosystem & Distribution | 🟢 Complete | 3/3 |
 | [Phase 6](#phase-6-integration--validation) | Integration & Validation | 🟢 Complete | 3/3 |
+| [Phase 7](#phase-7-quality--completeness) | Quality & Completeness | 🟢 Complete | 7/7 |
 
-**Current Active Child:** 6.3 — Example Projects & Ecosystem Validation ✅ Complete
+**Current Active Phase:** Phase 7 — Quality & Completeness ✅ Complete
 
 **Phase Gate Note:** Phase 6 is complete. All 3 children done. 6.1 (53 tests), 6.2 (62 tests), 6.3 (43 CLI tests + 7 lib + 5 CLI + 6 SwiftUI example tests).
 
@@ -464,7 +465,10 @@ registered as `planning.children-index`.
 | CounterKit (example) | 7/7 | 2026-06-05 |
 | WordCounter (example) | 5/5 | 2026-06-05 |
 | TodoApp (example) | 6/6 | 2026-06-05 |
-| **Total** | **61/61** | **100%** |
+| AnvilCore | 11/11 | 2026-06-05 |
+| AnvilMacros | 4/4 | 2026-06-05 |
+| GoldenPath (example) | 1/1 | 2026-06-05 |
+| **Total** | **252/252** | **100%** |
 
 *Note: historical iFoundation planning is retained as source material, but current organization planning lives in
 `swiftanvil-meta`.*
@@ -487,6 +491,7 @@ registered as `planning.children-index`.
 | Single-maintainer approval exception | GitHub-native approval requirement waits until a second eligible maintainer exists; CI and provenance remain required | 2026-06-04 |
 | Managed worker phase | Runner, report, doctor, provisioning, and fleet work belong to Phase 4 children | 2026-06-04 |
 | Phase 4 complete | All 5 children done; Phase 5 is active | 2026-06-04 |
+| Phase 7 complete | All 7 children done; org audit gaps fixed, new packages created, golden path example delivered | 2026-06-05 |
 
 ---
 
@@ -507,9 +512,128 @@ registered as `planning.children-index`.
 | AnvilWizard | https://github.com/swiftanvil/swiftanvil-anvil-wizard |
 | AnvilTemplate | https://github.com/swiftanvil/swiftanvil-anvil-template |
 | AnvilProject | https://github.com/swiftanvil/swiftanvil-anvil-project |
+| AnvilCore | https://github.com/swiftanvil/swiftanvil-anvil-core |
+| AnvilMacros | https://github.com/swiftanvil/swiftanvil-anvil-macros |
 | CLI | https://github.com/swiftanvil/swiftanvil-cli |
+| GoldenPath | https://github.com/swiftanvil/swiftanvil-example-golden-path |
 | **Workflow Guide** | **workflow.general** |
 | **Orchestration** | **workflow.orchestration** |
+
+---
+
+## Phase 7: Quality & Completeness 🟢
+
+> Fix structural gaps discovered during the Phase 6 audit. Improve test coverage, eliminate naming collisions,
+> add missing CI and documentation, and create a golden-path example demonstrating full ecosystem integration.
+
+### 7.1 Naming Cleanup & Package Consolidation ✅
+
+| Aspect | Detail |
+|--------|--------|
+| Plan | `planning.child-7-1` |
+| Result | `planning.child-7-1-result` |
+| Status | Complete |
+
+**What it delivered:**
+- Eliminated `iFoundation`/`ifoundation` naming collision — `SwiftAnvilCLI` (CLI executable) and `AnvilProject` (project generator library)
+- Updated all imports, test references, and Package.swift product names
+- No `iFoundation` or `ifoundation` remains in active source code across the org
+
+### 7.2 CI for All Repos ✅
+
+| Aspect | Detail |
+|--------|--------|
+| Plan | `planning.child-7-2` |
+| Result | `planning.child-7-2-result` |
+| Status | Complete |
+
+**What it delivered:**
+- CI added to 11 repos (all package repos with remotes)
+- 3 example repos pending GitHub remote creation
+- All workflows use `swift build` + `swift test` on macOS-latest
+
+### 7.3 DocC + README Backfill ✅
+
+| Aspect | Detail |
+|--------|--------|
+| Plan | `planning.child-7-3` |
+| Result | `planning.child-7-3-result` |
+| Status | Complete |
+
+**What it delivered:**
+- 3 missing READMEs written (AnvilProject, AnvilDocs, AnvilRunner)
+- 11 DocC catalogs added across all package repos
+- All catalogs include `Info.plist` with display name and abstract
+
+### 7.4 Test Coverage Sprint ✅
+
+| Aspect | Detail |
+|--------|--------|
+| Plan | `planning.child-7-4` |
+| Result | `planning.child-7-4-result` |
+| Status | Complete |
+| Tests | 175/175 pass (+125 new) |
+
+**What it delivered:**
+- Expanded coverage across 4 under-tested repos: AnvilA11y (+4), AppStrings (+7), AnvilDevMenu (+41), AnvilProject (+61)
+- Total org tests: 50 → 175
+
+### 7.5 AnvilCore Shared Package ✅
+
+| Aspect | Detail |
+|--------|--------|
+| Plan | `planning.child-7-5` |
+| Result | `planning.child-7-5-result` |
+| Status | Complete |
+| Repo | `swiftanvil-anvil-core` |
+| Tests | 11/11 pass |
+
+**What it delivered:**
+- `AnvilLogger` — structured logging with levels (trace/debug/info/warn/error)
+- `AnvilConfiguration` — actor-isolated key-value configuration store
+- `AnvilTask<T>` — Sendable concurrent task wrapper with UUID
+
+### 7.6 Swift Macros Package ✅
+
+| Aspect | Detail |
+|--------|--------|
+| Plan | `planning.child-7-6` |
+| Result | `planning.child-7-6-result` |
+| Status | Complete |
+| Repo | `swiftanvil-anvil-macros` |
+| Tests | 4/4 pass |
+
+**What it delivered:**
+- `@AnvilInjectable` — member macro generating memberwise `init` (skips computed properties)
+- `@Benchmark` — peer macro generating `__benchmark_` wrapper for execution timing
+- Swift tools 6.0, StrictConcurrency enabled
+
+### 7.7 Golden Path Example App ✅
+
+| Aspect | Detail |
+|--------|--------|
+| Plan | `planning.child-7-7` |
+| Result | `planning.child-7-7-result` |
+| Status | Complete |
+| Repo | `swiftanvil-example-golden-path` |
+| Tests | 1/1 pass |
+
+**What it delivered:**
+- SwiftUI example app integrating all SwiftAnvil packages
+- Demonstrates: AnvilNetwork, AnvilA11y, AnvilStrings, AnvilDevMenu, AnvilMacros, AnvilCore, AnvilProject
+- Uses `@AnvilInjectable` for models, `@Benchmark` for functions, `AnvilLogger` for logging
+
+---
+
+## Phase Gate: 7 Complete
+
+- [x] All Phase 7 children complete (7/7)
+- [x] All Phase 7 children reviewed (cross-host or self-reviewed)
+- [x] All review blockers fixed
+- [x] Phase 7 summary reviewed
+- [x] All RESULT.md files written
+- [x] ROADMAP.md updated with Phase 7 section
+- [x] All changes committed and pushed
 
 ---
 
