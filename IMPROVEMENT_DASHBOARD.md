@@ -12,7 +12,7 @@
 |---------|---------|-----|-------|--------|-------------|-------------|
 | AnvilTemplate | 1.0.0 | 78 | B | 🟡 Improve | 2026-06-18 | Add `.dictionary` to `TemplateValue` |
 | AnvilProject | 1.0.0 | 82 | A | 🟢 Healthy | 2026-06-18 | Minor doc improvements |
-| AnvilDocs | 1.0.0 | 75 | B | 🔴 Sprint | 2026-06-11 | Use AnvilTemplate for landing page |
+| AnvilDocs | unreleased | — | — | 🟢 Initial package | After 0.1.0 tag | Integrate with `swiftanvil-cli` |
 
 **Legend:** 🟢 Healthy (A) | 🟡 Improve (B) | 🔴 Sprint (C/F) | ⚪ Unknown
 
@@ -22,8 +22,8 @@
 
 | Package | Item | Impact | Effort | Target Version |
 |---------|------|--------|--------|----------------|
-| AnvilDocs | DOC-001: Template-based landing page | 5 | medium | 1.1.0 |
-| AnvilDocs | DOC-003: GitHub Actions workflow | 3 | small | 1.0.1 |
+| AnvilDocs | DOC-002: CLI integration for docs compose | 5 | medium | 0.1.0 |
+| AnvilDocs | DOC-004: Tag first package release | 3 | small | 0.1.0 |
 
 **Blocked:**
 - DOC-001 (AnvilDocs) → blocked by TPL-002 (AnvilTemplate `.dictionary`)
@@ -37,7 +37,7 @@
 | ID | Package | Description | Impact | Effort | Blocked By |
 |----|---------|-------------|--------|--------|------------|
 | TPL-002 | AnvilTemplate | Add `.dictionary` to `TemplateValue` | 8 | medium | — |
-| DOC-002 | AnvilDocs | Integration tests with real docc | 5 | large | — |
+| DOC-002 | AnvilDocs | CLI integration for docs compose | 5 | medium | — |
 | TPL-003 | AnvilTemplate | Template parse caching | 5 | small | — |
 | DOC-001 | AnvilDocs | Template-based landing page | 5 | medium | TPL-002 |
 
@@ -47,7 +47,7 @@
 |----|---------|-------------|--------|--------|
 | TPL-001 | AnvilTemplate | Nested loop error path tests | 3 | small |
 | PRJ-001 | AnvilProject | Advanced README examples | 3 | small |
-| DOC-003 | AnvilDocs | GitHub Actions workflow | 3 | small |
+| DOC-004 | AnvilDocs | Tag first package release | 3 | small |
 
 ---
 

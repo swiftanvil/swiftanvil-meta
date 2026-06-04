@@ -10,14 +10,14 @@
 |-------|-------|--------|----------|
 | [Phase 1](#phase-1-foundation) | Foundation | 🟢 Complete | 5/5 |
 | [Phase 2](#phase-2-core-packages) | Core Packages | 🟢 Complete | 3/3 |
-| [Phase 3](#phase-3-cli--integration) | CLI & Integration | 🟡 In Progress | 3/5 |
+| [Phase 3](#phase-3-cli--integration) | CLI & Integration | 🟡 In Progress | 4/5 |
 | [Phase 4](#phase-4-org-intelligence--managed-workers) | Org Intelligence & Managed Workers | 🟡 Partially Started | 2/5 |
 | [Phase 5](#phase-5-ecosystem--distribution) | Ecosystem & Distribution | ⚪ Planned | 0/3 |
 
-**Current Active Child:** `planning.child-3-4` — Documentation Generator Recovery and Promotion.
+**Current Active Child:** `planning.child-3-5` — Testing and Verification.
 
 **Phase Gate Note:** Phase 4 has already captured completed governance and runner work, but new Phase 4 implementation
-should wait until Phase 3 is reconciled or explicitly de-scoped.
+should wait until Phase 3.5 is complete or explicitly de-scoped.
 
 **Legend:** 🟢 Complete | 🟡 In Progress | 🔴 Blocked | ⚪ Planned
 
@@ -249,17 +249,20 @@ should wait until Phase 3 is reconciled or explicitly de-scoped.
 - Non-test targets cannot depend on test targets
 - Swift identifier sanitization in templates (hyphens→underscores)
 
-### 3.4 Documentation Generator Recovery and Promotion 🟡
+### 3.4 Documentation Generator Recovery and Promotion ✅
 
 | Aspect | Detail |
 |--------|--------|
 | Plan | `planning.child-3-4` |
-| Repo | TBD |
-| Status | Needs recovery |
-| Evidence | `swiftanvil-anvil-docs` does not exist in the GitHub organization; old local folder contains only a roadmap file |
+| Result | `planning.child-3-4-result` |
+| Review | `planning.child-3-4-provenance` |
+| Repo | [`swiftanvil-anvil-docs`](https://github.com/swiftanvil/swiftanvil-anvil-docs) |
+| Status | Complete |
+| Tests | 6/6 pass |
+| CI | Passed on main |
 
-**Next step:** Recover the intended documentation generator from historical source, decide whether it belongs in a
-standalone package or `swiftanvil-cli`, and only then mark this child complete.
+**Decision:** AnvilDocs is a separate package. It owns reusable registry load, validate, and compose logic.
+`swiftanvil-cli` should own command-line UX in a later child.
 
 ### 3.5 Testing & Verification ⚪
 
