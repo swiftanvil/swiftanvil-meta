@@ -126,6 +126,18 @@ documents:
     audience: [human, agent]
     aliases: []
 
+  planning.child-3-4:
+    title: Documentation Generator Recovery and Promotion
+    path: Children/3.4/PLAN.md
+    audience: [human, agent]
+    aliases: []
+
+  planning.child-3-5:
+    title: Testing and Verification
+    path: Children/3.5/PLAN.md
+    audience: [human, agent]
+    aliases: []
+
   planning.child-4-1:
     title: Governance and Enforcement Baseline
     path: Children/4.1/PLAN.md

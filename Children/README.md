@@ -8,7 +8,21 @@ SwiftAnvil organization memory.
 `swiftanvil-meta` owns organization planning. Older local planning repositories are historical references unless a
 specific child plan says otherwise.
 
-## Active Phase
+## Phase 3 Recovery
+
+The historical roadmap overstated Phase 3 completion. Current verification shows that `swiftanvil-anvil-docs` does
+not exist in the GitHub organization, and the old local folder contains only a roadmap file. Phase 3 must be closed
+honestly before new Phase 4 implementation work proceeds.
+
+| Child | Name | Status | Primary Repo |
+|-------|------|--------|--------------|
+| 3.1 | Wizard System | Complete | swiftanvil-anvil-wizard |
+| 3.2 | Template Engine | Complete | swiftanvil-anvil-template |
+| 3.3 | Project Generator | Complete | swiftanvil-anvil-project |
+| 3.4 | Documentation Generator Recovery and Promotion | Needs Recovery | TBD |
+| 3.5 | Testing and Verification | Planned | TBD |
+
+## Phase 4
 
 Phase 4 is now the organization intelligence and managed worker phase. It captures the work that was previously
 being discussed independently: org health reporting, AnvilRunner, worker capability discovery, worker doctor checks,

@@ -37,6 +37,9 @@ Check `roadmap.org` for current priorities. The roadmap tells you:
 - Which child is next
 - What the proposed API looks like
 
+Then check `planning.children-index` for the child artifact status. If `roadmap.org` and
+`planning.children-index` disagree, fix the planning records before starting new implementation work.
+
 ### 2. Work in the Right Repo
 
 ```bash
@@ -193,9 +196,8 @@ CI config lives in each repo's `.github/workflows/ci.yml` (copied from org templ
 
 ### Cross-Package Integration Testing
 
-For changes that span multiple packages, we don't have integration tests yet. Plan:
-- Phase 3 will add a `swiftanvil-integration-tests` repo
-- It pulls all packages at their latest versions and verifies they work together
+For changes that span multiple packages, integration testing is still planned under `planning.child-3-5`. That child
+must decide whether verification belongs in a dedicated repository, the CLI, or package-specific workflows.
 
 ---
 
@@ -315,4 +317,4 @@ git tag -d 1.2.0
 
 ---
 
-*Last updated: 2026-06-03*
+*Last updated: 2026-06-04*

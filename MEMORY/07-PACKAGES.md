@@ -13,7 +13,7 @@ last_updated: 2026-06-04
 |---------|------|---------|-----|-------|--------|---------|-----------|
 | AnvilTemplate | swiftanvil-anvil-template | 1.0.0 | 78 | B | 🟡 Improve | 16 | 13 |
 | AnvilProject | swiftanvil-anvil-project | 1.0.0 | 82 | A | 🟢 Healthy | 16 | 13 |
-| AnvilDocs | swiftanvil-anvil-docs | 1.0.0 | 75 | B | 🔴 Sprint | 13 | 13 |
+| AnvilDocs | swiftanvil-anvil-docs | — | — | — | 🔴 Missing repo; recover Child 3.4 | — | — |
 | AnvilWizard | swiftanvil-anvil-wizard | 1.0.0 | — | — | ⚪ Unknown | 16 | 13 |
 | AnvilNetwork | swiftanvil-anvil-network | 1.0.0 | — | — | ⚪ Unknown | 16 | 13 |
 | AnvilFlags | swiftanvil-anvil-flags | 1.0.0 | — | — | ⚪ Unknown | 16 | 13 |
