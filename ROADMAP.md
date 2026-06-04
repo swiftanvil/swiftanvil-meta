@@ -637,6 +637,242 @@ registered as `planning.children-index`.
 
 ---
 
+---
+
+## Phase 8: macOS App Toolkit ⚪
+
+> Make SwiftAnvil immediately useful for macOS app development. Build platform-specific packages
+> and integrate AnvilCore into the existing ecosystem.
+
+### 8.1 macOS App Template for `swiftanvil create` ⚪
+
+| Aspect | Detail |
+|--------|--------|
+| Plan | `planning.child-8-1` |
+| Status | Planned |
+| Primary Repo | swiftanvil-cli, swiftanvil-anvil-project |
+
+**What it will deliver:**
+- `swiftanvil create macos-app <name>` — scaffolds a macOS app with SwiftUI, menu bar, settings, and SwiftAnvil deps pre-wired
+- Template includes: `App.swift`, `ContentView.swift`, `SettingsView.swift`, `MenuBarView.swift`, `Package.swift` with AnvilNetwork, AnvilFlags, AnvilSettings, AnvilMenuBar, AnvilWindow deps
+- Uses AnvilProject generator for atomic, rollback-safe creation
+
+**Why:** The user wants to build a macOS app. Right now `swiftanvil create` only handles generic projects.
+
+---
+
+### 8.2 AnvilSettings (Type-Safe UserDefaults) ⚪
+
+| Aspect | Detail |
+|--------|--------|
+| Plan | `planning.child-8-2` |
+| Status | Planned |
+| Repo | `swiftanvil-anvil-settings` |
+| Platforms | iOS 18+, macOS 15+, tvOS 18+, watchOS 11+, visionOS 2+ |
+
+**What it will deliver:**
+- `@AnvilSetting("key") var value: T = default` — property wrapper with `Codable` support
+- Automatic migration between setting versions
+- `Observation` framework integration for reactive UI updates
+- `AnvilSettings` actor for thread-safe batch reads/writes
+
+**Why:** Every macOS app needs preferences. `UserDefaults` is stringly-typed and error-prone.
+
+---
+
+### 8.3 AnvilMenuBar (macOS Menu Bar Extras) ⚪
+
+| Aspect | Detail |
+|--------|--------|
+| Plan | `planning.child-8-3` |
+| Status | Planned |
+| Repo | `swiftanvil-anvil-menubar` |
+| Platforms | macOS 15+ only |
+
+**What it will deliver:**
+- `MenuBarExtra` SwiftUI wrapper with dynamic item injection
+- Keyboard shortcut registration via `NSMenuItem` + `NSEvent` monitors
+- State persistence across launches
+- Integration with AnvilSettings for user preferences
+
+**Why:** macOS apps often live in the menu bar. SwiftUI's `MenuBarExtra` is basic; this removes boilerplate.
+
+---
+
+### 8.4 AnvilWindow (Window Management) ⚪
+
+| Aspect | Detail |
+|--------|--------|
+| Plan | `planning.child-8-4` |
+| Status | Planned |
+| Repo | `swiftanvil-anvil-window` |
+| Platforms | macOS 15+ only |
+
+**What it will deliver:**
+- Floating panel helper (`NSPanel` + SwiftUI hosting)
+- HUD window for transient overlays
+- Window restoration state tracking
+- `NSWindowController` helpers for multi-window apps
+
+**Why:** macOS window management is verbose. SwiftUI's window support is still limited for advanced use cases.
+
+---
+
+### 8.5 AnvilCore Integration into Existing Packages ⚪
+
+| Aspect | Detail |
+|--------|--------|
+| Plan | `planning.child-8-5` |
+| Status | Planned |
+| Primary Repos | swiftanvil-anvil-network, swiftanvil-anvil-flags, swiftanvil-anvil-devmenu, swiftanvil-anvil-bench |
+
+**What it will deliver:**
+- **AnvilNetwork** → use `AnvilLogger` for request/response logging (replace any `print` statements)
+- **AnvilFlags** → use `AnvilConfiguration` as a backend `FeatureFlagSource`
+- **AnvilDevMenu** → use `AnvilLogger` for unified log collection
+- **BenchmarkKit** → use `AnvilTask` for async benchmark execution
+
+**Why:** AnvilCore is currently unused (0 packages depend on it). It needs real adoption to justify its existence and prove its API design.
+
+---
+
+## Phase 9: Ecosystem Hardening ⚪
+
+> Fix structural gaps that make SwiftAnvil feel incomplete. Macros that work. Consistent tooling.
+> Objective quality metrics.
+
+### 9.1 Real `@Benchmark` Macro ⚪
+
+| Aspect | Detail |
+|--------|--------|
+| Plan | `planning.child-9-1` |
+| Status | Planned |
+| Repo | `swiftanvil-anvil-macros` |
+
+**What it will deliver:**
+- `@Benchmark(iterations:)` generates a wrapper that measures `CFAbsoluteTimeGetCurrent()` before/after
+- Reports min, mean, median, stddev across iterations
+- Integrates with `BenchmarkKit` — results feed into `BenchmarkRun`/`BenchmarkSample`
+- Proper diagnostics for invalid usage (non-function declarations, non-Sendable return types)
+
+**Current state:** The macro is a stub — it generates `benchmark_` wrapper that calls the function N times with no timing or reporting.
+
+**Why:** A benchmark macro that doesn't measure is misleading and useless.
+
+---
+
+### 9.2 Swift 6 Language Mode Consistency ⚪
+
+| Aspect | Detail |
+|--------|--------|
+| Plan | `planning.child-9-2` |
+| Status | Planned |
+| Scope | All 19 Swift package repos |
+
+**What it will deliver:**
+- Audit every `Package.swift` for consistent `swiftLanguageModes: [.v6]` at package level
+- Remove per-target `.swiftLanguageMode(.v6)` and `.enableExperimentalFeature("StrictConcurrency")` redundancy
+- Verify no repo uses the deprecated `enableExperimentalFeature` approach
+
+**Current state:** Mixed patterns — some use package-level `swiftLanguageModes`, some use per-target settings, GoldenPath uses `.enableExperimentalFeature("StrictConcurrency")`.
+
+**Why:** Inconsistent Swift 6 adoption is a hygiene issue. It creates confusion and may hide concurrency bugs.
+
+---
+
+### 9.3 GoldenPath Fix + AnvilMacros/AnvilCore Integration ⚪
+
+| Aspect | Detail |
+|--------|--------|
+| Plan | `planning.child-9-3` |
+| Status | Planned |
+| Repo | `swiftanvil-example-golden-path` |
+| Blocked By | 9.1 (needs real `@Benchmark`) |
+
+**What it will deliver:**
+- Add `AnvilCore` and `AnvilMacros` as actual dependencies in `Package.swift`
+- Fix `RESULT.md` to match actual dependencies (currently claims deps that don't exist)
+- Add real `@AnvilInjectable` usage in data models
+- Add real `AnvilLogger` usage for app logging
+- Add real `@Benchmark` usage (after 9.1)
+
+**Current state:** `RESULT.md` claims the app uses AnvilCore and AnvilMacros, but `Package.swift` has neither dependency.
+
+**Why:** The golden path example should actually demonstrate the full ecosystem, not claim to.
+
+---
+
+### 9.4 Package Maturity Score (PMS) Automation ⚪
+
+| Aspect | Detail |
+|--------|--------|
+| Plan | `planning.child-9-4` |
+| Status | Planned |
+| Primary Repo | swiftanvil-meta |
+
+**What it will deliver:**
+- `scripts/calculate-pms.sh` — runs `swift test`, checks README/DocC presence, counts public APIs, checks CI status
+- `package.improvement-score` JSON added to each repo with real calculated scores
+- Update `IMPROVEMENT_DASHBOARD.md` with actual PMS data (not placeholder)
+- GitHub Actions workflow to recalculate PMS on every PR
+
+**Current state:** The PMS framework is fully documented in `IMPROVEMENT_FRAMEWORK.md` but has zero implementation.
+
+**Why:** Without objective metrics, quality decisions are arbitrary. The framework promises proactive improvement — it needs to actually run.
+
+---
+
+## Phase 10: Future Expansion ⚪
+
+> Long-term roadmap items. Not scheduled until Phases 8–9 are complete.
+
+### 10.1 SwiftUI Component Library (AnvilUI)
+- Reusable SwiftUI components: `AnvilButton`, `AnvilTextField`, `AnvilList`, `AnvilEmptyState`
+- macOS + iOS unified components with platform-specific adaptations
+- Accessibility-first by default (built-in `A11yIdentifiers` integration)
+
+### 10.2 Persistence Layer (AnvilStore)
+- SwiftData wrapper with migration support
+- Key-value store with `Codable` and encryption
+- CloudKit sync abstraction
+
+### 10.3 Analytics & Telemetry (AnvilTelemetry)
+- Privacy-first event tracking
+- Pluggable backends (PostHog, Mixpanel, custom)
+- Batch upload with retry and offline queue
+
+### 10.4 Authentication (AnvilAuth)
+- OAuth 2.0 / OIDC client
+- Keychain token storage
+- Biometric auth wrapper (LocalAuthentication)
+
+### 10.5 Push Notifications (AnvilPush)
+- APNs wrapper with device token management
+- Notification category builder
+- Deep link routing integration
+
+### 10.6 Cross-Platform Expansion
+- Linux support for CLI packages (AnvilRunner, swiftanvil-cli)
+- Windows support investigation (Swift on Windows maturity)
+- WebAssembly target for shared logic
+
+### 10.7 AI Agent Integration
+- MCP (Model Context Protocol) server for SwiftAnvil packages
+- Agent-readable package metadata endpoint
+- Auto-generated agent instructions per package
+
+---
+
+## Phase Gate: 7 → 8
+
+- [x] All Phase 7 children complete (7/7)
+- [x] All Phase 7 children reviewed
+- [x] All review blockers fixed
+- [x] Phase 7 summary reviewed
+- [x] **User approval to proceed** — Phases 8–10 planned, ready to execute
+
+---
+
 *Last updated: 2026-06-05*
 
 ---
