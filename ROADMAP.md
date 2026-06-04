@@ -11,10 +11,10 @@
 | [Phase 1](#phase-1-foundation) | Foundation | 🟢 Complete | 5/5 |
 | [Phase 2](#phase-2-core-packages) | Core Packages | 🟢 Complete | 3/3 |
 | [Phase 3](#phase-3-cli--integration) | CLI & Integration | 🟢 Complete | 5/5 |
-| [Phase 4](#phase-4-org-intelligence--managed-workers) | Org Intelligence & Managed Workers | 🟡 Partially Started | 2/5 |
+| [Phase 4](#phase-4-org-intelligence--managed-workers) | Org Intelligence & Managed Workers | 🟡 In Progress | 3/5 |
 | [Phase 5](#phase-5-ecosystem--distribution) | Ecosystem & Distribution | ⚪ Planned | 0/3 |
 
-**Current Active Child:** `planning.child-4-3` — AnvilReport Organization Health Report.
+**Current Active Child:** `planning.child-4-4` — Managed Worker Capability Discovery and Doctor.
 
 **Phase Gate Note:** Phase 3 is closed. New implementation should proceed through Phase 4 children in order unless
 explicitly re-prioritized.
@@ -323,16 +323,26 @@ registered as `planning.children-index`.
 - CI, release hygiene, local enforcement, and managed worker vocabulary.
 - A clear boundary: 0.1 is a runner baseline, not host provisioning.
 
-### 4.3 AnvilReport Organization Health Report
+### 4.3 AnvilReport Organization Health Report ✅
 
 | Aspect | Detail |
 |--------|--------|
 | Primary Repo | `swiftanvil-meta` |
 | Plan | `planning.child-4-3` |
-| Status | Planned Next |
+| Result | `planning.child-4-3-result` |
+| Provenance | `planning.child-4-3-provenance` |
+| Status | Complete |
+| Report | `report.org-health` |
+| Report Data | `report.org-health-data` |
+| Generator | `script.org-report` |
 
-This child creates the shared organization report that agents and contributors use to understand repository health,
-release state, CI state, enforcement state, review provenance, and next phase ownership.
+**What it established:**
+- Human-readable org health report (`report.org-health`) with repository status, phase progress, review coverage, and next work
+- Machine-readable companion (`report.org-health-data`) for agent consumption
+- Generation script (`script.org-report`) with GitHub API integration
+- Two-artifact approach: Markdown for humans, YAML for machines
+- Reserved sections for Child 4.4 (Worker Capabilities) and 4.5 (Fleet Status)
+- All artifacts registered in `meta.registry` with stable document IDs
 
 ### 4.4 Managed Worker Capability Discovery and Doctor
 

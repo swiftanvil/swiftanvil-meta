@@ -465,6 +465,42 @@ documents:
     audience: [human, agent]
     aliases: []
 
+  planning.child-4-3-review-plan:
+    title: AnvilReport Plan Review
+    path: Children/4.3/REVIEW-PLAN.md
+    audience: [human, agent]
+    aliases: []
+
+  planning.child-4-3-result:
+    title: AnvilReport Result
+    path: Children/4.3/RESULT.md
+    audience: [human, agent]
+    aliases: []
+
+  planning.child-4-3-provenance:
+    title: AnvilReport Review Provenance
+    path: Children/4.3/REVIEW-PROVENANCE.md
+    audience: [human, agent]
+    aliases: []
+
+  report.org-health:
+    title: Organization Health Report
+    path: ORG_REPORT.md
+    audience: [human, agent]
+    aliases: []
+
+  report.org-health-data:
+    title: Organization Health Report (Machine-Readable)
+    path: ORG_REPORT.yml
+    audience: [human, agent]
+    aliases: []
+
+  script.org-report:
+    title: Organization Report Generator
+    path: scripts/generate-org-report.sh
+    audience: [human, agent]
+    aliases: []
+
   upgrade.platform:
     title: Platform Upgrade Plan
     path: PLATFORM_UPGRADE_PLAN.md

@@ -1,0 +1,116 @@
+report:
+  version: 1
+  generated_at: "2026-06-04T12:06:12Z"
+  generator: "scripts/generate-org-report.sh"
+  next_active_child:
+    id: "planning.child-4-4"
+    name: "Managed Worker Capability Discovery and Doctor"
+    repo: "swiftanvil-anvil-runner"
+    status: "planned"
+
+organization:
+  name: "swiftanvil"
+  url: "https://github.com/swiftanvil"
+  total_repositories: 12
+  active_phase: 4
+  current_child: "4.3"
+
+repositories:
+  - name: "swiftanvil-anvil-a11y"
+    status: "stable"
+    latest_release: ""
+    ci_status: "pending"
+    tests: "17/17"
+    last_updated: "2026-06-03"
+  - name: "swiftanvil-anvil-bench"
+    status: "stable"
+    latest_release: ""
+    ci_status: "pending"
+    tests: "78/78"
+    last_updated: "2026-06-03"
+  - name: "swiftanvil-anvil-strings"
+    status: "stable"
+    latest_release: ""
+    ci_status: "pending"
+    tests: "21/21"
+    last_updated: "2026-06-03"
+  - name: "swiftanvil-anvil-network"
+    status: "stable"
+    latest_release: ""
+    ci_status: "pending"
+    tests: "29/29"
+    last_updated: "2026-06-03"
+  - name: "swiftanvil-anvil-flags"
+    status: "stable"
+    latest_release: ""
+    ci_status: "pending"
+    tests: "37/37"
+    last_updated: "2026-06-03"
+  - name: "swiftanvil-anvil-devmenu"
+    status: "stable"
+    latest_release: ""
+    ci_status: "pending"
+    tests: "16/16"
+    last_updated: "2026-06-03"
+  - name: "swiftanvil-anvil-wizard"
+    status: "stable"
+    latest_release: ""
+    ci_status: "pending"
+    tests: "20/20"
+    last_updated: "2026-06-03"
+  - name: "swiftanvil-anvil-template"
+    status: "stable"
+    latest_release: ""
+    ci_status: "pending"
+    tests: "30/30"
+    last_updated: "2026-06-04"
+  - name: "swiftanvil-anvil-project"
+    status: "stable"
+    latest_release: ""
+    ci_status: "pending"
+    tests: "37/37"
+    last_updated: "2026-06-04"
+  - name: "swiftanvil-anvil-docs"
+    status: "stable"
+    latest_release: ""
+    ci_status: "pending"
+    tests: "6/6"
+    last_updated: "2026-06-04"
+  - name: "swiftanvil-anvil-runner"
+    status: "stable"
+    latest_release: "0.1.0"
+    ci_status: "pending"
+    tests: "CI passed for 0.1.0"
+    last_updated: "2026-06-04"
+  - name: "swiftanvil-cli"
+    status: "stable"
+    latest_release: ""
+    ci_status: "pending"
+    tests: "13/13"
+    last_updated: "2026-06-04"
+
+phases:
+  current: 4
+  active_child: "4.3"
+  completed_children: ["1.1", "1.2", "1.3", "1.4", "1.5", "2.1", "2.2", "2.3", "3.1", "3.2", "3.3", "3.4", "3.5", "4.1", "4.2"]
+  in_progress_children: ["4.3"]
+  planned_children: ["4.4", "4.5"]
+
+review_coverage:
+  total_children: 15
+  cross_host_reviewed: 14
+  self_reviewed: 1
+  pending_review: 0
+
+enforcement:
+  last_run: "2026-06-04T12:06:12Z"
+  status: "passing"
+  failures: []
+
+reserved:
+  worker_capabilities:
+    owner: "planning.child-4-4"
+    status: "TBD"
+  fleet_status:
+    owner: "planning.child-4-5"
+    status: "TBD"
