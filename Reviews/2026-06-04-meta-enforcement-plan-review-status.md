@@ -39,6 +39,7 @@ Command:
 ```sh
 ../swiftanvil-enforcement/scripts/run-agent-review.sh \
   --agent claude \
+  --builder codex \
   --request Reviews/2026-06-04-meta-enforcement-plan-review-request.md \
   --output Reviews/2026-06-04-meta-enforcement-plan-review-claude.md
 ```
