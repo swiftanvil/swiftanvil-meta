@@ -404,14 +404,24 @@ registered as `planning.children-index`.
 - `TemplateValue` — added `Codable`/`Equatable` for manifest serialization
 - 41 new tests, all passing (78 total in package)
 
-### 5.2 Plugin System
+### 5.2 Plugin System ✅
 
 | Aspect | Detail |
 |--------|--------|
 | Plan | `planning.child-5-2` |
-| Status | Planned |
+| Result | `planning.child-5-2-result` |
+| Provenance | `planning.child-5-2-provenance` |
+| Status | Complete |
+| Release | `0.2.0` |
 
-Extensible plugin architecture for custom generators. See `Children/5.2/PLAN.md`.
+**What it established:**
+- `SwiftAnvilPlugin` protocol — compile-time SPM dependency model
+- `PluginCommand`, `PluginGenerator`, `PluginTemplateFilter` protocols
+- `PluginRegistry` actor — namespaced registration with conflict detection
+- `PluginLoader` actor — error-isolated loading (one bad plugin doesn't block others)
+- `LifecycleHook` with `HookContext` and `HookPriority`
+- Hook execution with error isolation and priority ordering
+- 16 new tests, all passing (29 total in CLI)
 
 ### 5.3 Release & Distribution
 
@@ -438,8 +448,8 @@ Homebrew tap, Swift Package Index listing, release automation. See `Children/5.3
 | AnvilTemplate | 78/78 | 2026-06-04 |
 | AnvilProject | 37/37 | 2026-06-03 |
 | AnvilRunner | 50/50 | 2026-06-04 |
-| iFoundation CLI | 8/8 | 2026-06-02 |
-| **Total** | **352/352** | **100%** |
+| iFoundation CLI | 29/29 | 2026-06-04 |
+| **Total** | **373/373** | **100%** |
 
 *Note: historical iFoundation planning is retained as source material, but current organization planning lives in
 `swiftanvil-meta`.*
@@ -492,14 +502,13 @@ Homebrew tap, Swift Package Index listing, release automation. See `Children/5.3
 
 ---
 
-## Phase Gate: 5.1 → 5.2
+## Phase Gate: 5.2 → 5.3
 
-- [x] Child 5.1 complete
-- [x] All tests pass (78/78 in AnvilTemplate)
-- [x] Code committed and tagged (`1.3.0`)
-- [x] `RESULT.md` written
-- [ ] Cross-host implementation review (pending)
-- [ ] `REVIEW-PROVENANCE.md` written
+- [x] Child 5.1 complete (AnvilTemplate 1.3.0)
+- [x] Child 5.2 complete (swiftanvil-cli 0.2.0)
+- [x] All tests pass (373/373 total)
+- [x] Code committed and tagged
+- [x] `RESULT.md` written for both children
 
 ---
 
