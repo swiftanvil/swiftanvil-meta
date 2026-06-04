@@ -19,15 +19,13 @@ last_updated: 2026-06-04
 | AnvilFlags | swiftanvil-anvil-flags | 1.0.0 | — | — | 🟢 Healthy | 18 | 15 |
 | AnvilDevMenu | swiftanvil-anvil-devmenu | 1.0.0 | — | — | 🟢 Healthy | 18 | 15 |
 | AnvilRunner | swiftanvil-anvil-runner | 0.3.0 | — | — | 🟢 Healthy | — | 15 |
-| A11yIdentifiers | swiftanvil-anvil-a11y | 1.0.0 | — | — | ⚪ Unknown | — | — |
-| BenchmarkKit | swiftanvil-anvil-bench | 1.0.0 | — | — | ⚪ Unknown | — | — |
-| AppStrings | swiftanvil-anvil-strings | 1.0.0 | — | — | ⚪ Unknown | — | — |
+| A11yIdentifiers | swiftanvil-anvil-a11y | 1.0.0 | — | — | 🟢 Healthy | 18 | 15 |
+| BenchmarkKit | swiftanvil-anvil-bench | 1.0.0 | — | — | 🟢 Healthy | 18 | 15 |
+| AppStrings | swiftanvil-anvil-strings | 1.0.0 | — | — | 🟢 Healthy | 18 | 15 |
 
 ## ✅ Platform Policy Status
 
 All actively maintained packages are now compliant with `policy.platform` (iOS 18+ / macOS 15+ / tvOS 18+ / watchOS 11+ / visionOS 2+).
-
-Packages without Swift code (A11yIdentifiers, BenchmarkKit, AppStrings) have empty repositories and are marked Unknown until populated.
 
 ## Improvement Queue
 
