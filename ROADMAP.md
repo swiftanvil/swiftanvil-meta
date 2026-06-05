@@ -665,20 +665,22 @@ registered as `planning.children-index`.
 
 ---
 
-### 8.2 AnvilSettings (Type-Safe UserDefaults) ⚪
+### 8.2 AnvilSettings (Type-Safe UserDefaults) ✅
 
 | Aspect | Detail |
 |--------|--------|
 | Plan | `planning.child-8-2` |
-| Status | Planned |
-| Repo | `swiftanvil-anvil-settings` |
+| Result | `planning.child-8-2-result` |
+| Status | Complete |
+| Repo | [`swiftanvil-anvil-settings`](https://github.com/swiftanvil/swiftanvil-anvil-settings) |
 | Platforms | iOS 18+, macOS 15+, tvOS 18+, watchOS 11+, visionOS 2+ |
+| Tests | 14/14 pass |
 
-**What it will deliver:**
-- `@AnvilSetting("key") var value: T = default` — property wrapper with `Codable` support
-- Automatic migration between setting versions
-- `Observation` framework integration for reactive UI updates
-- `AnvilSettings` actor for thread-safe batch reads/writes
+**What it delivered:**
+- `AnvilSettings` actor — type-safe get/set/remove/contains/allKeys with `UserDefaults` backing
+- `@AnvilSetting<T>` property wrapper — SwiftUI `Binding` support, reads/writes `UserDefaults` automatically
+- `SettingsMigration` — versioned rename, delete, and transform operations
+- Primitives stored directly (no JSON overhead); Codable types JSON-encoded
 
 **Why:** Every macOS app needs preferences. `UserDefaults` is stringly-typed and error-prone.
 
