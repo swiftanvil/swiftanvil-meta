@@ -644,18 +644,22 @@ registered as `planning.children-index`.
 > Make SwiftAnvil immediately useful for macOS app development. Build platform-specific packages
 > and integrate AnvilCore into the existing ecosystem.
 
-### 8.1 macOS App Template for `swiftanvil create` ⚪
+### 8.1 macOS App Template for `swiftanvil create` ✅
 
 | Aspect | Detail |
 |--------|--------|
 | Plan | `planning.child-8-1` |
-| Status | Planned |
-| Primary Repo | swiftanvil-cli, swiftanvil-anvil-project |
+| Result | `planning.child-8-1-result` |
+| Status | Complete |
+| Primary Repo | swiftanvil-cli |
+| Tests | 53/53 pass (43 existing + 10 new) |
 
-**What it will deliver:**
+**What it delivered:**
 - `swiftanvil create macos-app <name>` — scaffolds a macOS app with SwiftUI, menu bar, settings, and SwiftAnvil deps pre-wired
-- Template includes: `App.swift`, `ContentView.swift`, `SettingsView.swift`, `MenuBarView.swift`, `Package.swift` with AnvilNetwork, AnvilFlags, AnvilSettings, AnvilMenuBar, AnvilWindow deps
-- Uses AnvilProject generator for atomic, rollback-safe creation
+- `ProjectGenerator` now branches on `config.isMacOSApp` for all generation methods
+- macOS `Package.swift`: only `.macOS(.v15)`, deps on AnvilNetwork + AnvilFlags, commented future deps
+- macOS source: `@main` app with `WindowGroup` + `MenuBarExtra` + `Settings`, `NavigationSplitView`, `MenuBarView`, `SettingsView`
+- iOS template unchanged — full regression coverage
 
 **Why:** The user wants to build a macOS app. Right now `swiftanvil create` only handles generic projects.
 
