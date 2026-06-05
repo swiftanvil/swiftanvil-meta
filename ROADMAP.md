@@ -754,21 +754,23 @@ registered as `planning.children-index`.
 > Fix structural gaps that make SwiftAnvil feel incomplete. Macros that work. Consistent tooling.
 > Objective quality metrics.
 
-### 9.1 Real `@Benchmark` Macro ⚪
+### 9.1 Real `@Benchmark` Macro ✅
 
 | Aspect | Detail |
 |--------|--------|
 | Plan | `planning.child-9-1` |
-| Status | Planned |
+| Result | `planning.child-9-1-result` |
+| Status | Complete |
 | Repo | `swiftanvil-anvil-macros` |
+| Tests | 12/12 pass |
 
-**What it will deliver:**
-- `@Benchmark(iterations:)` generates a wrapper that measures `CFAbsoluteTimeGetCurrent()` before/after
-- Reports min, mean, median, stddev across iterations
-- Integrates with `BenchmarkKit` — results feed into `BenchmarkRun`/`BenchmarkSample`
-- Proper diagnostics for invalid usage (non-function declarations, non-Sendable return types)
+**What it delivered:**
+- `@Benchmark` now generates timing capture using `CFAbsoluteTimeGetCurrent()` before/after each iteration
+- Generated `benchmark_` function returns `BenchmarkMacroResult` with min, max, mean, median, stddev, totalElapsed
+- Supports sync, async, throws, and async+throws functions
+- `BenchmarkMacroResult` is `Sendable` with `CustomStringConvertible` for pretty-printing
 
-**Current state:** The macro is a stub — it generates `benchmark_` wrapper that calls the function N times with no timing or reporting.
+**Current state (before):** The macro was a stub — it generated a wrapper that called the function N times with no timing or reporting.
 
 **Why:** A benchmark macro that doesn't measure is misleading and useless.
 
