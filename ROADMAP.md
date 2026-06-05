@@ -686,20 +686,22 @@ registered as `planning.children-index`.
 
 ---
 
-### 8.3 AnvilMenuBar (macOS Menu Bar Extras) ⚪
+### 8.3 AnvilMenuBar (macOS Menu Bar Extras) ✅
 
 | Aspect | Detail |
 |--------|--------|
 | Plan | `planning.child-8-3` |
-| Status | Planned |
-| Repo | `swiftanvil-anvil-menubar` |
+| Result | `planning.child-8-3-result` |
+| Status | Complete |
+| Repo | [`swiftanvil-anvil-menubar`](https://github.com/swiftanvil/swiftanvil-anvil-menubar) |
 | Platforms | macOS 15+ only |
+| Tests | 13/13 pass |
 
-**What it will deliver:**
-- `MenuBarExtra` SwiftUI wrapper with dynamic item injection
-- Keyboard shortcut registration via `NSMenuItem` + `NSEvent` monitors
-- State persistence across launches
-- Integration with AnvilSettings for user preferences
+**What it delivered:**
+- `MenuBarItem` enum — button, toggle, separator, submenu
+- `MenuBarAction` enum — openWindow, openSettings, quit, custom
+- `AnvilMenuBar` — `@Observable` model with dynamic insert/remove/replace/append
+- `menuBar.content` — SwiftUI view for `MenuBarExtra` integration
 
 **Why:** macOS apps often live in the menu bar. SwiftUI's `MenuBarExtra` is basic; this removes boilerplate.
 
