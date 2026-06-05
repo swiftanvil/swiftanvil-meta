@@ -10,13 +10,23 @@
 
 | Package | Version | PMS | Grade | Status | Next Review | Next Action |
 |---------|---------|-----|-------|--------|-------------|-------------|
-| AnvilTemplate | 1.3.0 | 82 | A | 🟢 Healthy | 2026-06-18 | Minor doc improvements |
-| AnvilProject | 1.0.0 | 82 | A | 🟢 Healthy | 2026-06-18 | Minor doc improvements |
-| AnvilDocs | unreleased | — | — | 🟢 Initial package | After 0.1.0 tag | Integrate with `swiftanvil-cli` |
-| swiftanvil-cli | 0.3.0 | 85 | A | 🟢 Healthy | 2026-06-18 | Add plugin CLI commands |
-| AnvilCore | 1.0.0 | — | — | 🟢 Healthy | 2026-06-18 | Needs adoption (Phase 8.5) |
-| AnvilMacros | 1.0.0 | — | — | 🟡 Stub | 2026-06-11 | Fix `@Benchmark` macro (Phase 9.1) |
-| GoldenPath | — | — | — | 🟡 Misleading | 2026-06-11 | Fix RESULT.md + add real deps (Phase 9.3) |
+| AnvilA11y | 1.0.0 | 85 | A | 🟢 Healthy | 2026-06-19 | — |
+| AnvilBench | 1.0.0 | 100 | A+ | 🟢 Healthy | 2026-06-19 | — |
+| AnvilCore | 1.0.0 | 65 | C | 🔴 Sprint | 2026-06-19 | Tag v1.0.0, add performance benchmarks |
+| AnvilDevMenu | 1.0.0 | 85 | A | 🟢 Healthy | 2026-06-19 | — |
+| AnvilDocs | 1.0.0 | 85 | A | 🟢 Healthy | 2026-06-19 | — |
+| AnvilFlags | 1.0.0 | 85 | A | 🟢 Healthy | 2026-06-19 | — |
+| AnvilMacros | 1.0.0 | 58 | F | 🔴 Sprint | 2026-06-19 | Add DocC catalog, CI workflow, git tag |
+| AnvilMenuBar | 1.0.0 | 65 | C | 🔴 Sprint | 2026-06-19 | Tag v1.0.0 |
+| AnvilNetwork | 1.0.0 | 85 | A | 🟢 Healthy | 2026-06-19 | — |
+| AnvilProject | 1.0.0 | 90 | A+ | 🟢 Healthy | 2026-06-19 | — |
+| AnvilRunner | 1.0.0 | 85 | A | 🟢 Healthy | 2026-06-19 | Audit security false positive |
+| AnvilSettings | 1.0.0 | 65 | C | 🔴 Sprint | 2026-06-19 | Tag v1.0.0 |
+| AnvilStrings | 1.0.0 | 85 | A | 🟢 Healthy | 2026-06-19 | — |
+| AnvilTemplate | 1.0.0 | 85 | A | 🟢 Healthy | 2026-06-19 | — |
+| AnvilWindow | 1.0.0 | 65 | C | 🔴 Sprint | 2026-06-19 | Tag v1.0.0 |
+| AnvilWizard | 1.0.0 | 85 | A | 🟢 Healthy | 2026-06-19 | — |
+| swiftanvil-cli | 0.3.0 | 90 | A+ | 🟢 Healthy | 2026-06-19 | — |
 
 **Legend:** 🟢 Healthy (A) | 🟡 Improve (B) | 🔴 Sprint (C/F) | ⚪ Unknown
 
@@ -26,12 +36,13 @@
 
 | Package | Item | Impact | Effort | Target Version | Phase |
 |---------|------|--------|--------|----------------|-------|
-| AnvilMacros | MAC-001: Real `@Benchmark` macro with timing + BenchmarkKit integration | 8 | medium | 1.1.0 | 9.1 |
-| GoldenPath | GPT-001: Fix RESULT.md + add AnvilCore/AnvilMacros to Package.swift | 5 | small | — | 9.3 |
-| All packages | SW6-001: Consistent `swiftLanguageModes: [.v6]` across all repos | 4 | small | — | 9.2 |
+| AnvilMacros | MAC-001: Real `@Benchmark` macro with timing + BenchmarkKit integration | 8 | medium | 1.1.0 | 9.1 ✅ |
+| GoldenPath | GPT-001: Fix RESULT.md + add AnvilCore/AnvilMacros to Package.swift | 5 | small | — | 9.3 ✅ |
+| All packages | SW6-001: Consistent `swiftLanguageModes: [.v6]` across all repos | 4 | small | — | 9.2 ✅ |
+| swiftanvil-meta | PMS-001: Build calculation script + update dashboard | 5 | medium | — | 9.4 🔄 |
 
 **Blocked:**
-- GPT-001 (GoldenPath fix) blocked by MAC-001 (needs real `@Benchmark` first)
+- None
 
 ---
 
@@ -41,22 +52,20 @@
 
 | ID | Package | Description | Impact | Effort | Blocked By | Phase |
 |----|---------|-------------|--------|--------|------------|-------|
-| MAC-001 | AnvilMacros | `@Benchmark` macro is a stub — add timing, stats, BenchmarkKit integration | 8 | medium | — | 9.1 |
-| SET-001 | — | Create AnvilSettings package (type-safe UserDefaults) | 7 | medium | — | 8.2 |
-| CORE-001 | AnvilCore | Zero packages depend on it — integrate into Network, Flags, DevMenu, Bench | 6 | medium | — | 8.5 |
-| GPT-001 | GoldenPath | RESULT.md claims AnvilCore/AnvilMacros deps that don't exist in Package.swift | 5 | small | MAC-001 | 9.3 |
-| PMS-001 | swiftanvil-meta | PMS framework documented but not implemented — build calculation script | 5 | medium | — | 9.4 |
-| MEN-001 | — | Create AnvilMenuBar package (macOS menu bar extras) | 5 | small | — | 8.3 |
-| WIN-001 | — | Create AnvilWindow package (macOS window management) | 5 | medium | — | 8.4 |
+| PMS-001 | swiftanvil-meta | PMS framework documented but not implemented — build calculation script | 5 | medium | — | 9.4 🔄 |
+| DOC-005 | AnvilMacros | Add DocC catalog to raise documentation score | 5 | small | — | — |
+| TAG-001 | AnvilCore | Tag v1.0.0 to restore API stability score | 4 | small | — | — |
+| TAG-002 | AnvilMenuBar | Tag v1.0.0 to restore API stability score | 4 | small | — | — |
+| TAG-003 | AnvilSettings | Tag v1.0.0 to restore API stability score | 4 | small | — | — |
+| TAG-004 | AnvilWindow | Tag v1.0.0 to restore API stability score | 4 | small | — | — |
 
 ### Medium Impact (3–4)
 
 | ID | Package | Description | Impact | Effort | Phase |
 |----|---------|-------------|--------|--------|-------|
-| SW6-001 | All packages | Swift 6 language mode inconsistency — some use `.enableExperimentalFeature("StrictConcurrency")` | 4 | small | 9.2 |
 | CLI-001 | swiftanvil-cli | Plugin commands in `--help` | 4 | medium | — |
 | TPL-003 | AnvilTemplate | Template parse caching | 5 | small | — |
-| TMP-001 | swiftanvil-cli | `swiftanvil create macos-app` template | 6 | medium | 8.1 |
+| PERF-001 | AnvilCore | Add performance benchmarks to raise score | 5 | small | — |
 
 ### Low Impact (1–2)
 
@@ -73,15 +82,15 @@
 
 | Phase | Child | Status | Repo | Est. Effort |
 |-------|-------|--------|------|-------------|
-| 8.1 | macOS App Template | ⚪ Planned | swiftanvil-cli | Medium |
-| 8.2 | AnvilSettings | ⚪ Planned | swiftanvil-anvil-settings | Medium |
-| 8.3 | AnvilMenuBar | ⚪ Planned | swiftanvil-anvil-menubar | Small |
-| 8.4 | AnvilWindow | ⚪ Planned | swiftanvil-anvil-window | Medium |
-| 8.5 | AnvilCore Integration | ⚪ Planned | Multiple | Medium |
-| 9.1 | Real `@Benchmark` Macro | ⚪ Planned | swiftanvil-anvil-macros | Medium |
-| 9.2 | Swift 6 Consistency | ⚪ Planned | All repos | Small |
-| 9.3 | GoldenPath Fix | ⚪ Planned | swiftanvil-example-golden-path | Small |
-| 9.4 | PMS Automation | ⚪ Planned | swiftanvil-meta | Medium |
+| 8.1 | macOS App Template | ✅ Done | swiftanvil-cli | Medium |
+| 8.2 | AnvilSettings | ✅ Done | swiftanvil-anvil-settings | Medium |
+| 8.3 | AnvilMenuBar | ✅ Done | swiftanvil-anvil-menubar | Small |
+| 8.4 | AnvilWindow | ✅ Done | swiftanvil-anvil-window | Medium |
+| 8.5 | AnvilCore Integration | ✅ Done | Multiple | Medium |
+| 9.1 | Real `@Benchmark` Macro | ✅ Done | swiftanvil-anvil-macros | Medium |
+| 9.2 | Swift 6 Consistency | ✅ Done | All repos | Small |
+| 9.3 | GoldenPath Fix | ✅ Done | swiftanvil-example-golden-path | Small |
+| 9.4 | PMS Automation | 🔄 In Progress | swiftanvil-meta | Medium |
 
 ---
 
@@ -92,8 +101,8 @@
 | No package at B for >2 sprints | ✅ All packages A or initial |
 | No "Later" item >3 months old | ✅ All packages <1 month old |
 | Every sprint improves ≥1 category | ✅ TPL-002 resolved (correctness +8) |
-| No stub macro >1 sprint | 🔴 `@Benchmark` is a stub — Phase 9.1 scheduled |
-| No orphan package >1 sprint | 🔴 AnvilCore has 0 dependents — Phase 8.5 scheduled |
+| No stub macro >1 sprint | ✅ `@Benchmark` is real — Phase 9.1 done |
+| No orphan package >1 sprint | ✅ AnvilCore has 4 dependents — Phase 8.5 done |
 
 ---
 
