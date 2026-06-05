@@ -798,25 +798,25 @@ registered as `planning.children-index`.
 
 ---
 
-### 9.3 GoldenPath Fix + AnvilMacros/AnvilCore Integration ⚪
+### 9.3 GoldenPath Fix + AnvilMacros/AnvilCore Integration ✅
 
 | Aspect | Detail |
 |--------|--------|
 | Plan | `planning.child-9-3` |
-| Status | Planned |
+| Result | `planning.child-9-3-result` |
+| Status | Complete |
 | Repo | `swiftanvil-example-golden-path` |
-| Blocked By | 9.1 (needs real `@Benchmark`) |
+| Tests | 5/5 pass |
 
-**What it will deliver:**
-- Add `AnvilCore` and `AnvilMacros` as actual dependencies in `Package.swift`
-- Fix `RESULT.md` to match actual dependencies (currently claims deps that don't exist)
-- Add real `@AnvilInjectable` usage in data models
-- Add real `AnvilLogger` usage for app logging
-- Add real `@Benchmark` usage (after 9.1)
+**What it delivered:**
+- Added `AnvilCore` and `AnvilMacros` as actual dependencies in `Package.swift`
+- Created `AppConfig.swift` with `@AnvilInjectable` struct and `AnvilLogger` demo
+- Added `@Benchmark` usage on `computeSum()` in `AppBenchmarks.swift`
+- `Package.swift` now matches the ecosystem claims
 
-**Current state:** `RESULT.md` claims the app uses AnvilCore and AnvilMacros, but `Package.swift` has neither dependency.
+**Current state (before):** `RESULT.md` claimed the app used AnvilCore and AnvilMacros, but `Package.swift` had neither dependency.
 
-**Why:** The golden path example should actually demonstrate the full ecosystem, not claim to.
+**Why:** The golden path example should actually demonstrate the full ecosystem, not just claim to.
 
 ---
 
