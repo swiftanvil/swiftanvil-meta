@@ -2,7 +2,7 @@
 priority: CRITICAL
 type: CHECKLIST
 audience: BUILDER
-last_updated: 2026-06-04
+last_updated: 2026-06-05
 ---
 
 # Session Start Checklist
@@ -11,9 +11,9 @@ Every session begins here. Do not skip steps.
 
 ## Step 1: Load Memory (2 min)
 
-Read `meta.registry`, then resolve and read these document IDs in order:
+Read `meta.registry`, then resolve and read these document IDs in order.
 
-**Always read (6 docs):**
+**Always read (6 docs, ~500 lines total):**
 - [ ] `memory.meta` — how this memory system works
 - [ ] `memory.identity` — who we are
 - [ ] `policy.platform` — minimum platform requirements
@@ -21,12 +21,14 @@ Read `meta.registry`, then resolve and read these document IDs in order:
 - [ ] `packages.registry` — package status and scores
 - [ ] `planning.children-index` — current phase children and status
 
-**Read when relevant (conditional):**
+**Read when relevant (conditional — check trigger before loading):**
 - [ ] `meta.resume` — human session resumption (human-in-the-loop sessions only)
-- [ ] `improvement.framework` — if any package score < 80 (see Step 2)
+- [ ] `improvement.framework` — if any package score < 80 (see Step 2) or improvement work planned
 - [ ] `agents.compatibility` — if using a new or unusual agent
 - [ ] `agents.diagnostics` — if agent/reviewer commands fail
 - [ ] `naming.registry` — if naming decisions are being made
+- [ ] `quality.standards` — if reviewing code or writing tests
+- [ ] `modernization.api` — if platform policy violations are present or dropping OS version
 - [ ] `upgrade.platform` — if platform policy violations are present (see Step 2)
 
 ## Step 2: Check Health (1 min)

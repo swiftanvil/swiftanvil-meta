@@ -30,6 +30,10 @@ documents:
     path: RESUME.md
     audience: [human]
     aliases: []
+    load_policy:
+      conditional: "human-in-the-loop sessions only"
+      order: 20
+      estimated_lines: 30
 
   meta.agents:
     title: Agent Instructions
@@ -42,18 +46,30 @@ documents:
     path: AGENT_COMPATIBILITY.md
     audience: [human, agent]
     aliases: []
+    load_policy:
+      conditional: "using a new or unusual agent"
+      order: 14
+      estimated_lines: 40
 
   agents.diagnostics:
     title: Agent Diagnostics
     path: AGENT_DIAGNOSTICS.md
     audience: [human, agent]
     aliases: []
+    load_policy:
+      conditional: "agent or reviewer commands fail"
+      order: 15
+      estimated_lines: 30
 
   meta.session-start:
     title: Session Start Checklist
     path: MEMORY/99-SESSION_START.md
     audience: [agent]
     aliases: [MEMORY/99-SESSION_START.md]
+    load_policy:
+      always: true
+      order: 1
+      estimated_lines: 60
 
   meta.memory-system:
     title: Memory System
@@ -66,12 +82,20 @@ documents:
     path: MEMORY/00-META.md
     audience: [human, agent]
     aliases: [00-META.md]
+    load_policy:
+      always: true
+      order: 2
+      estimated_lines: 50
 
   memory.identity:
     title: SwiftAnvil Identity
     path: MEMORY/01-IDENTITY.md
     audience: [human, agent]
     aliases: [01-IDENTITY.md]
+    load_policy:
+      always: true
+      order: 3
+      estimated_lines: 30
 
   policy.platform:
     title: Platform Policy
@@ -79,6 +103,10 @@ documents:
     mirror: MEMORY/02-PLATFORM_POLICY.md
     audience: [human, agent]
     aliases: [02-PLATFORM_POLICY.md]
+    load_policy:
+      always: true
+      order: 4
+      estimated_lines: 80
 
   workflow.orchestration:
     title: Orchestration Framework
@@ -86,6 +114,10 @@ documents:
     mirror: MEMORY/03-ORCHESTRATION.md
     audience: [human, agent]
     aliases: [03-ORCHESTRATION.md]
+    load_policy:
+      always: true
+      order: 5
+      estimated_lines: 120
 
   improvement.framework:
     title: Improvement Framework
@@ -93,12 +125,20 @@ documents:
     mirror: MEMORY/04-IMPROVEMENT.md
     audience: [human, agent]
     aliases: [04-IMPROVEMENT.md]
+    load_policy:
+      conditional: "any package PMS < 80 or improvement work planned"
+      order: 10
+      estimated_lines: 100
 
   quality.standards:
     title: Quality Standards
     path: MEMORY/05-QUALITY.md
     audience: [human, agent]
     aliases: [05-QUALITY.md]
+    load_policy:
+      conditional: "reviewing code or writing tests"
+      order: 11
+      estimated_lines: 40
 
   modernization.api:
     title: API Modernization
@@ -106,12 +146,20 @@ documents:
     mirror: MEMORY/06-API_MODERNIZATION.md
     audience: [human, agent]
     aliases: [06-API_MODERNIZATION.md]
+    load_policy:
+      conditional: "platform policy violations present or dropping OS version"
+      order: 12
+      estimated_lines: 60
 
   packages.registry:
     title: Package Registry
     path: MEMORY/07-PACKAGES.md
     audience: [human, agent]
     aliases: [07-PACKAGES.md]
+    load_policy:
+      always: true
+      order: 6
+      estimated_lines: 50
 
   naming.registry:
     title: Naming Registry
@@ -119,6 +167,10 @@ documents:
     mirror: MEMORY/08-NAMING.md
     audience: [human, agent]
     aliases: [08-NAMING.md]
+    load_policy:
+      conditional: "naming decisions being made"
+      order: 13
+      estimated_lines: 30
 
   roadmap.org:
     title: SwiftAnvil Roadmap
