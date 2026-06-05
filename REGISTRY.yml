@@ -172,6 +172,16 @@ documents:
       order: 13
       estimated_lines: 30
 
+  boundary.istudio:
+    title: SwiftAnvil ↔ iStudio Boundary
+    path: BOUNDARY.md
+    audience: [human, agent]
+    aliases: []
+    load_policy:
+      conditional: "working on cross-repo features or planning new tooling"
+      order: 14
+      estimated_lines: 200
+
   roadmap.org:
     title: SwiftAnvil Roadmap
     path: ROADMAP.md
@@ -705,5 +715,17 @@ documents:
   planning.child-6-3:
     title: Example Projects & Ecosystem Validation
     path: Children/6.3/PLAN.md
+    audience: [human, agent]
+    aliases: []
+
+  planning.child-9-5:
+    title: iStudio Boundary Document & Enforcement
+    path: Children/9.5/PLAN.md
+    audience: [human, agent]
+    aliases: []
+
+  planning.child-9-6:
+    title: Migrate iStudio Validators to SwiftAnvil
+    path: Children/9.6/PLAN.md
     audience: [human, agent]
     aliases: []

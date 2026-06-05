@@ -38,17 +38,27 @@ Read `meta.registry`, then resolve and read these document IDs in order.
 - [ ] Any blocked items? → Check if unblocked
 - [ ] Any stale branches? → Clean up
 
-## Step 3: Plan Work (2 min)
+## Step 3: Check Boundary (30 sec)
+
+Before planning any feature, verify it belongs in SwiftAnvil:
+
+- [ ] Does this involve task orchestration, worker dispatch, or credential leases? → **Belongs in iStudio, not here**
+- [ ] Does this involve Swift code style, platform policy, build tooling, or distribution? → **Belongs in SwiftAnvil**
+- [ ] Does this cross both boundaries? → **Document the split; do not merge concerns**
+
+Reference: `meta.agents` Boundary Rule section.
+
+## Step 4: Plan Work (2 min)
 
 - [ ] Read `roadmap.org` for planned child
 - [ ] Check if dependencies need updating
 - [ ] Verify platform requirements match policy (iOS 18+, macOS 15+)
 
-## Step 4: Execute
+## Step 5: Execute
 
 Proceed with planned work, following `workflow.orchestration`.
 
-## Step 5: Update Memory (1 min)
+## Step 6: Update Memory (1 min)
 
 - [ ] Update `packages.registry` if scores changed
 - [ ] Update `naming.registry` if names changed

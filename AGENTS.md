@@ -40,6 +40,21 @@ Expected local layout:
     └── ...
 ```
 
+## Boundary Rule — SwiftAnvil vs. iStudio
+
+SwiftAnvil is the **toolkit and standards** repository. iStudio is the **orchestration runtime**.
+
+| If a feature involves... | It belongs in... |
+|---|---|
+| Swift code style, platform policy, API modernization | **SwiftAnvil** |
+| Package.swift generation, DocC conventions, lint rules | **SwiftAnvil** |
+| Build optimization, binary size, distribution pipeline | **SwiftAnvil** |
+| Task orchestration, worker dispatch, credential leases | **iStudio** |
+| Goal workflow, review scheduling, chain state machine | **iStudio** |
+| Multi-machine execution, visible worker sessions | **iStudio** |
+
+**Redirect policy:** If during implementation you encounter a feature that crosses this boundary, STOP and document the finding. Do not add orchestration logic to SwiftAnvil. Do not add Swift-specific policy to iStudio.
+
 ## Editing Rules
 
 - Keep memory files small and directly actionable.

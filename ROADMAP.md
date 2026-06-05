@@ -16,8 +16,10 @@
 | [Phase 6](#phase-6-integration--validation) | Integration & Validation | 🟢 Complete | 3/3 |
 | [Phase 7](#phase-7-quality--completeness) | Quality & Completeness | 🟢 Complete | 7/7 |
 | [Phase 8](#phase-8-macos-app-toolkit) | macOS App Toolkit | 🟢 Complete | 5/5 |
+| [Phase 9](#phase-9-istudio-boundary--tooling-expansion) | iStudio Boundary & Tooling Expansion | 🟡 In Progress | 0/2 |
+| [Phase 10](#phase-10-future-expansion) | Future Expansion | ⚪ Planned | — |
 
-**Current Active Phase:** Phase 8 — macOS App Toolkit 🟡 In Progress (5/5 children complete)
+**Current Active Phase:** Phase 9 — iStudio Boundary & Tooling Expansion 🟡 In Progress (0/2 children)
 
 **Phase Gate Note:** Phase 6 is complete. All 3 children done. 6.1 (53 tests), 6.2 (62 tests), 6.3 (43 CLI tests + 7 lib + 5 CLI + 6 SwiftUI example tests).
 
@@ -843,44 +845,99 @@ registered as `planning.children-index`.
 
 ---
 
+## Phase 9: iStudio Boundary & Tooling Expansion 🟡
+
+> Clarify SwiftAnvil ↔ iStudio separation. Expand CLI tooling across four horizons.
+
+### 9.5 Boundary Document & Enforcement
+- Write canonical boundary document: SwiftAnvil = toolkit/standards, iStudio = orchestration/runtime
+- Define integration contract: `.istudio/profile.yaml` schema for SwiftAnvil-enabled field projects
+- Add redirect rules to `AGENTS.md`: "If feature involves task orchestration → iStudio. If Swift policy → SwiftAnvil."
+- Add lint rules to catch boundary leaks (orchestration code in SwiftAnvil, Swift policy in iStudio)
+
+### 9.6 Migrate iStudio Validators to SwiftAnvil
+- Move `SwiftSourceStructureValidator` (file line limits, top-level type counts) → `swiftanvil lint source --structure`
+- Move Swift-specific file health budgets (350-line default) → `.swiftanvil.yml` config
+- iStudio pre-commit hook calls `swiftanvil lint source` instead of duplicating doc-comment checks
+
+---
+
 ## Phase 10: Future Expansion ⚪
 
-> Long-term roadmap items. Not scheduled until Phases 8–9 are complete.
+> Long-term roadmap items. Organized by tooling horizon.
 
-### 10.1 SwiftUI Component Library (AnvilUI)
-- Reusable SwiftUI components: `AnvilButton`, `AnvilTextField`, `AnvilList`, `AnvilEmptyState`
-- macOS + iOS unified components with platform-specific adaptations
-- Accessibility-first by default (built-in `A11yIdentifiers` integration)
+### Horizon 1 — Build & Distribution Tooling
 
-### 10.2 Persistence Layer (AnvilStore)
-- SwiftData wrapper with migration support
-- Key-value store with `Codable` and encryption
-- CloudKit sync abstraction
+| # | Item | CLI Command | Description |
+|---|------|-------------|-------------|
+| 10.1 | Build Optimizer | `swiftanvil build optimize` | Analyze build graph, suggest module splitting, redundant rebuild detection, WMO vs incremental recommendation |
+| 10.2 | Build Settings Auditor | `swiftanvil build audit` | Scan `.pbxproj` / `Package.swift` for suboptimal settings, missing `DEAD_CODE_STRIPPING`, wrong `SWIFT_VERSION` |
+| 10.3 | Binary Size Analyzer | `swiftanvil build size` | Break down binary by module, suggest `strip`, `llvm-bcanalyzer` integration |
+| 10.4 | Dependency Graph Visualizer | `swiftanvil deps graph` | Generate Mermaid/DOT of package deps, detect cycles, suggest flattening |
+| 10.5 | Cache Efficiency Report | `swiftanvil build cache` | Analyze `.build` cache hit rate, suggest `DerivedData` cleanup, remote cache (S3/Bazel) |
 
-### 10.3 Analytics & Telemetry (AnvilTelemetry)
-- Privacy-first event tracking
-- Pluggable backends (PostHog, Mixpanel, custom)
-- Batch upload with retry and offline queue
+### Horizon 2 — App Store & Distribution Pipeline
 
-### 10.4 Authentication (AnvilAuth)
-- OAuth 2.0 / OIDC client
-- Keychain token storage
-- Biometric auth wrapper (LocalAuthentication)
+| # | Item | CLI Command | Description |
+|---|------|-------------|-------------|
+| 10.6 | TestFlight Pipeline | `swiftanvil distribute testflight` | Validate metadata, bump build number, archive, upload to ASC, poll processing |
+| 10.7 | App Store Submission | `swiftanvil distribute appstore` | Validate screenshots, check metadata completeness, submit for review, poll status |
+| 10.8 | App Preview Generator | `swiftanvil distribute preview` | Auto-generate App Preview video from UI tests (screen recording + captions) |
+| 10.9 | Metadata Validator | `swiftanvil distribute validate` | Check `Info.plist`, entitlements, privacy manifest, required reason API usage |
+| 10.10 | Release Notes Composer | `swiftanvil distribute notes` | Compose release notes from commits + PRs since last tag |
 
-### 10.5 Push Notifications (AnvilPush)
-- APNs wrapper with device token management
-- Notification category builder
-- Deep link routing integration
+### Horizon 3 — Runtime Observability
 
-### 10.6 Cross-Platform Expansion
-- Linux support for CLI packages (AnvilRunner, swiftanvil-cli)
-- Windows support investigation (Swift on Windows maturity)
-- WebAssembly target for shared logic
+| # | Item | CLI Command | Description |
+|---|------|-------------|-------------|
+| 10.11 | Performance Profiler | `swiftanvil perf profile` | Wrap `xcrun xctrace`, generate flame graphs, detect main thread blocking |
+| 10.12 | Logging Auditor | `swiftanvil perf logs` | Scan for `print()`, `NSLog()`, hardcoded log levels; suggest `os.log` / `AnvilLogger` |
+| 10.13 | Crash Symbolicator | `swiftanvil perf symbolicate` | Download dSYMs from ASC, symbolicate crash logs, aggregate by module |
+| 10.14 | Network Traffic Inspector | `swiftanvil perf network` | Validate no hardcoded URLs, no HTTP-only, certificate pinning coverage |
+| 10.15 | Accessibility Auditor | `swiftanvil perf a11y` | Run `XCUIAccessibilityAudit`, report missing labels, contrast, dynamic type |
 
-### 10.7 AI Agent Integration
-- MCP (Model Context Protocol) server for SwiftAnvil packages
-- Agent-readable package metadata endpoint
-- Auto-generated agent instructions per package
+### Horizon 4 — AI Agent Integration
+
+| # | Item | CLI Command | Description |
+|---|------|-------------|-------------|
+| 10.16 | Agent Context Pack | `swiftanvil agent context` | Generate bounded context packet for AI: architecture, recent changes, test policy |
+| 10.17 | Agent Instructions Generator | `swiftanvil agent instructions` | Auto-generate `AGENTS.md` from codebase analysis |
+| 10.18 | Review Packet Generator | `swiftanvil agent review` | Generate review packet: diff + tests + policy + architecture for iStudio review bus |
+
+### Existing Packages (Retained from Prior Phase 10)
+
+| # | Item | Description |
+|---|------|-------------|
+| 10.19 | SwiftUI Component Library (AnvilUI) | Reusable SwiftUI components, accessibility-first |
+| 10.20 | Persistence Layer (AnvilStore) | SwiftData wrapper, key-value, CloudKit sync |
+| 10.21 | Analytics & Telemetry (AnvilTelemetry) | Privacy-first event tracking, pluggable backends |
+| 10.22 | Authentication (AnvilAuth) | OAuth 2.0 / OIDC, Keychain, biometric wrapper |
+| 10.23 | Push Notifications (AnvilPush) | APNs wrapper, notification categories, deep link routing |
+| 10.24 | Cross-Platform Expansion | Linux/Windows support, WebAssembly target |
+
+---
+
+## Tooling Domain Reference
+
+Every `swiftanvil` command follows `swiftanvil <domain> <action>`:
+
+| Domain | Actions | Owner |
+|--------|---------|-------|
+| `create` | (default) | SwiftAnvil |
+| `adopt` | (default) | SwiftAnvil |
+| `lint` | `package`, `source`, `tests`, `dependencies` | SwiftAnvil |
+| `doctor` | (default), `--fix` | SwiftAnvil |
+| `docs` | `compose`, `validate`, `generate`, `preview` | SwiftAnvil |
+| `immunity` | `scan`, `report`, `suggest` | SwiftAnvil |
+| `verify` | (default), `--example` | SwiftAnvil |
+| `build` | `optimize`, `audit`, `size`, `cache` | SwiftAnvil |
+| `deps` | `graph`, `outdated`, `vulnerabilities` | SwiftAnvil |
+| `distribute` | `testflight`, `appstore`, `preview`, `validate`, `notes` | SwiftAnvil |
+| `perf` | `profile`, `logs`, `symbolicate`, `network`, `a11y` | SwiftAnvil |
+| `agent` | `context`, `instructions`, `review` | SwiftAnvil |
+
+**Orchestration concerns (when to run, credential leases, worker dispatch) belong in iStudio.**
+**Tool definitions, policy, and execution belong in SwiftAnvil.**
 
 ---
 
