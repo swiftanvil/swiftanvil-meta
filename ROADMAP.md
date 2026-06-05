@@ -776,20 +776,23 @@ registered as `planning.children-index`.
 
 ---
 
-### 9.2 Swift 6 Language Mode Consistency ⚪
+### 9.2 Swift 6 Language Mode Consistency ✅
 
 | Aspect | Detail |
 |--------|--------|
 | Plan | `planning.child-9-2` |
-| Status | Planned |
-| Scope | All 19 Swift package repos |
+| Result | `planning.child-9-2-result` |
+| Status | Complete |
+| Scope | All 21 Swift package repos |
 
-**What it will deliver:**
-- Audit every `Package.swift` for consistent `swiftLanguageModes: [.v6]` at package level
-- Remove per-target `.swiftLanguageMode(.v6)` and `.enableExperimentalFeature("StrictConcurrency")` redundancy
-- Verify no repo uses the deprecated `enableExperimentalFeature` approach
+**What it delivered:**
+- Audited all 21 repos; 12 already correct, 9 fixed
+- Fixed repos: AnvilCore, AnvilMenuBar, AnvilSettings, AnvilWindow, AnvilMacros, example-cli, example-golden-path, example-library, example-swiftui
+- All now use `swiftLanguageModes: [.v6]` at package level
+- Removed all deprecated `.enableExperimentalFeature("StrictConcurrency")` usage
+- Created 3 missing GitHub repos for example projects
 
-**Current state:** Mixed patterns — some use package-level `swiftLanguageModes`, some use per-target settings, GoldenPath uses `.enableExperimentalFeature("StrictConcurrency")`.
+**Current state (before):** Mixed patterns — package-level, per-target, and deprecated `enableExperimentalFeature`.
 
 **Why:** Inconsistent Swift 6 adoption is a hygiene issue. It creates confusion and may hide concurrency bugs.
 
