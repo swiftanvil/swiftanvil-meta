@@ -27,7 +27,7 @@ last_updated: 2026-06-05
 | AnvilMacros | swiftanvil-anvil-macros | 1.0.0 | — | — | 🟡 Stub | 18 | 15 |
 | AnvilSettings | swiftanvil-anvil-settings | 1.0.0 | — | — | 🟢 Healthy | 18 | 15 |
 | AnvilMenuBar | swiftanvil-anvil-menubar | 1.0.0 | — | — | 🟢 Healthy | — | 15 |
-| AnvilWindow | swiftanvil-anvil-window | — | — | — | ⚪ Planned | — | 15 |
+| AnvilWindow | swiftanvil-anvil-window | 1.0.0 | — | — | 🟢 Healthy | — | 15 |
 
 ## Example Projects
 

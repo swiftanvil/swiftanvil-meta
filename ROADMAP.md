@@ -707,20 +707,23 @@ registered as `planning.children-index`.
 
 ---
 
-### 8.4 AnvilWindow (Window Management) ⚪
+### 8.4 AnvilWindow (Window Management) ✅
 
 | Aspect | Detail |
 |--------|--------|
 | Plan | `planning.child-8-4` |
-| Status | Planned |
-| Repo | `swiftanvil-anvil-window` |
+| Result | `planning.child-8-4-result` |
+| Status | Complete |
+| Repo | [`swiftanvil-anvil-window`](https://github.com/swiftanvil/swiftanvil-anvil-window) |
 | Platforms | macOS 15+ only |
+| Tests | 12/12 pass |
 
-**What it will deliver:**
-- Floating panel helper (`NSPanel` + SwiftUI hosting)
-- HUD window for transient overlays
-- Window restoration state tracking
-- `NSWindowController` helpers for multi-window apps
+**What it delivered:**
+- `AnvilPanel` — SwiftUI `Scene` wrapper for floating `NSPanel` with modifier chaining
+- `AnvilHUD` — transient HUD window with auto-dismiss
+- `AnvilWindowState` — actor for capturing and restoring window frames/visibility
+- `AnvilWindowController` — programmatic show/hide/close with tracking
+- `WindowStateSnapshot` + `WindowFrame` — Codable state types
 
 **Why:** macOS window management is verbose. SwiftUI's window support is still limited for advanced use cases.
 
