@@ -2,6 +2,19 @@
 # calculate-pms.sh — Calculate Package Maturity Score for all SwiftAnvil repos
 # Usage: ./scripts/calculate-pms.sh [repo-path]
 # If no repo-path given, scores all repos in the sibling directory
+#
+# HEURISTICS VERSION: 1.0 (initial approximations)
+# These heuristics are pragmatic first-pass metrics. They intentionally trade
+# precision for automation — e.g. "DocC catalog exists" instead of measuring
+# coverage %, "git tag exists" instead of semver audit. Future versions should:
+#   - Parse swift build output for warnings (not just pass/fail)
+#   - Use swift-testing coverage when available
+#   - Audit README completeness, not just existence
+#   - Check semver compliance of tags, not just presence
+#   - Integrate GitHub API for SPI listing, issue/PR counts
+#   - Add dependabot/dependency audit for security
+#
+# See IMPROVEMENT_FRAMEWORK.md for the full PMS specification.
 
 set -euo pipefail
 
@@ -104,6 +117,23 @@ score_repo() {
   local next_review
   next_review=$(date -u -v+14d +"%Y-%m-%dT%H:%M:%SZ" 2>/dev/null || date -u -d "+14 days" +"%Y-%m-%dT%H:%M:%SZ")
 
+  # Generate improvement_items based on low scores
+  local improvement_items=""
+  local items=()
+  (( correctness < 25 )) && items+=("{\"id\":\"corr-1\",\"category\":\"correctness\",\"description\":\"Fix build or test failures\",\"impact\":$((25 - correctness)),\"effort\":\"small\"}")
+  (( coverage < 20 )) && items+=("{\"id\":\"cov-1\",\"category\":\"coverage\",\"description\":\"Add more tests (target: 5+ test files)\",\"impact\":$((20 - coverage)),\"effort\":\"small\"}")
+  (( documentation < 15 )) && items+=("{\"id\":\"doc-1\",\"category\":\"documentation\",\"description\":\"Add README or DocC catalog\",\"impact\":$((15 - documentation)),\"effort\":\"small\"}")
+  (( api_stability < 15 )) && items+=("{\"id\":\"api-1\",\"category\":\"api_stability\",\"description\":\"Tag a semantic version release\",\"impact\":$((15 - api_stability)),\"effort\":\"small\"}")
+  (( performance < 10 )) && items+=("{\"id\":\"perf-1\",\"category\":\"performance\",\"description\":\"Add BenchmarkKit performance tests\",\"impact\":$((10 - performance)),\"effort\":\"medium\"}")
+  (( ecosystem < 10 )) && items+=("{\"id\":\"eco-1\",\"category\":\"ecosystem\",\"description\":\"Add CI workflow or push to GitHub remote\",\"impact\":$((10 - ecosystem)),\"effort\":\"small\"}")
+  (( security < 5 )) && items+=("{\"id\":\"sec-1\",\"category\":\"security\",\"description\":\"Audit source for hardcoded secrets\",\"impact\":$((5 - security)),\"effort\":\"small\"}")
+
+  if [[ ${#items[@]} -gt 0 ]]; then
+    improvement_items=$(IFS=,; echo "[${items[*]}]")
+  else
+    improvement_items="[]"
+  fi
+
   local json
   json=$(cat <<EOF
 {
@@ -121,7 +151,8 @@ score_repo() {
   },
   "last_calculated": "$now",
   "next_review": "$next_review",
-  "test_count": $test_count
+  "test_count": $test_count,
+  "improvement_items": $improvement_items
 }
 EOF
 )

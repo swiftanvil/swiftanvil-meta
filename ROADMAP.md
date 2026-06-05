@@ -820,21 +820,24 @@ registered as `planning.children-index`.
 
 ---
 
-### 9.4 Package Maturity Score (PMS) Automation ⚪
+### 9.4 Package Maturity Score (PMS) Automation ✅
 
 | Aspect | Detail |
 |--------|--------|
 | Plan | `planning.child-9-4` |
-| Status | Planned |
+| Status | Done |
 | Primary Repo | swiftanvil-meta |
+| Result | `planning.child-9-4-result` |
 
-**What it will deliver:**
-- `scripts/calculate-pms.sh` — runs `swift test`, checks README/DocC presence, counts public APIs, checks CI status
-- `package.improvement-score` JSON added to each repo with real calculated scores
-- Update `IMPROVEMENT_DASHBOARD.md` with actual PMS data (not placeholder)
-- GitHub Actions workflow to recalculate PMS on every PR
+**Delivered:**
+- `scripts/calculate-pms.sh` — calculates PMS for all 17 repos
+- `scripts/test-pms.sh` — fixture-based test suite (5 tests)
+- `.github/workflows/pms.yml` — GitHub Actions workflow (push/PR/weekly/manual)
+- `package.improvement-score` JSON written to each repo
+- `IMPROVEMENT_DASHBOARD.md` updated with real scores
+- `MEMORY/07-PACKAGES.md` updated with real scores and versions
 
-**Current state:** The PMS framework is fully documented in `IMPROVEMENT_FRAMEWORK.md` but has zero implementation.
+**Current state:** PMS automation is live. 3 packages at A+, 10 at A, 4 at C, 1 at F.
 
 **Why:** Without objective metrics, quality decisions are arbitrary. The framework promises proactive improvement — it needs to actually run.
 

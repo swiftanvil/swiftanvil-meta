@@ -1,0 +1,48 @@
+name: Package Maturity Score
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  schedule:
+    # Run every Sunday at 03:00 UTC
+    - cron: '0 3 * * 0'
+  workflow_dispatch:
+
+jobs:
+  calculate-pms:
+    runs-on: macos-latest
+    steps:
+      - name: Checkout meta repo
+        uses: actions/checkout@v4
+
+      - name: Checkout all package repos
+        run: |
+          mkdir -p workspace
+          for repo in swiftanvil-anvil-a11y swiftanvil-anvil-bench swiftanvil-anvil-core swiftanvil-anvil-devmenu swiftanvil-anvil-docs swiftanvil-anvil-flags swiftanvil-anvil-macros swiftanvil-anvil-menubar swiftanvil-anvil-network swiftanvil-anvil-project swiftanvil-anvil-runner swiftanvil-anvil-settings swiftanvil-anvil-strings swiftanvil-anvil-template swiftanvil-anvil-window swiftanvil-anvil-wizard swiftanvil-cli; do
+            git clone --depth 1 "https://github.com/swiftanvil/${repo}.git" "workspace/${repo}" || true
+          done
+
+      - name: Setup Swift
+        uses: swift-actions/setup-swift@v2
+        with:
+          swift-version: '6.0'
+
+      - name: Calculate PMS for all repos
+        run: |
+          export WORKSPACE="${{ github.workspace }}/workspace"
+          ./scripts/calculate-pms.sh > pms-report.json
+          cat pms-report.json
+
+      - name: Upload PMS report
+        uses: actions/upload-artifact@v4
+        with:
+          name: pms-report
+          path: pms-report.json
+
+      - name: Check for failing grades
+        run: |
+          if jq -e '.[] | select(.grade == "F" or .grade == "C")' pms-report.json > /dev/null 2>&1; then
+            echo "::warning::Packages with grade C or F detected. Check IMPROVEMENT_DASHBOARD.md for details."
+          fi

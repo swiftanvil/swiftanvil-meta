@@ -12,19 +12,19 @@
 |---------|---------|-----|-------|--------|-------------|-------------|
 | AnvilA11y | 1.0.0 | 85 | A | 🟢 Healthy | 2026-06-19 | — |
 | AnvilBench | 1.0.0 | 100 | A+ | 🟢 Healthy | 2026-06-19 | — |
-| AnvilCore | 1.0.0 | 65 | C | 🔴 Sprint | 2026-06-19 | Tag v1.0.0, add performance benchmarks |
+| AnvilCore | — | 65 | C | 🔴 Sprint | 2026-06-19 | Tag v1.0.0, add performance benchmarks |
 | AnvilDevMenu | 1.0.0 | 85 | A | 🟢 Healthy | 2026-06-19 | — |
-| AnvilDocs | 1.0.0 | 85 | A | 🟢 Healthy | 2026-06-19 | — |
+| AnvilDocs | 0.1.0 | 85 | A | 🟢 Healthy | 2026-06-19 | — |
 | AnvilFlags | 1.0.0 | 85 | A | 🟢 Healthy | 2026-06-19 | — |
-| AnvilMacros | 1.0.0 | 58 | F | 🔴 Sprint | 2026-06-19 | Add DocC catalog, CI workflow, git tag |
-| AnvilMenuBar | 1.0.0 | 65 | C | 🔴 Sprint | 2026-06-19 | Tag v1.0.0 |
+| AnvilMacros | — | 58 | F | 🔴 Sprint | 2026-06-19 | Add DocC catalog, CI workflow, git tag |
+| AnvilMenuBar | — | 65 | C | 🔴 Sprint | 2026-06-19 | Tag v1.0.0 |
 | AnvilNetwork | 1.0.0 | 85 | A | 🟢 Healthy | 2026-06-19 | — |
 | AnvilProject | 1.0.0 | 90 | A+ | 🟢 Healthy | 2026-06-19 | — |
-| AnvilRunner | 1.0.0 | 85 | A | 🟢 Healthy | 2026-06-19 | Audit security false positive |
-| AnvilSettings | 1.0.0 | 65 | C | 🔴 Sprint | 2026-06-19 | Tag v1.0.0 |
+| AnvilRunner | 0.2.0 | 85 | A | 🟢 Healthy | 2026-06-19 | Audit security false positive |
+| AnvilSettings | — | 65 | C | 🔴 Sprint | 2026-06-19 | Tag v1.0.0 |
 | AnvilStrings | 1.0.0 | 85 | A | 🟢 Healthy | 2026-06-19 | — |
-| AnvilTemplate | 1.0.0 | 85 | A | 🟢 Healthy | 2026-06-19 | — |
-| AnvilWindow | 1.0.0 | 65 | C | 🔴 Sprint | 2026-06-19 | Tag v1.0.0 |
+| AnvilTemplate | 1.3.0 | 85 | A | 🟢 Healthy | 2026-06-19 | — |
+| AnvilWindow | — | 65 | C | 🔴 Sprint | 2026-06-19 | Tag v1.0.0 |
 | AnvilWizard | 1.0.0 | 85 | A | 🟢 Healthy | 2026-06-19 | — |
 | swiftanvil-cli | 0.3.0 | 90 | A+ | 🟢 Healthy | 2026-06-19 | — |
 
@@ -52,7 +52,7 @@
 
 | ID | Package | Description | Impact | Effort | Blocked By | Phase |
 |----|---------|-------------|--------|--------|------------|-------|
-| PMS-001 | swiftanvil-meta | PMS framework documented but not implemented — build calculation script | 5 | medium | — | 9.4 🔄 |
+| PMS-001 | swiftanvil-meta | PMS framework documented but not implemented — build calculation script | 5 | medium | — | 9.4 ✅ |
 | DOC-005 | AnvilMacros | Add DocC catalog to raise documentation score | 5 | small | — | — |
 | TAG-001 | AnvilCore | Tag v1.0.0 to restore API stability score | 4 | small | — | — |
 | TAG-002 | AnvilMenuBar | Tag v1.0.0 to restore API stability score | 4 | small | — | — |
@@ -90,7 +90,7 @@
 | 9.1 | Real `@Benchmark` Macro | ✅ Done | swiftanvil-anvil-macros | Medium |
 | 9.2 | Swift 6 Consistency | ✅ Done | All repos | Small |
 | 9.3 | GoldenPath Fix | ✅ Done | swiftanvil-example-golden-path | Small |
-| 9.4 | PMS Automation | 🔄 In Progress | swiftanvil-meta | Medium |
+| 9.4 | PMS Automation | ✅ Done | swiftanvil-meta | Medium |
 
 ---
 
