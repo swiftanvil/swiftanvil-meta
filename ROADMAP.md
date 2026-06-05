@@ -15,8 +15,9 @@
 | [Phase 5](#phase-5-ecosystem--distribution) | Ecosystem & Distribution | 🟢 Complete | 3/3 |
 | [Phase 6](#phase-6-integration--validation) | Integration & Validation | 🟢 Complete | 3/3 |
 | [Phase 7](#phase-7-quality--completeness) | Quality & Completeness | 🟢 Complete | 7/7 |
+| [Phase 8](#phase-8-macos-app-toolkit) | macOS App Toolkit | 🟢 Complete | 5/5 |
 
-**Current Active Phase:** Phase 7 — Quality & Completeness ✅ Complete
+**Current Active Phase:** Phase 8 — macOS App Toolkit 🟡 In Progress (5/5 children complete)
 
 **Phase Gate Note:** Phase 6 is complete. All 3 children done. 6.1 (53 tests), 6.2 (62 tests), 6.3 (43 CLI tests + 7 lib + 5 CLI + 6 SwiftUI example tests).
 
@@ -729,21 +730,22 @@ registered as `planning.children-index`.
 
 ---
 
-### 8.5 AnvilCore Integration into Existing Packages ⚪
+### 8.5 AnvilCore Integration into Existing Packages ✅
 
 | Aspect | Detail |
 |--------|--------|
 | Plan | `planning.child-8-5` |
-| Status | Planned |
+| Result | `planning.child-8-5-result` |
+| Status | Complete |
 | Primary Repos | swiftanvil-anvil-network, swiftanvil-anvil-flags, swiftanvil-anvil-devmenu, swiftanvil-anvil-bench |
 
-**What it will deliver:**
-- **AnvilNetwork** → use `AnvilLogger` for request/response logging (replace any `print` statements)
-- **AnvilFlags** → use `AnvilConfiguration` as a backend `FeatureFlagSource`
-- **AnvilDevMenu** → use `AnvilLogger` for unified log collection
-- **BenchmarkKit** → use `AnvilTask` for async benchmark execution
+**What it delivered:**
+- **AnvilNetwork** → `AnvilLogger` for request/response/error logging (+2 tests, 31 total)
+- **AnvilFlags** → `ConfigurationFeatureFlagSource` wrapping `AnvilConfiguration` (+8 tests, 45 total)
+- **AnvilDevMenu** → `LogCollector` bridges to `AnvilLogger` (+3 tests, 60 total)
+- **BenchmarkKit** → `BenchmarkTaskRunner` using `AnvilTask<BenchmarkResult>` (+2 tests, 77 total)
 
-**Why:** AnvilCore is currently unused (0 packages depend on it). It needs real adoption to justify its existence and prove its API design.
+**Why:** AnvilCore was unused (0 packages depended on it). It now has 4 dependents and its API design is validated in production code.
 
 ---
 

@@ -49,7 +49,7 @@ All actively maintained packages are now compliant with `policy.platform` (iOS 1
 | 🔴 High | AnvilMacros | `@Benchmark` macro is a stub — no timing or reporting | 8 | 9.1 |
 | 🔴 High | GoldenPath | RESULT.md claims AnvilCore/AnvilMacros deps that don't exist in Package.swift | 5 | 9.3 |
 | 🟡 Medium | All packages | Swift 6 language mode inconsistency across repos | 4 | 9.2 |
-| 🟡 Medium | AnvilCore | Zero packages depend on it — needs adoption | 6 | 8.5 |
+| 🟢 Low | AnvilCore | Now adopted by 4 packages | 6 | 8.5 |
 | 🟡 Medium | swiftanvil-meta | PMS framework documented but not implemented | 5 | 9.4 |
 | 🟢 Low | AnvilProject | README examples | 3 | — |
 | 🟢 Low | swiftanvil-example-swiftui | Missing DocC catalog | 2 | — |
