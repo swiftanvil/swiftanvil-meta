@@ -43,7 +43,7 @@ The folder names are examples. Do not rely on one contributor's local workspace 
 | **Humans** resuming a session | `meta.resume` | `meta.resume` |
 | **Agents** beginning work | `meta.session-start` | `meta.session-start` |
 
-The agent checklist points to the memory files that define current policy and priority. If a platform policy violation exists, the upgrade sprint takes priority over new feature work.
+The agent checklist points to the memory files that define current policy and priority. If a platform policy violation exists, the upgrade sprint takes priority over new feature work. If a package PMS is below 80, the improvement sprint takes priority over lower-priority roadmap work.
 
 ## Sharing Model
 
