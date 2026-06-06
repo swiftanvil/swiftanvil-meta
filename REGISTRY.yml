@@ -729,3 +729,244 @@ documents:
     path: Children/9.6/PLAN.md
     audience: [human, agent]
     aliases: []
+
+# ---
+# Repository Registry
+# ---
+# Machine-readable catalog of all SwiftAnvil GitHub repositories.
+# Agents use this for discovery, routing, and cross-repo workflows.
+
+repositories:
+  # Meta & Tooling
+  swiftanvil-meta:
+    name: "SwiftAnvil Meta"
+    category: meta
+    description: "Organization memory, registry, policy, and orchestration"
+    github_topics: [swiftanvil, meta, registry, policy]
+    agent_prompt: null
+    setup_order: null
+    dependencies: []
+
+  swiftanvil-cli:
+    name: "SwiftAnvil CLI"
+    category: tool
+    description: "Developer command-line interface for SwiftAnvil"
+    github_topics: [swiftanvil, tool, cli, developer-experience]
+    agent_prompt: null
+    setup_order: null
+    dependencies: []
+
+  swiftanvil-enforcement:
+    name: "SwiftAnvil Enforcement"
+    category: tool
+    description: "Lint rules, policy checks, and compliance enforcement"
+    github_topics: [swiftanvil, tool, lint, enforcement]
+    agent_prompt: null
+    setup_order: null
+    dependencies: []
+
+  # Infrastructure (Managed Worker Product Group)
+  swiftanvil-anvil-host:
+    name: "AnvilHost"
+    category: infrastructure
+    product_group: managed-worker
+    description: "Provision Mac as hands-off CI worker (LaunchAgent, power, cleanup)"
+    github_topics: [swiftanvil, infra, ci-worker, macos, launchagent]
+    agent_prompt: "Set up this Mac as a CI worker"
+    setup_order: 1
+    dependencies: []
+
+  swiftanvil-anvil-runner:
+    name: "AnvilRunner"
+    category: infrastructure
+    product_group: managed-worker
+    description: "Self-hosted GitHub Actions runner lifecycle management"
+    github_topics: [swiftanvil, infra, ci-worker, github-actions, macos]
+    agent_prompt: "Set up GitHub Actions runners for my repositories on this Mac"
+    setup_order: 2
+    dependencies: [swiftanvil-anvil-host]
+
+  # Shared Libraries
+  swiftanvil-anvil-core:
+    name: "AnvilCore"
+    category: library
+    description: "Foundation types and utilities"
+    github_topics: [swiftanvil, library, foundation]
+    agent_prompt: null
+    setup_order: null
+    dependencies: []
+
+  swiftanvil-anvil-network:
+    name: "AnvilNetwork"
+    category: library
+    description: "Networking abstractions and utilities"
+    github_topics: [swiftanvil, library, network]
+    agent_prompt: null
+    setup_order: null
+    dependencies: []
+
+  swiftanvil-anvil-flags:
+    name: "AnvilFlags"
+    category: library
+    description: "Feature flag management"
+    github_topics: [swiftanvil, library, feature-flags]
+    agent_prompt: null
+    setup_order: null
+    dependencies: []
+
+  swiftanvil-anvil-settings:
+    name: "AnvilSettings"
+    category: library
+    description: "Configuration and settings management"
+    github_topics: [swiftanvil, library, settings]
+    agent_prompt: null
+    setup_order: null
+    dependencies: []
+
+  swiftanvil-anvil-strings:
+    name: "AppStrings"
+    category: library
+    description: "Localization and string management"
+    github_topics: [swiftanvil, library, localization]
+    agent_prompt: null
+    setup_order: null
+    dependencies: []
+
+  swiftanvil-anvil-a11y:
+    name: "A11yIdentifiers"
+    category: library
+    description: "Accessibility identifiers"
+    github_topics: [swiftanvil, library, accessibility]
+    agent_prompt: null
+    setup_order: null
+    dependencies: []
+
+  swiftanvil-anvil-bench:
+    name: "BenchmarkKit"
+    category: library
+    description: "Benchmarking utilities"
+    github_topics: [swiftanvil, library, benchmark]
+    agent_prompt: null
+    setup_order: null
+    dependencies: []
+
+  swiftanvil-anvil-macros:
+    name: "AnvilMacros"
+    category: library
+    description: "Swift macros and code generation"
+    github_topics: [swiftanvil, library, macros]
+    agent_prompt: null
+    setup_order: null
+    dependencies: []
+
+  swiftanvil-anvil-menubar:
+    name: "AnvilMenubar"
+    category: library
+    description: "Menu bar utilities for macOS"
+    github_topics: [swiftanvil, library, macos, menubar]
+    agent_prompt: null
+    setup_order: null
+    dependencies: []
+
+  swiftanvil-anvil-window:
+    name: "AnvilWindow"
+    category: library
+    description: "Window management utilities"
+    github_topics: [swiftanvil, library, window]
+    agent_prompt: null
+    setup_order: null
+    dependencies: []
+
+  swiftanvil-anvil-devmenu:
+    name: "AnvilDevMenu"
+    category: library
+    description: "Developer menu utilities"
+    github_topics: [swiftanvil, library, developer-tools]
+    agent_prompt: null
+    setup_order: null
+    dependencies: []
+
+  swiftanvil-anvil-wizard:
+    name: "AnvilWizard"
+    category: library
+    description: "Wizard and onboarding flows"
+    github_topics: [swiftanvil, library, wizard]
+    agent_prompt: null
+    setup_order: null
+    dependencies: []
+
+  swiftanvil-anvil-template:
+    name: "AnvilTemplate"
+    category: library
+    description: "Project and file templates"
+    github_topics: [swiftanvil, library, template]
+    agent_prompt: null
+    setup_order: null
+    dependencies: []
+
+  swiftanvil-anvil-project:
+    name: "AnvilProject"
+    category: library
+    description: "Project structure and scaffolding"
+    github_topics: [swiftanvil, library, project]
+    agent_prompt: null
+    setup_order: null
+    dependencies: []
+
+  swiftanvil-anvil-docs:
+    name: "AnvilDocs"
+    category: library
+    description: "Documentation generation utilities"
+    github_topics: [swiftanvil, library, documentation]
+    agent_prompt: null
+    setup_order: null
+    dependencies: []
+
+  # Examples
+  swiftanvil-example-cli:
+    name: "Example CLI"
+    category: example
+    description: "Command-line tool example"
+    github_topics: [swiftanvil, example, cli]
+    agent_prompt: null
+    setup_order: null
+    dependencies: []
+
+  swiftanvil-example-library:
+    name: "Example Library"
+    category: example
+    description: "Library package example"
+    github_topics: [swiftanvil, example, library]
+    agent_prompt: null
+    setup_order: null
+    dependencies: []
+
+  swiftanvil-example-swiftui:
+    name: "Example SwiftUI"
+    category: example
+    description: "SwiftUI app example"
+    github_topics: [swiftanvil, example, swiftui]
+    agent_prompt: null
+    setup_order: null
+    dependencies: []
+
+  swiftanvil-example-golden-path:
+    name: "Example Golden Path"
+    category: example
+    description: "Golden path reference implementation"
+    github_topics: [swiftanvil, example, golden-path]
+    agent_prompt: null
+    setup_order: null
+    dependencies: []
+
+# Product Groups
+# Product groups are collections of repositories that form a cohesive user-facing product.
+product_groups:
+  managed-worker:
+    name: "Managed Worker"
+    description: "Self-hosted GitHub Actions CI on Apple Silicon Macs"
+    repositories:
+      - swiftanvil-anvil-host
+      - swiftanvil-anvil-runner
+    setup_order: [swiftanvil-anvil-host, swiftanvil-anvil-runner]
+    agent_prompt: "Set up this Mac as a CI worker"
