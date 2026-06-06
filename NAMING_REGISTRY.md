@@ -130,6 +130,80 @@ Example: `swiftanvil create MyApp --template ios-app`
 
 ---
 
+## Repository Metadata Standards
+
+Every repository in the SwiftAnvil organization must have consistent metadata for discoverability and agent routing.
+
+### GitHub Topics (Required)
+
+Every repository must have these topics:
+
+| Topic | When Required |
+|-------|---------------|
+| `swiftanvil` | **Always** — org-wide filter tag |
+| `swift-package` | For Swift Package Manager repos |
+| `library` | For shared libraries |
+| `tool` | For developer tools |
+| `infra` | For infrastructure repos |
+| `example` | For example/demo repos |
+
+Plus category-specific topics from `REGISTRY.yml`.
+
+### Registry Entry (Required)
+
+Every repository must have an entry in `REGISTRY.yml` under `repositories:`
+
+```yaml
+repositories:
+  swiftanvil-anvil-example:
+    name: "AnvilExample"           # PascalCase module name
+    category: library              # meta | tool | infrastructure | library | example
+    product_group: null            # Set if part of a product group
+    description: "One-line description"
+    github_topics: [swiftanvil, library, example]
+    agent_prompt: null             # Set if agent-operable
+    setup_order: null              # Set if part of ordered product group
+    dependencies: []               # Other swiftanvil repos this depends on
+```
+
+### Package.swift Name (Required)
+
+The `name` in `Package.swift` must match the repository name:
+
+```swift
+// swiftanvil-anvil-host/Package.swift
+let package = Package(
+    name: "swiftanvil-anvil-host",  // ← matches repo name
+    products: [
+        .library(name: "AnvilHost", targets: ["AnvilHost"]),
+    ]
+)
+```
+
+**Why:** SPM uses the last path component of the URL as the package identifier. Mismatches cause dependency resolution failures.
+
+---
+
+## Category Reference
+
+| Category | Description | Examples |
+|----------|-------------|----------|
+| `meta` | Org-level infrastructure | swiftanvil-meta |
+| `tool` | Developer-facing tools | swiftanvil-cli, swiftanvil-enforcement |
+| `infrastructure` | Runtime infrastructure | swiftanvil-anvil-host, swiftanvil-anvil-runner |
+| `library` | Reusable packages | swiftanvil-anvil-core, swiftanvil-anvil-network |
+| `example` | Demo/reference projects | swiftanvil-example-cli, swiftanvil-example-swiftui |
+
+---
+
+## Product Group Reference
+
+| Product Group | Repositories | User Prompt |
+|---------------|-------------|-------------|
+| `managed-worker` | host, runner | "Set up this Mac as a CI worker" |
+
+---
+
 ## Migration System
 
 When a name changes:
