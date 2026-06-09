@@ -102,7 +102,7 @@ and eventual host provisioning.
 
 ## Phase 9 — iStudio Boundary & Tooling Expansion
 
-Phase 9 roadmap work is active, but lower-priority implementation waits behind the PMS improvement gate.
+Phase 9 is active. The PMS improvement gate is cleared. Child 9.5 is workflow-complete; Child 9.6 is next.
 
 | Child | Name | Status | Primary Repo |
 |-------|------|--------|--------------|
@@ -110,7 +110,7 @@ Phase 9 roadmap work is active, but lower-priority implementation waits behind t
 | 9.2 | Swift 6 Language Mode Consistency | Complete | Multiple |
 | 9.3 | GoldenPath Fix + AnvilMacros/AnvilCore Integration | Complete | swiftanvil-example-golden-path |
 | 9.4 | Package Maturity Score (PMS) Automation | Complete | swiftanvil-meta |
-| 9.5 | Boundary Document & Enforcement | Workflow incomplete: `PLAN.md` exists; review/result/provenance needed | swiftanvil-meta |
+| 9.5 | Boundary Document & Enforcement | Complete | swiftanvil-meta |
 | 9.6 | Migrate iStudio Validators to SwiftAnvil | Planned; depends on 9.5 | swiftanvil-cli, iStudio |
 
 ## Review Artifact Conventions by Phase

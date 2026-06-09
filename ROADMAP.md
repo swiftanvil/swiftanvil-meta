@@ -16,12 +16,12 @@
 | [Phase 6](#phase-6-integration--validation) | Integration & Validation | 🟢 Complete | 3/3 |
 | [Phase 7](#phase-7-quality--completeness) | Quality & Completeness | 🟢 Complete | 7/7 |
 | [Phase 8](#phase-8-macos-app-toolkit) | macOS App Toolkit | 🟢 Complete | 5/5 |
-| [Phase 9](#phase-9-istudio-boundary--tooling-expansion) | iStudio Boundary & Tooling Expansion | 🟡 In Progress | 0/2 |
+| [Phase 9](#phase-9-istudio-boundary--tooling-expansion) | iStudio Boundary & Tooling Expansion | 🟡 In Progress | 5/6 |
 | [Phase 10](#phase-10-future-expansion) | Future Expansion | ⚪ Planned | — |
 
-**Current Active Phase:** Phase 9 — iStudio Boundary & Tooling Expansion 🟡 In Progress (0/2 children)
+**Current Active Phase:** Phase 9 — iStudio Boundary & Tooling Expansion 🟡 In Progress (5/6 children)
 
-**Current Work Gate:** `packages.registry` has PMS blockers below 80. Run the improvement sprint first, starting with `AnvilMacros`; then finish `planning.child-9-5` workflow artifacts before starting `planning.child-9-6`.
+**Current Work Gate:** ✅ **CLEARED** — Child 9.5 complete. Next: `planning.child-9-6`.
 
 **Phase Gate Note:** Phase 6 is complete. All 3 children done. 6.1 (53 tests), 6.2 (62 tests), 6.3 (43 CLI tests + 7 lib + 5 CLI + 6 SwiftUI example tests).
 
@@ -753,7 +753,7 @@ registered as `planning.children-index`.
 
 ---
 
-## Phase 9: Ecosystem Hardening ⚪
+### Phase 9.1–9.4: Ecosystem Hardening
 
 > Fix structural gaps that make SwiftAnvil feel incomplete. Macros that work. Consistent tooling.
 > Objective quality metrics.
@@ -853,13 +853,24 @@ registered as `planning.children-index`.
 
 **Gate before implementation:** ✅ **CLEARED** — Improvement Sprint 2026-06 raised all 5 packages to PMS 85 (Grade A). `AnvilMacros`, `AnvilCore`, `AnvilMenuBar`, `AnvilSettings`, and `AnvilWindow` are now above 80 in `packages.registry`.
 
-### 9.5 Boundary Document & Enforcement
-- Write canonical boundary document: SwiftAnvil = toolkit/standards, iStudio = orchestration/runtime
-- Define integration contract: `.istudio/profile.yaml` schema for SwiftAnvil-enabled field projects
-- Add redirect rules to `AGENTS.md`: "If feature involves task orchestration → iStudio. If Swift policy → SwiftAnvil."
-- Add lint rules to catch boundary leaks (orchestration code in SwiftAnvil, Swift policy in iStudio)
+### 9.5 Boundary Document & Enforcement ✅
 
-**Current workflow status:** Partial deliverables exist (`BOUNDARY.md`, redirect rules, checklist boundary step, registry entries), but `Children/9.5/` still needs review, result, and provenance artifacts.
+| Aspect | Detail |
+|--------|--------|
+| Plan | `planning.child-9-5` |
+| Result | `planning.child-9-5-result` |
+| Provenance | `planning.child-9-5-provenance` |
+| Status | Complete |
+| Primary Repo | swiftanvil-meta |
+
+**What it delivered:**
+- `BOUNDARY.md` — canonical boundary document with product relationship, repository independence, dependency direction, policy/tool/workflow sharing, integration contract (`.istudio/profile.yaml`), exclusions, redirect rules, and enforcement mechanisms
+- `AGENTS.md` — redirect rules with explicit STOP policy for boundary violations
+- `MEMORY/99-SESSION_START.md` — Step 3 boundary check (30 sec)
+- `ROADMAP.md` — Phase 9 unified, duplicate heading resolved
+- `REGISTRY.yml` — entries for `boundary.istudio`, `planning.child-9-5`, `planning.child-9-6`
+
+**Review:** APPROVED_WITH_NOTES (1 high finding resolved: ROADMAP.md duplicate Phase 9 headings)
 
 ### 9.6 Migrate iStudio Validators to SwiftAnvil
 - Move `SwiftSourceStructureValidator` (file line limits, top-level type counts) → `swiftanvil lint source --structure`
