@@ -2,9 +2,13 @@
 
 > Auto-generated from `package.improvement-score`. Updated after every child completion.
 
-*Last updated: 2026-06-05*
+*Last updated: 2026-06-09*
 
 ---
+
+## Current Gate
+
+✅ **CLEARED** — All packages now at PMS ≥ 80 (Grade A). The improvement sprint is complete. Lower-priority roadmap implementation is unblocked. Next: finish `planning.child-9-5` workflow artifacts, then proceed to `planning.child-9-6`.
 
 ## Package Health Overview
 
@@ -12,19 +16,19 @@
 |---------|---------|-----|-------|--------|-------------|-------------|
 | AnvilA11y | 1.0.0 | 85 | A | 🟢 Healthy | 2026-06-19 | — |
 | AnvilBench | 1.0.0 | 100 | A+ | 🟢 Healthy | 2026-06-19 | — |
-| AnvilCore | — | 65 | C | 🔴 Sprint | 2026-06-19 | Tag v1.0.0, add performance benchmarks |
-| AnvilDevMenu | 1.0.0 | 85 | A | 🟢 Healthy | 2026-06-19 | — |
-| AnvilDocs | 0.1.0 | 85 | A | 🟢 Healthy | 2026-06-19 | — |
-| AnvilFlags | 1.0.0 | 85 | A | 🟢 Healthy | 2026-06-19 | — |
-| AnvilMacros | — | 58 | F | 🔴 Sprint | 2026-06-19 | Add DocC catalog, CI workflow, git tag |
-| AnvilMenuBar | — | 65 | C | 🔴 Sprint | 2026-06-19 | Tag v1.0.0 |
-| AnvilNetwork | 1.0.0 | 85 | A | 🟢 Healthy | 2026-06-19 | — |
-| AnvilProject | 1.0.0 | 90 | A+ | 🟢 Healthy | 2026-06-19 | — |
-| AnvilRunner | 0.2.0 | 85 | A | 🟢 Healthy | 2026-06-19 | Audit security false positive |
-| AnvilSettings | — | 65 | C | 🔴 Sprint | 2026-06-19 | Tag v1.0.0 |
-| AnvilStrings | 1.0.0 | 85 | A | 🟢 Healthy | 2026-06-19 | — |
-| AnvilTemplate | 1.3.0 | 85 | A | 🟢 Healthy | 2026-06-19 | — |
-| AnvilWindow | — | 65 | C | 🔴 Sprint | 2026-06-19 | Tag v1.0.0 |
+| AnvilCore | 1.0.0 | 85 | A | 🟢 Healthy | 2026-06-23 | — |
+| AnvilDevMenu | 1.0.0 | 85 | A | 🟢 Healthy | 2026-06-23 | — |
+| AnvilDocs | 0.1.0 | 85 | A | 🟢 Healthy | 2026-06-23 | — |
+| AnvilFlags | 1.0.0 | 85 | A | 🟢 Healthy | 2026-06-23 | — |
+| AnvilMacros | 1.0.0 | 85 | A | 🟢 Healthy | 2026-06-23 | — |
+| AnvilMenuBar | 1.0.0 | 85 | A | 🟢 Healthy | 2026-06-23 | — |
+| AnvilNetwork | 1.0.0 | 85 | A | 🟢 Healthy | 2026-06-23 | — |
+| AnvilProject | 1.0.0 | 90 | A+ | 🟢 Healthy | 2026-06-23 | — |
+| AnvilRunner | 0.2.0 | 85 | A | 🟢 Healthy | 2026-06-23 | Audit security false positive |
+| AnvilSettings | 1.0.0 | 85 | A | 🟢 Healthy | 2026-06-23 | — |
+| AnvilStrings | 1.0.0 | 85 | A | 🟢 Healthy | 2026-06-23 | — |
+| AnvilTemplate | 1.3.0 | 85 | A | 🟢 Healthy | 2026-06-23 | — |
+| AnvilWindow | 1.0.0 | 85 | A | 🟢 Healthy | 2026-06-23 | — |
 | AnvilWizard | 1.0.0 | 85 | A | 🟢 Healthy | 2026-06-19 | — |
 | swiftanvil-cli | 0.3.0 | 90 | A+ | 🟢 Healthy | 2026-06-19 | — |
 
@@ -39,7 +43,8 @@
 | AnvilMacros | MAC-001: Real `@Benchmark` macro with timing + BenchmarkKit integration | 8 | medium | 1.1.0 | 9.1 ✅ |
 | GoldenPath | GPT-001: Fix RESULT.md + add AnvilCore/AnvilMacros to Package.swift | 5 | small | — | 9.3 ✅ |
 | All packages | SW6-001: Consistent `swiftLanguageModes: [.v6]` across all repos | 4 | small | — | 9.2 ✅ |
-| swiftanvil-meta | PMS-001: Build calculation script + update dashboard | 5 | medium | — | 9.4 🔄 |
+| swiftanvil-meta | PMS-001: Build calculation script + update dashboard | 5 | medium | — | 9.4 ✅ |
+| AnvilMacros + 4 others | PMS-Sprint: CI, DocC, tags to clear PMS gate | 5 | small | 1.0.0 | Sprint ✅ |
 
 **Blocked:**
 - None
@@ -53,11 +58,11 @@
 | ID | Package | Description | Impact | Effort | Blocked By | Phase |
 |----|---------|-------------|--------|--------|------------|-------|
 | PMS-001 | swiftanvil-meta | PMS framework documented but not implemented — build calculation script | 5 | medium | — | 9.4 ✅ |
-| DOC-005 | AnvilMacros | Add DocC catalog to raise documentation score | 5 | small | — | — |
-| TAG-001 | AnvilCore | Tag v1.0.0 to restore API stability score | 4 | small | — | — |
-| TAG-002 | AnvilMenuBar | Tag v1.0.0 to restore API stability score | 4 | small | — | — |
-| TAG-003 | AnvilSettings | Tag v1.0.0 to restore API stability score | 4 | small | — | — |
-| TAG-004 | AnvilWindow | Tag v1.0.0 to restore API stability score | 4 | small | — | — |
+| DOC-005 | AnvilMacros | Add DocC catalog to raise documentation score | 5 | small | — | Sprint ✅ |
+| TAG-001 | AnvilCore | Tag v1.0.0 to restore API stability score | 4 | small | — | Sprint ✅ |
+| TAG-002 | AnvilMenuBar | Tag v1.0.0 to restore API stability score | 4 | small | — | Sprint ✅ |
+| TAG-003 | AnvilSettings | Tag v1.0.0 to restore API stability score | 4 | small | — | Sprint ✅ |
+| TAG-004 | AnvilWindow | Tag v1.0.0 to restore API stability score | 4 | small | — | Sprint ✅ |
 
 ### Medium Impact (3–4)
 

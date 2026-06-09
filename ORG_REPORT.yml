@@ -1,19 +1,23 @@
 report:
   version: 1
-  generated_at: "2026-06-04T12:30:45Z"
+  generated_at: "2026-06-05T21:40:57Z"
   generator: "scripts/generate-org-report.sh"
   next_active_child:
-    id: "planning.child-4-4"
-    name: "Managed Worker Capability Discovery and Doctor"
-    repo: "swiftanvil-anvil-runner"
-    status: "planned"
+    id: "improvement.dashboard"
+    name: "PMS Improvement Sprint: AnvilMacros recovery"
+    repo: "swiftanvil-anvil-macros"
+    status: "required_before_lower_priority_roadmap_work"
+  roadmap_resume:
+    id: "planning.child-9-5"
+    name: "Boundary Document & Enforcement"
+    status: "workflow_incomplete"
 
 organization:
   name: "swiftanvil"
   url: "https://github.com/swiftanvil"
-  total_repositories: 12
-  active_phase: 4
-  current_child: "4.3"
+  total_repositories: 17
+  active_phase: 9
+  current_child: "9.5"
 
 repositories:
   - name: "swiftanvil-anvil-a11y"
@@ -21,96 +25,156 @@ repositories:
     latest_release: ""
     ci_status: "pending"
     tests: "17/17"
-    last_updated: "2026-06-03"
+    last_updated: "2026-06-04"
   - name: "swiftanvil-anvil-bench"
     status: "stable"
     latest_release: ""
     ci_status: "pending"
-    tests: "78/78"
-    last_updated: "2026-06-03"
-  - name: "swiftanvil-anvil-strings"
+    tests: "77/77"
+    last_updated: "2026-06-05"
+  - name: "swiftanvil-anvil-core"
     status: "stable"
     latest_release: ""
     ci_status: "pending"
-    tests: "21/21"
-    last_updated: "2026-06-03"
-  - name: "swiftanvil-anvil-network"
-    status: "stable"
-    latest_release: ""
-    ci_status: "pending"
-    tests: "29/29"
-    last_updated: "2026-06-03"
-  - name: "swiftanvil-anvil-flags"
-    status: "stable"
-    latest_release: ""
-    ci_status: "pending"
-    tests: "37/37"
-    last_updated: "2026-06-03"
+    tests: "11/11"
+    last_updated: "2026-06-05"
   - name: "swiftanvil-anvil-devmenu"
     status: "stable"
     latest_release: ""
     ci_status: "pending"
-    tests: "16/16"
-    last_updated: "2026-06-03"
-  - name: "swiftanvil-anvil-wizard"
-    status: "stable"
-    latest_release: ""
-    ci_status: "pending"
-    tests: "20/20"
-    last_updated: "2026-06-03"
-  - name: "swiftanvil-anvil-template"
-    status: "stable"
-    latest_release: ""
-    ci_status: "pending"
-    tests: "30/30"
-    last_updated: "2026-06-04"
-  - name: "swiftanvil-anvil-project"
-    status: "stable"
-    latest_release: ""
-    ci_status: "pending"
-    tests: "37/37"
-    last_updated: "2026-06-04"
+    tests: "60/60"
+    last_updated: "2026-06-05"
   - name: "swiftanvil-anvil-docs"
     status: "stable"
     latest_release: ""
     ci_status: "pending"
     tests: "6/6"
     last_updated: "2026-06-04"
+  - name: "swiftanvil-anvil-flags"
+    status: "stable"
+    latest_release: ""
+    ci_status: "pending"
+    tests: "45/45"
+    last_updated: "2026-06-05"
+  - name: "swiftanvil-anvil-macros"
+    status: "stable"
+    latest_release: ""
+    ci_status: "pending"
+    tests: "12/12"
+    last_updated: "2026-06-05"
+  - name: "swiftanvil-anvil-menubar"
+    status: "stable"
+    latest_release: ""
+    ci_status: "pending"
+    tests: "13/13"
+    last_updated: "2026-06-05"
+  - name: "swiftanvil-anvil-network"
+    status: "stable"
+    latest_release: ""
+    ci_status: "pending"
+    tests: "31/31"
+    last_updated: "2026-06-05"
+  - name: "swiftanvil-anvil-project"
+    status: "stable"
+    latest_release: ""
+    ci_status: "pending"
+    tests: "37/37"
+    last_updated: "2026-06-04"
   - name: "swiftanvil-anvil-runner"
     status: "stable"
     latest_release: "0.1.0"
     ci_status: "pending"
-    tests: "CI passed for 0.1.0"
+    tests: "CI passed for 0.2.0"
+    last_updated: "2026-06-04"
+  - name: "swiftanvil-anvil-settings"
+    status: "stable"
+    latest_release: ""
+    ci_status: "pending"
+    tests: "14/14"
+    last_updated: "2026-06-05"
+  - name: "swiftanvil-anvil-strings"
+    status: "stable"
+    latest_release: ""
+    ci_status: "pending"
+    tests: "21/21"
+    last_updated: "2026-06-04"
+  - name: "swiftanvil-anvil-template"
+    status: "stable"
+    latest_release: ""
+    ci_status: "pending"
+    tests: "30/30"
+    last_updated: "2026-06-04"
+  - name: "swiftanvil-anvil-window"
+    status: "stable"
+    latest_release: ""
+    ci_status: "pending"
+    tests: "12/12"
+    last_updated: "2026-06-05"
+  - name: "swiftanvil-anvil-wizard"
+    status: "stable"
+    latest_release: ""
+    ci_status: "pending"
+    tests: "20/20"
     last_updated: "2026-06-04"
   - name: "swiftanvil-cli"
     status: "stable"
     latest_release: ""
     ci_status: "pending"
-    tests: "13/13"
-    last_updated: "2026-06-04"
+    tests: "43 CLI + 7 lib + 5 CLI + 6 SwiftUI example tests"
+    last_updated: "2026-06-05"
 
 phases:
-  current: 4
-  active_child: "4.3"
-  completed_children: ["1.1", "1.2", "1.3", "1.4", "1.5", "2.1", "2.2", "2.3", "3.1", "3.2", "3.3", "3.4", "3.5", "4.1", "4.2"]
-  in_progress_children: ["4.3"]
-  planned_children: ["4.4", "4.5"]
+  current: 9
+  active_child: "9.5"
+  completed_boundary_children: []
+  in_progress_children: ["pms-improvement-sprint", "9.5"]
+  planned_children: ["9.6"]
+
+health_gates:
+  platform_policy:
+    status: "compliant"
+  package_pms:
+    status: "blocking_lower_priority_work"
+    blockers:
+      - package: "AnvilMacros"
+        pms: 58
+        grade: "F"
+        action: "Add DocC catalog, CI workflow, git tag"
+      - package: "AnvilCore"
+        pms: 65
+        grade: "C"
+        action: "Tag v1.0.0 and add performance benchmarks"
+      - package: "AnvilMenuBar"
+        pms: 65
+        grade: "C"
+        action: "Tag v1.0.0"
+      - package: "AnvilSettings"
+        pms: 65
+        grade: "C"
+        action: "Tag v1.0.0"
+      - package: "AnvilWindow"
+        pms: 65
+        grade: "C"
+        action: "Tag v1.0.0"
+
+next_sequence:
+  - "Run PMS improvement sprint starting with swiftanvil-anvil-macros"
+  - "Recalculate PMS and update packages.registry and improvement.dashboard"
+  - "Finish planning.child-9-5 review/result/provenance artifacts"
+  - "Start planning.child-9-6 validator migration"
 
 review_coverage:
-  total_children: 15
-  cross_host_reviewed: 14
+  total_children: "see Children/* artifacts"
+  cross_host_reviewed: "see Children/* artifacts"
   self_reviewed: 1
-  pending_review: 0
+  pending_review: ["planning.child-9-5"]
 
 enforcement:
-  last_run: "2026-06-04T12:30:45Z"
+  last_run: "2026-06-05T21:40:57Z"
   status: "passing"
   failures: []
 
 reserved:
-  worker_capabilities:
-    owner: "planning.child-4-4"
-    status: "TBD"
-  fleet_status:
-    owner: "planning.child-4-5"
+  validator_migration:
+    owner: "planning.child-9-6"
     status: "TBD"

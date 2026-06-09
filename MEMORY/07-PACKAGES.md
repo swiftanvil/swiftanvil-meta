@@ -2,7 +2,7 @@
 priority: HIGH
 type: REFERENCE
 audience: BUILDER
-last_updated: 2026-06-05
+last_updated: 2026-06-09
 ---
 
 # Package Registry
@@ -13,19 +13,19 @@ last_updated: 2026-06-05
 |---------|------|---------|-----|-------|--------|---------|-----------|
 | AnvilA11y | swiftanvil-anvil-a11y | 1.0.0 | 85 | A | 🟢 Healthy | 18 | 15 |
 | AnvilBench | swiftanvil-anvil-bench | 1.0.0 | 100 | A+ | 🟢 Healthy | 18 | 15 |
-| AnvilCore | swiftanvil-anvil-core | — | 65 | C | 🔴 Sprint | 18 | 15 |
+| AnvilCore | swiftanvil-anvil-core | 1.0.0 | 85 | A | 🟢 Healthy | 18 | 15 |
 | AnvilDevMenu | swiftanvil-anvil-devmenu | 1.0.0 | 85 | A | 🟢 Healthy | 18 | 15 |
 | AnvilDocs | swiftanvil-anvil-docs | 0.1.0 | 85 | A | 🟢 Healthy | — | 15 |
 | AnvilFlags | swiftanvil-anvil-flags | 1.0.0 | 85 | A | 🟢 Healthy | 18 | 15 |
-| AnvilMacros | swiftanvil-anvil-macros | — | 58 | F | 🔴 Sprint | 18 | 15 |
-| AnvilMenuBar | swiftanvil-anvil-menubar | — | 65 | C | 🔴 Sprint | — | 15 |
+| AnvilMacros | swiftanvil-anvil-macros | 1.0.0 | 85 | A | 🟢 Healthy | 18 | 15 |
+| AnvilMenuBar | swiftanvil-anvil-menubar | 1.0.0 | 85 | A | 🟢 Healthy | — | 15 |
 | AnvilNetwork | swiftanvil-anvil-network | 1.0.0 | 85 | A | 🟢 Healthy | 18 | 15 |
 | AnvilProject | swiftanvil-anvil-project | 1.0.0 | 90 | A+ | 🟢 Healthy | — | 15 |
 | AnvilRunner | swiftanvil-anvil-runner | 0.2.0 | 85 | A | 🟢 Healthy | — | 15 |
-| AnvilSettings | swiftanvil-anvil-settings | — | 65 | C | 🔴 Sprint | 18 | 15 |
+| AnvilSettings | swiftanvil-anvil-settings | 1.0.0 | 85 | A | 🟢 Healthy | 18 | 15 |
 | AnvilStrings | swiftanvil-anvil-strings | 1.0.0 | 85 | A | 🟢 Healthy | 18 | 15 |
 | AnvilTemplate | swiftanvil-anvil-template | 1.3.0 | 85 | A | 🟢 Healthy | 18 | 15 |
-| AnvilWindow | swiftanvil-anvil-window | — | 65 | C | 🔴 Sprint | — | 15 |
+| AnvilWindow | swiftanvil-anvil-window | 1.0.0 | 85 | A | 🟢 Healthy | — | 15 |
 | AnvilWizard | swiftanvil-anvil-wizard | 1.0.0 | 85 | A | 🟢 Healthy | — | 15 |
 | swiftanvil-cli | swiftanvil-cli | 0.3.0 | 90 | A+ | 🟢 Healthy | — | 15 |
 

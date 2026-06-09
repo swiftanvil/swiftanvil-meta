@@ -8,6 +8,15 @@ SwiftAnvil organization memory.
 `swiftanvil-meta` owns organization planning. Older local planning repositories are historical references unless a
 specific child plan says otherwise.
 
+## Current Entry Point
+
+Before starting roadmap implementation, apply the health gates from `meta.session-start`:
+
+- `packages.registry` currently has PMS blockers below 80.
+- Start with the `AnvilMacros` improvement sprint from `improvement.dashboard`.
+- After PMS is recalculated and no lower-priority blocker remains, finish `planning.child-9-5` workflow artifacts.
+- Only start `planning.child-9-6` after Child 9.5 is workflow-complete.
+
 ## Phase 1 — Foundation
 
 | Child | Name | Status | Primary Repo |
@@ -68,6 +77,41 @@ and eventual host provisioning.
 | 6.1 | CLI Integration — Templates & Plugins | Complete | swiftanvil-cli |
 | 6.2 | Documentation Generator CLI Integration | Complete | swiftanvil-cli, swiftanvil-anvil-docs |
 | 6.3 | Example Projects & Ecosystem Validation | Complete | swiftanvil-example-library, swiftanvil-example-cli, swiftanvil-example-swiftui |
+
+## Phase 7 — Quality & Completeness
+
+| Child | Name | Status | Primary Repo |
+|-------|------|--------|--------------|
+| 7.1 | Naming Cleanup & Package Consolidation | Complete | Multiple |
+| 7.2 | CI for All Repos | Complete | Multiple |
+| 7.3 | DocC + README Backfill | Complete | Multiple |
+| 7.4 | Test Coverage Sprint | Complete | Multiple |
+| 7.5 | AnvilCore Shared Package | Complete | swiftanvil-anvil-core |
+| 7.6 | Swift Macros Package | Complete | swiftanvil-anvil-macros |
+| 7.7 | Golden Path Example App | Complete | swiftanvil-example-golden-path |
+
+## Phase 8 — macOS App Toolkit
+
+| Child | Name | Status | Primary Repo |
+|-------|------|--------|--------------|
+| 8.1 | macOS App Template for `swiftanvil create` | Complete | swiftanvil-cli |
+| 8.2 | AnvilSettings (Type-Safe UserDefaults) | Complete | swiftanvil-anvil-settings |
+| 8.3 | AnvilMenuBar (macOS Menu Bar Extras) | Complete | swiftanvil-anvil-menubar |
+| 8.4 | AnvilWindow (Window Management) | Complete | swiftanvil-anvil-window |
+| 8.5 | AnvilCore Integration into Existing Packages | Complete | Multiple |
+
+## Phase 9 — iStudio Boundary & Tooling Expansion
+
+Phase 9 roadmap work is active, but lower-priority implementation waits behind the PMS improvement gate.
+
+| Child | Name | Status | Primary Repo |
+|-------|------|--------|--------------|
+| 9.1 | Real `@Benchmark` Macro | Complete | swiftanvil-anvil-macros |
+| 9.2 | Swift 6 Language Mode Consistency | Complete | Multiple |
+| 9.3 | GoldenPath Fix + AnvilMacros/AnvilCore Integration | Complete | swiftanvil-example-golden-path |
+| 9.4 | Package Maturity Score (PMS) Automation | Complete | swiftanvil-meta |
+| 9.5 | Boundary Document & Enforcement | Workflow incomplete: `PLAN.md` exists; review/result/provenance needed | swiftanvil-meta |
+| 9.6 | Migrate iStudio Validators to SwiftAnvil | Planned; depends on 9.5 | swiftanvil-cli, iStudio |
 
 ## Review Artifact Conventions by Phase
 

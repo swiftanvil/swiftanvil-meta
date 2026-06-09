@@ -2,7 +2,7 @@
 priority: CRITICAL
 type: CHECKLIST
 audience: BUILDER
-last_updated: 2026-06-05
+last_updated: 2026-06-06
 ---
 
 # Session Start Checklist
@@ -37,6 +37,18 @@ Read `meta.registry`, then resolve and read these document IDs in order.
 - [ ] Any platform policy violations? → Upgrade sprint first
 - [ ] Any blocked items? → Check if unblocked
 - [ ] Any stale branches? → Clean up
+
+### Current Known Health Gate (2026-06-06)
+
+`packages.registry` currently lists package PMS blockers:
+
+- `AnvilMacros` — 58 (F): add DocC catalog, CI workflow, and git tag first
+- `AnvilCore` — 65 (C): tag v1.0.0 and add performance benchmarks
+- `AnvilMenuBar` — 65 (C): tag v1.0.0
+- `AnvilSettings` — 65 (C): tag v1.0.0
+- `AnvilWindow` — 65 (C): tag v1.0.0
+
+Until these are resolved or explicitly overridden by the user, do not start lower-priority roadmap implementation. After the PMS gate clears, finish `planning.child-9-5` workflow artifacts before starting `planning.child-9-6`.
 
 ## Step 3: Check Boundary (30 sec)
 
