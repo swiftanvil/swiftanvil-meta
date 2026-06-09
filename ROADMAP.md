@@ -16,12 +16,12 @@
 | [Phase 6](#phase-6-integration--validation) | Integration & Validation | 🟢 Complete | 3/3 |
 | [Phase 7](#phase-7-quality--completeness) | Quality & Completeness | 🟢 Complete | 7/7 |
 | [Phase 8](#phase-8-macos-app-toolkit) | macOS App Toolkit | 🟢 Complete | 5/5 |
-| [Phase 9](#phase-9-istudio-boundary--tooling-expansion) | iStudio Boundary & Tooling Expansion | 🟡 In Progress | 5/6 |
+| [Phase 9](#phase-9-istudio-boundary--tooling-expansion) | iStudio Boundary & Tooling Expansion | 🟢 Complete | 6/6 |
 | [Phase 10](#phase-10-future-expansion) | Future Expansion | ⚪ Planned | — |
 
-**Current Active Phase:** Phase 9 — iStudio Boundary & Tooling Expansion 🟡 In Progress (5/6 children)
+**Current Active Phase:** Phase 9 — iStudio Boundary & Tooling Expansion 🟢 Complete (6/6 children)
 
-**Current Work Gate:** ✅ **CLEARED** — Child 9.5 complete. Next: `planning.child-9-6`.
+**Current Work Gate:** ✅ **CLEARED** — All Phase 9 children complete. Next: Phase 10 or user-directed work.
 
 **Phase Gate Note:** Phase 6 is complete. All 3 children done. 6.1 (53 tests), 6.2 (62 tests), 6.3 (43 CLI tests + 7 lib + 5 CLI + 6 SwiftUI example tests).
 
@@ -847,7 +847,7 @@ registered as `planning.children-index`.
 
 ---
 
-## Phase 9: iStudio Boundary & Tooling Expansion 🟡
+## Phase 9: iStudio Boundary & Tooling Expansion 🟢
 
 > Clarify SwiftAnvil ↔ iStudio separation. Expand CLI tooling across four horizons.
 
@@ -872,10 +872,21 @@ registered as `planning.children-index`.
 
 **Review:** APPROVED_WITH_NOTES (1 high finding resolved: ROADMAP.md duplicate Phase 9 headings)
 
-### 9.6 Migrate iStudio Validators to SwiftAnvil
-- Move `SwiftSourceStructureValidator` (file line limits, top-level type counts) → `swiftanvil lint source --structure`
-- Move Swift-specific file health budgets (350-line default) → `.swiftanvil.yml` config
-- iStudio pre-commit hook calls `swiftanvil lint source` instead of duplicating doc-comment checks
+### 9.6 Migrate iStudio Validators to SwiftAnvil ✅
+
+| Aspect | Detail |
+|--------|--------|
+| Plan | `planning.child-9-6` |
+| Result | `planning.child-9-6-result` |
+| Status | Complete |
+| Primary Repo | swiftanvil-cli |
+| Tests | 8/8 new pass, 61/61 total |
+
+**What it delivered:**
+- `swiftanvil lint source --structure` — file line count, top-level type count, and mixed type kind detection
+- `.swiftanvil.yml` config loading with `SwiftAnvilConfigLoader` using Yams
+- Configurable thresholds: `max_lines`, `max_top_level_types`, `mixed_type_kinds`
+- Boundary finding documented: iStudio-side changes (pre-commit hook, validator deprecation) are specified in `planning.child-9-6-result` for iStudio team implementation
 
 ---
 
@@ -968,7 +979,7 @@ Every `swiftanvil` command follows `swiftanvil <domain> <action>`:
 
 ---
 
-*Last updated: 2026-06-05*
+*Last updated: 2026-06-09*
 
 ---
 

@@ -102,7 +102,7 @@ and eventual host provisioning.
 
 ## Phase 9 — iStudio Boundary & Tooling Expansion
 
-Phase 9 is active. The PMS improvement gate is cleared. Child 9.5 is workflow-complete; Child 9.6 is next.
+Phase 9 is complete. All 6 children done.
 
 | Child | Name | Status | Primary Repo |
 |-------|------|--------|--------------|
@@ -111,7 +111,7 @@ Phase 9 is active. The PMS improvement gate is cleared. Child 9.5 is workflow-co
 | 9.3 | GoldenPath Fix + AnvilMacros/AnvilCore Integration | Complete | swiftanvil-example-golden-path |
 | 9.4 | Package Maturity Score (PMS) Automation | Complete | swiftanvil-meta |
 | 9.5 | Boundary Document & Enforcement | Complete | swiftanvil-meta |
-| 9.6 | Migrate iStudio Validators to SwiftAnvil | Planned; depends on 9.5 | swiftanvil-cli, iStudio |
+| 9.6 | Migrate iStudio Validators to SwiftAnvil | Complete | swiftanvil-cli |
 
 ## Review Artifact Conventions by Phase
 

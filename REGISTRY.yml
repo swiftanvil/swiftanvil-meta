@@ -730,6 +730,12 @@ documents:
     audience: [human, agent]
     aliases: []
 
+  planning.child-9-6-result:
+    title: Migrate iStudio Validators to SwiftAnvil Result
+    path: Children/9.6/RESULT.md
+    audience: [human, agent]
+    aliases: []
+
 # ---
 # Repository Registry
 # ---
