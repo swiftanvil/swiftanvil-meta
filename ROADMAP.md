@@ -18,11 +18,12 @@
 | [Phase 8](#phase-8-macos-app-toolkit) | macOS App Toolkit | 🟢 Complete | 5/5 |
 | [Phase 9](#phase-9-istudio-boundary--tooling-expansion) | iStudio Boundary & Tooling Expansion | 🟢 Complete | 6/6 |
 | [Phase 11](#phase-11-engineering-standards-enforcement) | Engineering Standards Enforcement | ✅ Complete | 5/5 |
-| [Phase 10](#phase-10-future-expansion) | Future Expansion | 🟢 Complete | 18/18 |
+| [Phase 10](#phase-10-future-expansion) | Future Expansion | 🟢 Complete | 14/18 (4 deferred) |
+| [Phase 12](#phase-12-agent-native-cli) | Agent-Native CLI | 🟡 In Progress | 1/4 |
 
-**Current Active Phase:** None — all planned phases complete.
+**Current Active Phase:** Phase 12 — Agent-Native CLI
 
-**Current Work Gate:** Phase 10 and 11 complete. All roadmap items delivered or documented.
+**Current Work Gate:** Child 12.1 in progress (`--json` output support). Children 12.2–12.4 planned.
 
 **Phase Gate Note:** Phase 6 is complete. All 3 children done. 6.1 (53 tests), 6.2 (62 tests), 6.3 (43 CLI tests + 7 lib + 5 CLI + 6 SwiftUI example tests).
 
@@ -1063,7 +1064,7 @@ Every `swiftanvil` command follows `swiftanvil <domain> <action>`:
 
 ---
 
-*Last updated: 2026-06-09*
+*Last updated: 2026-06-10*
 
 ---
 
@@ -1159,6 +1160,68 @@ Every `swiftanvil` command follows `swiftanvil <domain> <action>`:
 - `ifoundation verify --example` — validates example project structure (files, dirs, Package.swift, README)
 - `EXAMPLES.md` — contributor guide for adding new examples
 - `org.contributing` — example project conventions and PR process
+
+---
+
+## Phase 12: Agent-Native CLI 🟡
+
+> Make the SwiftAnvil CLI consumable by AI agents as first-class users. Machine-readable output, agent context generation, and shared artifact protocols.
+
+**Status:** Child 12.1 in progress. Children 12.2–12.4 planned.
+
+**Rationale:** The ecosystem is built *by* AI agents but not yet built *for* AI agents. The highest-leverage investment is `--json` output, followed by an `agent` domain in the CLI. See `review.ai-agent-ecosystem` for full assessment.
+
+### 12.1 Machine-Readable CLI Output (`--json`)
+
+| Aspect | Detail |
+|--------|--------|
+| Plan | `planning.child-12-1` |
+| Status | In Progress |
+| Primary Repo | swiftanvil-cli |
+| Scope | Add `--json` to all 12 existing commands |
+
+**What it will deliver:**
+- `JSONOutputFormatter` protocol + concrete type
+- Stable JSON schema v1 with `version`, `command`, `timestamp`, `success`, `data` fields
+- Every command: `swiftanvil <command> --json | jq .` succeeds
+- Human output unchanged when `--json` is omitted
+- ≥12 new tests (1 per command)
+
+### 12.2 Agent Context Pack (`swiftanvil agent context`)
+
+| Aspect | Detail |
+|--------|--------|
+| Plan | TBD |
+| Status | Planned |
+| Primary Repo | swiftanvil-cli |
+
+**What it will deliver:**
+- Bounded context packet generation: architecture, recent changes, test policy
+- Prevents context-window overflow for AI agents entering the repo
+
+### 12.3 SwiftAnvilArtifact JSON Schema
+
+| Aspect | Detail |
+|--------|--------|
+| Plan | TBD |
+| Status | Planned |
+| Primary Repo | swiftanvil-meta |
+
+**What it will deliver:**
+- Shared JSON schema for diagnostics, reports, review packets
+- Versioned contract between SwiftAnvil and iStudio
+
+### 12.4 Agent Review Packet (`swiftanvil agent review`)
+
+| Aspect | Detail |
+|--------|--------|
+| Plan | TBD |
+| Status | Planned |
+| Primary Repo | swiftanvil-cli |
+
+**What it will deliver:**
+- Review packet: diff + tests + policy + architecture
+- Makes cross-host review executable, not just documented
 
 ---
 
