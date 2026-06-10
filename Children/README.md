@@ -119,9 +119,18 @@ Phase 9 is complete. All 6 children done.
 |-------|------|--------|--------------|
 | 11.1 | Canonical Style Configuration | Complete | swiftanvil-enforcement, swiftanvil-meta, swiftanvil-cli |
 | 11.2 | SOLID & Design Principle Lint Rules | Complete | swiftanvil-cli |
-| 11.3 | Pre-commit Hook + CI Gate Integration | Planned | swiftanvil-enforcement |
-| 11.4 | SwiftAnvil Repo Remediation Sprint | Planned | Multiple |
-| 11.5 | Consumer Project Template Integration | Planned | swiftanvil-cli, swiftanvil-anvil-template |
+| 11.3 | Pre-commit Hook + CI Gate Integration | Complete | swiftanvil-enforcement |
+| 11.4 | SwiftAnvil Repo Remediation Sprint | Complete | Multiple |
+| 11.5 | Consumer Project Template Integration | Complete | swiftanvil-cli, swiftanvil-anvil-template |
+
+## Phase 12 — Agent-Native CLI
+
+| Child | Name | Status | Primary Repo |
+|-------|------|--------|--------------|
+| 12.1 | Machine-Readable CLI Output (`--json`) | In Progress | swiftanvil-cli |
+| 12.2 | Agent Context Pack | Planned | swiftanvil-cli |
+| 12.3 | SwiftAnvilArtifact JSON Schema | Planned | swiftanvil-meta |
+| 12.4 | Agent Review Packet | Planned | swiftanvil-cli |
 
 ## Review Artifact Conventions by Phase
 
