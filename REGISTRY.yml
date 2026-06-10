@@ -599,6 +599,16 @@ documents:
     audience: [human, agent]
     aliases: []
 
+  workflow.git:
+    title: Git Workflow
+    path: WORKFLOW_GIT.md
+    audience: [human, agent]
+    aliases: []
+    load_policy:
+      conditional: "creating branches, committing, or merging"
+      order: 9
+      estimated_lines: 100
+
   process.exception.direct-push-2026-06-04:
     title: Direct Push Enforcement Remediation Exception
     path: Process-Exceptions/2026-06-04-direct-push-enforcement-remediation.md

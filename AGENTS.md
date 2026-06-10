@@ -57,30 +57,10 @@ SwiftAnvil is the **toolkit and standards** repository. iStudio is the **orchest
 
 ## Git Workflow
 
-**Direct commits to `main` are prohibited.** All work must go through feature branches and PRs.
-
-### Branch Naming
-
-| Prefix | Purpose |
-|---|---|
-| `feature/` | New functionality |
-| `fix/` | Bug fixes |
-| `doc/` | Documentation |
-| `chore/` | Maintenance, config updates |
-
-### Workflow
-
-1. **Create branch**: `swiftanvil-enforcement/scripts/feature-workflow.sh <type> <description>`
-2. **Commit and push**: work on branch, push to origin
-3. **Open PR**: GitHub PR with description
-4. **Merge via worktree**: `swiftanvil-enforcement/scripts/merge-via-worktree.sh <branch>`
-   - Rebase feature onto latest main
-   - Fast-forward merge
-   - Delete branch locally and remotely
-   - Run cleanup
-5. **Cleanup**: `swiftanvil-enforcement/scripts/cleanup.sh` removes `.build/`, DerivedData, temp files
-
-The pre-commit hook blocks `main` commits and runs format/lint checks.
+See `workflow.git` for the canonical branch-based workflow. Pre-commit hooks mechanically enforce:
+- No direct commits to `main`
+- Conventional commit messages
+- Valid branch naming
 
 ## Editing Rules
 
