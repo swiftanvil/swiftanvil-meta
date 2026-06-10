@@ -13,8 +13,14 @@ jobs:
       - name: Validate registry YAML
         run: python3 -c "import yaml; yaml.safe_load(open('REGISTRY.yml'))"
 
-      - name: Validate document registry references
-        uses: swiftanvil/swiftanvil-enforcement/.github/workflows/document-registry-policy.yml@v1
-        with:
-          registry_repository: swiftanvil/swiftanvil-meta
-          registry_ref: main
+      - name: Validate all YAML files in .github/workflows
+        run: |
+          for f in .github/workflows/*.yml; do
+            echo "Validating $f"
+            python3 -c "import yaml; yaml.safe_load(open('$f'))"
+          done
+
+      - name: Check document registry locally
+        run: |
+          bash <(curl -sL https://raw.githubusercontent.com/swiftanvil/swiftanvil-enforcement/v1/scripts/validate-document-registry.sh) \
+            --registry-root . --root .
