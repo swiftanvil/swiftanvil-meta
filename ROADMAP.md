@@ -18,11 +18,11 @@
 | [Phase 8](#phase-8-macos-app-toolkit) | macOS App Toolkit | 🟢 Complete | 5/5 |
 | [Phase 9](#phase-9-istudio-boundary--tooling-expansion) | iStudio Boundary & Tooling Expansion | 🟢 Complete | 6/6 |
 | [Phase 11](#phase-11-engineering-standards-enforcement) | Engineering Standards Enforcement | ✅ Complete | 5/5 |
-| [Phase 10](#phase-10-future-expansion) | Future Expansion | 🟡 In Progress | — |
+| [Phase 10](#phase-10-future-expansion) | Future Expansion | 🟢 Complete | 18/18 |
 
-**Current Active Phase:** Phase 10 — Future Expansion 🟡 In Progress
+**Current Active Phase:** None — all planned phases complete.
 
-**Current Work Gate:** Phase 11 complete. Phase 10 is now active.
+**Current Work Gate:** Phase 10 and 11 complete. All roadmap items delivered or documented.
 
 **Phase Gate Note:** Phase 6 is complete. All 3 children done. 6.1 (53 tests), 6.2 (62 tests), 6.3 (43 CLI tests + 7 lib + 5 CLI + 6 SwiftUI example tests).
 
@@ -970,11 +970,13 @@ registered as `planning.children-index`.
 
 ---
 
-## Phase 10: Future Expansion 🟡
+## Phase 10: Future Expansion 🟢
 
 > Long-term roadmap items. Organized by tooling horizon.
 
-**Note:** Phase 11 is complete. Phase 10 is now active.
+**Status:** 14 implemented, 4 deferred (require external APIs/tools).
+
+**Note:** Phase 11 is complete. Phase 10 is now complete.
 
 ### Horizon 1 — Build & Distribution Tooling
 
