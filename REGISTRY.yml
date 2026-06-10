@@ -605,6 +605,16 @@ documents:
     audience: [human, agent]
     aliases: []
 
+  process.exception.ci-remediation-2026-06-10:
+    title: CI Remediation Playbook
+    path: Process-Exceptions/2026-06-10-ci-remediation-playbook.md
+    audience: [human, agent]
+    aliases: []
+    load_policy:
+      conditional: "CI fails more than 3 times consecutively"
+      order: 16
+      estimated_lines: 200
+
   history.phase-1-plan:
     title: Phase 1 Plan (Historical)
     path: HISTORY/PHASE_1_PLAN.md
