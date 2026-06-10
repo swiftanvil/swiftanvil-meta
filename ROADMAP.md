@@ -458,24 +458,28 @@ registered as `planning.children-index`.
 
 | Package | Tests | Last Verified |
 |---------|-------|---------------|
-| A11yIdentifiers | 17/17 | 2026-06-02 |
-| BenchmarkKit | 78/78 | 2026-06-02 |
-| AppStrings | 21/21 | 2026-06-02 |
-| AnvilNetwork | 29/29 | 2026-06-03 |
-| AnvilFlags | 37/37 | 2026-06-03 |
-| AnvilDevMenu | 16/16 | 2026-06-03 |
-| AnvilWizard | 20/20 | 2026-06-03 |
-| AnvilTemplate | 78/78 | 2026-06-04 |
-| AnvilProject | 37/37 | 2026-06-03 |
-| AnvilRunner | 50/50 | 2026-06-04 |
-| SwiftAnvil CLI | 43/43 | 2026-06-05 |
-| CounterKit (example) | 7/7 | 2026-06-05 |
-| WordCounter (example) | 5/5 | 2026-06-05 |
-| TodoApp (example) | 6/6 | 2026-06-05 |
-| AnvilCore | 11/11 | 2026-06-05 |
-| AnvilMacros | 4/4 | 2026-06-05 |
-| GoldenPath (example) | 1/1 | 2026-06-05 |
-| **Total** | **252/252** | **100%** |
+| A11yIdentifiers | 17/17 | 2026-06-10 |
+| BenchmarkKit | 78/78 | 2026-06-10 |
+| AppStrings | 21/21 | 2026-06-10 |
+| AnvilNetwork | 31/31 | 2026-06-10 |
+| AnvilFlags | 45/45 | 2026-06-10 |
+| AnvilDevMenu | 60/60 | 2026-06-10 |
+| AnvilWizard | 20/20 | 2026-06-10 |
+| AnvilTemplate | 78/78 | 2026-06-10 |
+| AnvilProject | 37/37 | 2026-06-10 |
+| AnvilRunner | 50/50 | 2026-06-10 |
+| SwiftAnvil CLI | 113/113 | 2026-06-10 |
+| CounterKit (example) | 7/7 | 2026-06-10 |
+| WordCounter (example) | 5/5 | 2026-06-10 |
+| TodoApp (example) | 6/6 | 2026-06-10 |
+| AnvilCore | 11/11 | 2026-06-10 |
+| AnvilMacros | 12/12 | 2026-06-10 |
+| GoldenPath (example) | 5/5 | 2026-06-10 |
+| AnvilSettings | 14/14 | 2026-06-10 |
+| AnvilMenuBar | 13/13 | 2026-06-10 |
+| AnvilWindow | 12/12 | 2026-06-10 |
+| AnvilDocs | 6/6 | 2026-06-10 |
+| **Total** | **521/521** | **100%** |
 
 *Note: historical iFoundation planning is retained as source material, but current organization planning lives in
 `swiftanvil-meta`.*
@@ -1043,6 +1047,7 @@ Every `swiftanvil` command follows `swiftanvil <domain> <action>`:
 | `docs` | `compose`, `validate`, `generate`, `preview` | SwiftAnvil |
 | `immunity` | `scan`, `report`, `suggest` | SwiftAnvil |
 | `verify` | (default), `--example` | SwiftAnvil |
+| `health` | `scan` | SwiftAnvil |
 | `build` | `optimize`, `audit`, `size`, `cache` | SwiftAnvil |
 | `deps` | `graph`, `outdated`, `vulnerabilities` | SwiftAnvil |
 | `distribute` | `testflight`, `appstore`, `preview`, `validate`, `notes` | SwiftAnvil |

@@ -792,6 +792,12 @@ documents:
     audience: [human, agent]
     aliases: []
 
+  planning.child-12-1:
+    title: Machine-Readable CLI Output
+    path: Children/12.1/PLAN.md
+    audience: [human, agent]
+    aliases: []
+
 # ---
 # Repository Registry
 # ---
