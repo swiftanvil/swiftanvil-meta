@@ -638,7 +638,7 @@ registered as `planning.children-index`.
 - [x] All review blockers fixed
 - [x] Phase 7 summary reviewed
 - [x] All RESULT.md files written
-- [x] ROADMAP.md updated with Phase 7 section
+- [x] `roadmap.org` updated with Phase 7 section
 - [x] All changes committed and pushed
 
 ---
@@ -839,8 +839,8 @@ registered as `planning.children-index`.
 - `scripts/test-pms.sh` — fixture-based test suite (5 tests)
 - `.github/workflows/pms.yml` — GitHub Actions workflow (push/PR/weekly/manual)
 - `package.improvement-score` JSON written to each repo
-- `IMPROVEMENT_DASHBOARD.md` updated with real scores
-- `MEMORY/07-PACKAGES.md` updated with real scores and versions
+- `improvement.dashboard` updated with real scores
+- `packages.registry` updated with real scores and versions
 
 **Current state:** PMS automation is live. 3 packages at A+, 10 at A, 4 at C, 1 at F.
 
@@ -865,13 +865,13 @@ registered as `planning.children-index`.
 | Primary Repo | swiftanvil-meta |
 
 **What it delivered:**
-- `BOUNDARY.md` — canonical boundary document with product relationship, repository independence, dependency direction, policy/tool/workflow sharing, integration contract (`.istudio/profile.yaml`), exclusions, redirect rules, and enforcement mechanisms
-- `AGENTS.md` — redirect rules with explicit STOP policy for boundary violations
-- `MEMORY/99-SESSION_START.md` — Step 3 boundary check (30 sec)
-- `ROADMAP.md` — Phase 9 unified, duplicate heading resolved
-- `REGISTRY.yml` — entries for `boundary.istudio`, `planning.child-9-5`, `planning.child-9-6`
+- `boundary.istudio` — canonical boundary document with product relationship, repository independence, dependency direction, policy/tool/workflow sharing, integration contract (`.istudio/profile.yaml`), exclusions, redirect rules, and enforcement mechanisms
+- `meta.agents` — redirect rules with explicit STOP policy for boundary violations
+- `meta.session-start` — Step 3 boundary check (30 sec)
+- `roadmap.org` — Phase 9 unified, duplicate heading resolved
+- `meta.registry` — entries for `boundary.istudio`, `planning.child-9-5`, `planning.child-9-6`
 
-**Review:** APPROVED_WITH_NOTES (1 high finding resolved: ROADMAP.md duplicate Phase 9 headings)
+**Review:** APPROVED_WITH_NOTES (1 high finding resolved: `roadmap.org` duplicate Phase 9 headings)
 
 ### 9.6 Migrate iStudio Validators to SwiftAnvil ✅
 
@@ -1011,7 +1011,7 @@ registered as `planning.children-index`.
 | # | Item | CLI Command | Description |
 |---|------|-------------|-------------|
 | 10.16 | Agent Context Pack | `swiftanvil agent context` | Generate bounded context packet for AI: architecture, recent changes, test policy |
-| 10.17 | Agent Instructions Generator | `swiftanvil agent instructions` | Auto-generate `AGENTS.md` from codebase analysis |
+| 10.17 | Agent Instructions Generator | `swiftanvil agent instructions` | Auto-generate `meta.agents` from codebase analysis |
 | 10.18 | Review Packet Generator | `swiftanvil agent review` | Generate review packet: diff + tests + policy + architecture for iStudio review bus |
 
 ### Existing Packages (Retained from Prior Phase 10)
@@ -1072,7 +1072,7 @@ Every `swiftanvil` command follows `swiftanvil <domain> <action>`:
 - [x] All examples build with `swift build`
 - [x] All examples pass `swift test`
 - [x] `ifoundation verify --example` validates example structure
-- [x] `EXAMPLES.md` and `CONTRIBUTING.md` written
+- [x] `EXAMPLES.md` and `org.contributing` written
 - [x] All tests pass (61/61)
 
 ---
@@ -1156,7 +1156,7 @@ Every `swiftanvil` command follows `swiftanvil <domain> <action>`:
 - `swiftanvil-example-swiftui` (TodoApp) — SwiftUI iOS app with AnvilNetwork + AnvilFlags deps, actor-based store, 6 tests
 - `ifoundation verify --example` — validates example project structure (files, dirs, Package.swift, README)
 - `EXAMPLES.md` — contributor guide for adding new examples
-- `CONTRIBUTING.md` — example project conventions and PR process
+- `org.contributing` — example project conventions and PR process
 
 ---
 

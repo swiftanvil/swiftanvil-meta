@@ -147,11 +147,11 @@ Every repository must have these topics:
 | `infra` | For infrastructure repos |
 | `example` | For example/demo repos |
 
-Plus category-specific topics from `REGISTRY.yml`.
+Plus category-specific topics from `meta.registry`.
 
 ### Registry Entry (Required)
 
-Every repository must have an entry in `REGISTRY.yml` under `repositories:`
+Every repository must have an entry in `meta.registry` under `repositories:`
 
 ```yaml
 repositories:

@@ -119,7 +119,7 @@ These are the most AI-agent-relevant commands in the entire roadmap:
 | Command | What It Would Do | Why Agents Need It |
 |---------|-----------------|-------------------|
 | `swiftanvil agent context` | Generate bounded context packet: architecture, recent changes, test policy | Prevents context-window overflow; gives agent exactly what it needs |
-| `swiftanvil agent instructions` | Auto-generate `AGENTS.md` from codebase analysis | Ensures new agents get correct conventions |
+| `swiftanvil agent instructions` | Auto-generate `meta.agents` from codebase analysis | Ensures new agents get correct conventions |
 | `swiftanvil agent review` | Generate review packet: diff + tests + policy + architecture | Makes cross-host review executable, not just documented |
 
 **Impact:** AI agents entering a SwiftAnvil project have no standardized way to discover what they need to know. They must read files manually, which is slow and may miss critical policy.
@@ -205,7 +205,7 @@ MCP (Model Context Protocol) is emerging as a standard for AI tool integration. 
 | # | Task | Repo | Why Later |
 |---|------|------|-----------|
 | 7 | Add `swiftanvil capabilities --json` | swiftanvil-cli | Discovery command for agents entering new repos. |
-| 8 | Add `swiftanvil agent instructions` | swiftanvil-cli | Auto-generates `AGENTS.md`. Reduces manual documentation. |
+| 8 | Add `swiftanvil agent instructions` | swiftanvil-cli | Auto-generates `meta.agents`. Reduces manual documentation. |
 | 9 | Evaluate MCP server | swiftanvil-cli or new repo | Distribution into MCP-aware agent hosts. |
 | 10 | Add `swiftanvil build optimize` (10.1) | swiftanvil-cli | Horizon 1 tooling expansion. |
 

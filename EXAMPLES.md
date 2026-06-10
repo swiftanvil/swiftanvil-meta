@@ -38,14 +38,14 @@ Every example must:
 1. **Build** with `swift build`
 2. **Test** with `swift test` (minimum 3 tests)
 3. **Have** a `Package.swift` with Swift 6 language mode
-4. **Have** a `README.md` with build and test instructions
+4. **Have** a `package.readme` with build and test instructions
 5. **Have** a `.gitignore` for `.build/`, `.swiftpm/`, `.DS_Store`
 6. **Pass** `ifoundation verify --example`
 
 ## Adding a New Example
 
 1. Create a new repo: `swiftanvil-example-<name>`
-2. Add `Package.swift`, `README.md`, `.gitignore`
+2. Add `Package.swift`, `package.readme`, `.gitignore`
 3. Create `Sources/` and `Tests/` with meaningful code
 4. Run `swift build && swift test`
 5. Run `ifoundation verify --example --path .`

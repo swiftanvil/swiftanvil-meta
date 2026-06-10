@@ -4,8 +4,8 @@
 
 ## Getting Started
 
-1. Read `AGENTS.md` for project conventions
-2. Check `ROADMAP.md` for active work
+1. Read `meta.agents` for project conventions
+2. Check `roadmap.org` for active work
 3. Open an issue before major changes
 
 ## Example Projects
@@ -17,7 +17,7 @@ When adding or modifying an example project, follow these conventions:
 ```
 swiftanvil-example-<name>/
 ├── Package.swift          # Swift 6, platform policy compliant
-├── README.md              # Build + test instructions
+├── README.md              # Build + test instructions (meta.readme)
 ├── .gitignore             # .build/, .swiftpm/, .DS_Store
 ├── Sources/
 │   └── <TargetName>/

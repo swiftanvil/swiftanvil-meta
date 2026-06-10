@@ -47,7 +47,7 @@ SwiftAnvil and iStudio remain separate GitHub organizations/repositories:
 | **Distribution** | TestFlight upload, App Store submission, metadata validation | `swiftanvil distribute testflight` |
 | **Documentation** | DocC generation, registry composition, preview server | `swiftanvil docs generate` |
 | **Reusable CI** | `swift-lint.yml`, `swift-ci.yml`, `document-registry-policy.yml` | GHA `workflow_call` |
-| **AI agent support** | Context packet generation, auto-generated AGENTS.md, review packets | `swiftanvil agent context` |
+| **AI agent support** | Context packet generation, auto-generated meta.agents, review packets | `swiftanvil agent context` |
 
 ---
 
