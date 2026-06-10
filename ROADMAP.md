@@ -17,7 +17,7 @@
 | [Phase 7](#phase-7-quality--completeness) | Quality & Completeness | 🟢 Complete | 7/7 |
 | [Phase 8](#phase-8-macos-app-toolkit) | macOS App Toolkit | 🟢 Complete | 5/5 |
 | [Phase 9](#phase-9-istudio-boundary--tooling-expansion) | iStudio Boundary & Tooling Expansion | 🟢 Complete | 6/6 |
-| [Phase 11](#phase-11-engineering-standards-enforcement) | Engineering Standards Enforcement | 🟡 In Progress | 1/5 |
+| [Phase 11](#phase-11-engineering-standards-enforcement) | Engineering Standards Enforcement | 🟡 In Progress | 2/5 |
 | [Phase 10](#phase-10-future-expansion) | Future Expansion | ⚪ Planned | — |
 
 **Current Active Phase:** Phase 11 — Engineering Standards Enforcement 🟡 In Progress (Child 11.1 complete, 11.2 planned)
@@ -912,18 +912,22 @@ registered as `planning.children-index`.
 - First adoption in `swiftanvil-cli` repo (passes both format and lint, all tests green)
 - Documented structural debt in 5 swiftanvil-cli files for Child 11.4 remediation
 
-### 11.2 SOLID & Design Principle Lint Rules ⚪
+### 11.2 SOLID & Design Principle Lint Rules ✅
 
 | Aspect | Detail |
 |--------|--------|
 | Plan | `planning.child-11-2` |
-| Status | Planned |
+| Result | `planning.child-11-2-result` |
+| Status | Complete |
 | Primary Repo | swiftanvil-cli |
+| Tests | 9/9 new pass, 70/70 total |
 
-**What it will deliver:**
-- `swiftanvil lint solid` subcommand
-- SOLID heuristics in `swiftanvil lint source`
+**What it delivered:**
+- `swiftanvil lint solid` subcommand with 5 SOLID heuristics
+- Structure checks promoted to default in `swiftanvil lint source`
+- Type-safety-over-strings heuristic
 - `.swiftanvil.yml` budgets for SOLID checks
+- Custom `init(from:)` decoder for backward-compatible config loading
 
 ### 11.3 Pre-commit Hook + CI Gate Integration ⚪
 

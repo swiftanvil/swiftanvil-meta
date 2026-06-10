@@ -754,6 +754,18 @@ documents:
     audience: [human, agent]
     aliases: []
 
+  planning.child-11-2:
+    title: SOLID & Design Principle Lint Rules
+    path: Children/11.2/PLAN.md
+    audience: [human, agent]
+    aliases: []
+
+  planning.child-11-2-result:
+    title: SOLID & Design Principle Lint Rules Result
+    path: Children/11.2/RESULT.md
+    audience: [human, agent]
+    aliases: []
+
   review.ai-agent-ecosystem:
     title: AI Agent Ecosystem Strategic Review
     path: AI_AGENT_ECOSYSTEM_REVIEW.md
