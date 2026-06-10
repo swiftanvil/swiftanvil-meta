@@ -5,11 +5,16 @@ on:
   pull_request:
     branches: [main]
 jobs:
-  test:
-    runs-on: [self-hosted, macOS, ARM64]
+  validate:
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Build
-        run: swift build
-      - name: Test
-        run: swift test
+
+      - name: Validate registry YAML
+        run: python3 -c "import yaml; yaml.safe_load(open('REGISTRY.yml'))"
+
+      - name: Validate document registry references
+        uses: swiftanvil/swiftanvil-enforcement/.github/workflows/document-registry-policy.yml@v1
+        with:
+          registry_repository: swiftanvil/swiftanvil-meta
+          registry_ref: main
