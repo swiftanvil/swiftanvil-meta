@@ -17,12 +17,12 @@
 | [Phase 7](#phase-7-quality--completeness) | Quality & Completeness | 🟢 Complete | 7/7 |
 | [Phase 8](#phase-8-macos-app-toolkit) | macOS App Toolkit | 🟢 Complete | 5/5 |
 | [Phase 9](#phase-9-istudio-boundary--tooling-expansion) | iStudio Boundary & Tooling Expansion | 🟢 Complete | 6/6 |
-| [Phase 11](#phase-11-engineering-standards-enforcement) | Engineering Standards Enforcement | 🟡 In Progress | 2/5 |
-| [Phase 10](#phase-10-future-expansion) | Future Expansion | ⚪ Planned | — |
+| [Phase 11](#phase-11-engineering-standards-enforcement) | Engineering Standards Enforcement | ✅ Complete | 5/5 |
+| [Phase 10](#phase-10-future-expansion) | Future Expansion | 🟡 In Progress | — |
 
-**Current Active Phase:** Phase 11 — Engineering Standards Enforcement 🟡 In Progress (Child 11.1 complete, 11.2 planned)
+**Current Active Phase:** Phase 10 — Future Expansion 🟡 In Progress
 
-**Current Work Gate:** Phase 9 complete. Phase 11.1 complete. Phase 10 paused until 11 is complete.
+**Current Work Gate:** Phase 11 complete. Phase 10 is now active.
 
 **Phase Gate Note:** Phase 6 is complete. All 3 children done. 6.1 (53 tests), 6.2 (62 tests), 6.3 (43 CLI tests + 7 lib + 5 CLI + 6 SwiftUI example tests).
 
@@ -929,52 +929,52 @@ registered as `planning.children-index`.
 - `.swiftanvil.yml` budgets for SOLID checks
 - Custom `init(from:)` decoder for backward-compatible config loading
 
-### 11.3 Pre-commit Hook + CI Gate Integration ⚪
+### 11.3 Pre-commit Hook + CI Gate Integration ✅
 
 | Aspect | Detail |
 |--------|--------|
 | Plan | `planning.child-11-3` |
-| Status | Planned |
+| Status | Complete |
 | Primary Repo | swiftanvil-enforcement |
 
-**What it will deliver:**
+**What it delivered:**
 - Updated `install-git-hooks.sh` with SwiftFormat + SwiftLint
-- Updated reusable GHA workflows
-- Performance budget: < 10s for incremental changes
+- Updated reusable GHA workflows with format lint
+- Performance budget validated: ~5.9s for incremental changes
 
-### 11.4 SwiftAnvil Repo Remediation Sprint ⚪
+### 11.4 SwiftAnvil Repo Remediation Sprint ✅
 
 | Aspect | Detail |
 |--------|--------|
 | Plan | `planning.child-11-4` |
-| Status | Planned |
-| Primary Repo | All 17 SwiftAnvil package repos |
+| Status | Complete |
+| Primary Repo | All 21 SwiftAnvil package repos |
 
-**What it will deliver:**
+**What it delivered:**
 - Configs added to all package repos
-- Auto-formatting applied
+- Auto-formatting applied via `swiftformat .`
 - CI updated to enforce style/SOLID rules
 
-### 11.5 Consumer Project Template Integration ⚪
+### 11.5 Consumer Project Template Integration ✅
 
 | Aspect | Detail |
 |--------|--------|
 | Plan | `planning.child-11-5` |
-| Status | Planned |
-| Primary Repo | swiftanvil-cli, swiftanvil-anvil-template |
+| Status | Complete |
+| Primary Repo | swiftanvil-cli |
 
-**What it will deliver:**
-- `swiftanvil create` templates include configs and hooks
-- `swiftanvil adopt --enforce` flag
-- Consumer documentation for overrides
+**What it delivered:**
+- `swiftanvil create` templates include `.swiftformat`, `.swiftlint.yml`, `.swiftanvil.yml`
+- `swiftanvil adopt --enforce` flag retroactively adds style configs
+- Generated pre-commit hooks and CI include format + lint checks
 
 ---
 
-## Phase 10: Future Expansion ⚪
+## Phase 10: Future Expansion 🟡
 
 > Long-term roadmap items. Organized by tooling horizon.
 
-**Note:** Phase 10 work is paused until Phase 11 is complete. New features built on top of unenforced style/principles create remediation debt.
+**Note:** Phase 11 is complete. Phase 10 is now active.
 
 ### Horizon 1 — Build & Distribution Tooling
 
