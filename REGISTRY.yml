@@ -736,6 +736,30 @@ documents:
     audience: [human, agent]
     aliases: []
 
+  planning.child-11-1:
+    title: Canonical Style Configuration
+    path: Children/11.1/PLAN.md
+    audience: [human, agent]
+    aliases: []
+
+  planning.child-11-1-result:
+    title: Canonical Style Configuration Result
+    path: Children/11.1/RESULT.md
+    audience: [human, agent]
+    aliases: []
+
+  style.guide:
+    title: SwiftAnvil Style Guide
+    path: STYLE_GUIDE.md
+    audience: [human, agent]
+    aliases: []
+
+  review.ai-agent-ecosystem:
+    title: AI Agent Ecosystem Strategic Review
+    path: AI_AGENT_ECOSYSTEM_REVIEW.md
+    audience: [human, agent]
+    aliases: []
+
 # ---
 # Repository Registry
 # ---
